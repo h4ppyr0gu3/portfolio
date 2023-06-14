@@ -2,11 +2,11 @@
 start_date: 14/06/2023
 last_update: 14/06/2023
 title: About this site
-excerpt:
+excerpt: something short
 tags: 
     - choice
-read_time: 
-words:
+read_time: 5 mins
+words: 120
 ---
 
 # About this site

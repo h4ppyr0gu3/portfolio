@@ -40,6 +40,9 @@ def github_response(content) # rubocop:disable Metrics/MethodLength, Metrics/Abc
   response.body
 end
 
+def gitlab_response
+end
+
 # Parses the raw file and returns seperate yaml metadata and markdown content
 class Content
   attr_reader :yaml, :markdown

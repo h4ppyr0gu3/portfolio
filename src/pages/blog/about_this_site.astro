@@ -1,0 +1,137 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<style>
+
+.py-05 {
+  padding-top: 0.125rem;
+  padding-bottom: 0.125rem;
+}
+
+.markdown {
+  @apply text-gray-900 leading-normal break-words;
+}
+
+.markdown > * + * {
+  @apply mt-0 mb-4;
+}
+
+.markdown li + li {
+  @apply mt-1;
+}
+
+.markdown li > p + p {
+  @apply mt-6;
+}
+
+.markdown strong {
+  @apply font-semibold;
+}
+
+.markdown a {
+  @apply text-blue-600 font-semibold;
+}
+
+.markdown strong a {
+  @apply font-bold;
+}
+
+.markdown h1 {
+  @apply leading-tight border-b text-4xl font-semibold mb-4 mt-6 pb-2;
+}
+
+.markdown h2 {
+  @apply leading-tight border-b text-2xl font-semibold mb-4 mt-6 pb-2;
+}
+
+.markdown h3 {
+  @apply leading-snug text-lg font-semibold mb-4 mt-6;
+}
+
+.markdown h4 {
+  @apply leading-none text-base font-semibold mb-4 mt-6;
+}
+
+.markdown h5 {
+  @apply leading-tight text-sm font-semibold mb-4 mt-6;
+}
+
+.markdown h6 {
+  @apply leading-tight text-sm font-semibold text-gray-600 mb-4 mt-6;
+}
+
+.markdown blockquote {
+  @apply text-base border-l-4 border-gray-300 pl-4 pr-4 text-gray-600;
+}
+
+.markdown code {
+  @apply font-mono text-sm inline bg-gray-200 rounded px-1 py-05;
+}
+
+.markdown pre {
+  @apply bg-gray-100 rounded p-4;
+}
+
+.markdown pre code {
+  @apply block bg-transparent p-0 overflow-visible rounded-none;
+}
+
+.markdown ul {
+  @apply text-base pl-8 list-disc;
+}
+
+.markdown ol {
+  @apply text-base pl-8 list-decimal;
+}
+
+.markdown kbd {
+  @apply text-xs inline-block rounded border px-1 py-05 align-middle font-normal font-mono shadow;
+}
+
+.markdown table {
+  @apply text-base border-gray-600;
+}
+
+.markdown th {
+  @apply border py-1 px-3;
+}
+
+.markdown td {
+  @apply border py-1 px-3;
+}
+
+/* Override pygments style background color. */
+.markdown .highlight pre {
+  @apply bg-gray-100 !important;
+}
+</style>
+
+<Layout title="About this site">
+  <div class="markdown">
+<h1><a id="user-content-about-this-site" class="anchor" aria-hidden="true" href="#about-this-site"><span aria-hidden="true" class="octicon octicon-link"></span></a>About this site</h1>
+<h2><a id="user-content-design-choices" class="anchor" aria-hidden="true" href="#design-choices"><span aria-hidden="true" class="octicon octicon-link"></span></a>Design Choices</h2>
+<ul>
+<li><a href="#astro">Astro</a></li>
+<li><a href="#tailwind">Tailwind</a></li>
+<li><a href="#ruby">Ruby</a></li>
+<li><a href="#ai">AI</a></li>
+</ul>
+<h2><a id="user-content-astro" class="anchor" aria-hidden="true" href="#astro"><span aria-hidden="true" class="octicon octicon-link"></span></a>Astro</h2>
+<p><a href="https://astro.build" rel="nofollow">Astro</a> means that I can try any javascript framework and have somewhere to put it, this is the key reason i decided to go with it</p>
+<h2><a id="user-content-tailwind tailwind" class="anchor" aria-hidden="true" href="#tailwind"><span aria-hidden="true" class="octicon octicon-link"></span></a>Tailwind</h2>
+<p><a href="https://tailwindcss.com" rel="nofollow">Tailwind</a> Tailwind is very extensible and has great convenience features such as dark mode, it is also well supported by major frameworks and that means that no matter what framework I use, I will be able to get a consistent UI</p>
+<h2><a id="user-content-ruby" class="anchor" aria-hidden="true" href="#ruby"><span aria-hidden="true" class="octicon octicon-link"></span></a>[Ruby]</h2>
+<p><a href="https://rubygems.org" rel="nofollow">Ruby</a> is my default language and so i had to use it somewhere, so to make it work my while i write blogs in pure mark down and have scripts to alter the .astro files by adding all the metadata etc... I also want to have syntax highlighting without too much difficulty so using a ruby script I can use the github API to convert markdown into HTML which i can compliment with custom CSS so that i get the look that I want.</p>
+<h2><a id="user-content-ai" class="anchor" aria-hidden="true" href="#ai"><span aria-hidden="true" class="octicon octicon-link"></span></a>[AI]</h2>
+<p>AI is the new big thing and so using <a href="https://chat.openai.com" rel="nofollow">ChatGPT</a> i can generate a short excerpt as well as a couple of key words which can help for a simple search that i have implemented with fuseJS on the frontend, which is using a json object as a database</p>
+
+<h2><a id="user-content-ruby" class="anchor" aria-hidden="true" href="#ruby"><span aria-hidden="true" class="octicon octicon-link"></span></a>[Ruby]</h2>
+<p><a href="https://rubygems.org" rel="nofollow">Ruby</a> is my default language and so i had to use it somewhere, so to make it work my while i write blogs in pure mark down and have scripts to alter the .astro files by adding all the metadata etc... I also want to have syntax highlighting without too much difficulty so using a ruby script I can use the github API to convert markdown into HTML which i can compliment with custom CSS so that i get the look that I want.</p>
+<h2><a id="user-content-ai" class="anchor" aria-hidden="true" href="#ai"><span aria-hidden="true" class="octicon octicon-link"></span></a>[AI]</h2>
+<p>AI is the new big thing and so using <a href="https://chat.openai.com" rel="nofollow">ChatGPT</a> i can generate a short excerpt as well as a couple of key words which can help for a simple search that i have implemented with fuseJS on the frontend, which is using a json object as a database</p>
+<h2><a id="user-content-ruby" class="anchor" aria-hidden="true" href="#ruby"><span aria-hidden="true" class="octicon octicon-link"></span></a>[Ruby]</h2>
+<p><a href="https://rubygems.org" rel="nofollow">Ruby</a> is my default language and so i had to use it somewhere, so to make it work my while i write blogs in pure mark down and have scripts to alter the .astro files by adding all the metadata etc... I also want to have syntax highlighting without too much difficulty so using a ruby script I can use the github API to convert markdown into HTML which i can compliment with custom CSS so that i get the look that I want.</p>
+<h2><a id="user-content-ai" class="anchor" aria-hidden="true" href="#ai"><span aria-hidden="true" class="octicon octicon-link"></span></a>[AI]</h2>
+<p>AI is the new big thing and so using <a href="https://chat.openai.com" rel="nofollow">ChatGPT</a> i can generate a short excerpt as well as a couple of key words which can help for a simple search that i have implemented with fuseJS on the frontend, which is using a json object as a database</p>
+  </div>
+</Layout>

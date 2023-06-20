@@ -24,7 +24,7 @@ GithubAPIError = StandardError.new
 
 def github_response(content) # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
   uri = URI.parse('https://api.github.com/markdown')
-  params = { 'text' => content.to_s }
+  params = { 'text' => content.to_s, 'mode' => 'markdown' }
   request = Net::HTTP::Post.new(uri)
   request['Accept'] = 'application/vnd.github+json'
   request['Authorization'] = "Bearer #{ENV['GITHUB_API_KEY']}"
@@ -37,7 +37,7 @@ def github_response(content) # rubocop:disable Metrics/MethodLength, Metrics/Abc
   end
   raise GithubAPIError unless response.code == '200'
 
-  JSON.parse(response.body)
+  response.body
 end
 
 # Parses the raw file and returns seperate yaml metadata and markdown content
@@ -61,14 +61,16 @@ end
 def read_yaml(yaml)
   return if yaml.nil?
 
-  debugger
+  YAML::load(yaml).transform_keys(&:to_sym)
 end
 
 Dir.glob("#{SOURCE_PATH}/**/*.md").each do |file|
   content = File.open(file).read
   parsed_file = Content.new(content)
-  read_yaml(parsed_file.yaml)
+  metadata = read_yaml(parsed_file.yaml)
+  html = github_response(parsed_file.markdown)
+  pp html
   file = file.gsub("#{SOURCE_PATH}/", '')
-  # pp github_response(content) if file == 'blog/about_this_site.md'
   pp file
+  File.write(OUTPUT_PATH + '/' + file, html)
 end

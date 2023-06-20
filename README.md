@@ -4,6 +4,8 @@
 npm create astro@latest -- --template basics
 ```
 
+[TOC]
+
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
 [![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
@@ -92,3 +94,45 @@ graph TD;
   ]
 }
 ```
+
+
+- {+ addition 1 +}
+- [+ addition 2 +]
+- {- deletion 3 -}
+- [- deletion 4 -]
+
+
+- {+ Just regular text +}
+- {+ Text with `backticks` inside +}
+- {+ Text with escaped \`backticks\` inside +}
+
+
+his math is inline: $`a^2+b^2=c^2`$.
+
+This math is on a separate line using a ```` ```math ```` block:
+
+```math
+a^2+b^2=c^2
+```
+
+This math is on a separate line using inline `$$`: $$a^2+b^2=c^2$$
+
+This math is on a separate line using a `$$...$$` block:
+
+$$
+a^2+b^2=c^2
+$$
+
+- [x] Completed task
+- [~] Inapplicable task
+- [ ] Incomplete task
+  - [x] Sub-task 1
+  - [~] Sub-task 2
+  - [ ] Sub-task 3
+
+1. [x] Completed task
+1. [~] Inapplicable task
+1. [ ] Incomplete task
+   1. [x] Sub-task 1
+   1. [~] Sub-task 2
+   1. [ ] Sub-task 3

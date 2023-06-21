@@ -1,0 +1,64 @@
+@tailwind base;
+@layer base {
+  h1 {
+    @apply font-bold text-4xl dark:text-white dark:bg-neutral-900
+  }
+  h2 {
+    @apply text-3xl font-semibold dark:text-white dark:bg-neutral-900
+
+  }
+  h3 {
+    @apply text-2xl font-semibold dark:text-white dark:bg-neutral-900
+
+  }
+  h4 {
+    @apply text-xl font-semibold dark:text-white dark:bg-neutral-900
+  }
+  h5 {
+    @apply text-lg font-semibold dark:text-white dark:bg-neutral-900
+  }
+  h6 {
+    @apply text-base font-semibold dark:text-white dark:bg-neutral-900
+  }
+  a {
+    @apply text-blue-800 underline hover:text-blue-600 px-2 dark:bg-neutral-900 dark:text-sky-400 hover:font-semibold
+  }
+  blockquote {
+    @apply italic rounded p-2 m-2 bg-neutral-200 border-l-4 border-gray-400 dark:bg-neutral-700
+  }
+  summary {
+    @apply p-2 hover:cursor-pointer dark:bg-neutral-900 dark:text-white
+  }
+  li {
+    @apply mx-3
+  }
+  /* ul:nth-child(odd) { */
+  /*   @apply list-disc px-1 mx-2 bg-green-200 */
+  /* } */
+  /* ul:nth-child(even) { */
+  /*   @apply list-disc px-1 mx-2 bg-amber-200 */
+  /* } */
+  ul:not(:last-child) {
+    list-style-type: square;
+}
+
+ul:not(:last-child) > li > ul {
+  list-style-type: circle;
+}
+
+ul:not(:last-child) > li > ul:not(:last-child) {
+  list-style-type: square;
+}
+  /* li > ul > li > ul { */
+  /*   @apply list-disc px-1 mx-2 bg-gray-400 */
+  /* } */
+  /* ul { */
+  /*   @apply px-1 mx-2 bg-blue-200; */
+  /*   list-style-type: circle; */
+  /* } */
+  code {
+    @apply rounded m-2 bg-gray-300 dark:bg-neutral-700 dark:text-gray-50
+  }
+}
+@tailwind components;
+@tailwind utilities;

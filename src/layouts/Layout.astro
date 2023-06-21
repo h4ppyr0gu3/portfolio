@@ -6,8 +6,8 @@ export interface Props {
 import ThemeToggle from '../components/theme_toggle.svelte';
 
 const { title } = Astro.props;
-const activeClasses = ["inline-block", "p-4", "border-b-2", "rounded-t-lg"]
-const inactiveClasses = ["inline-block", "p-4", "border-b-2", "border-transparent", "rounded-t-lg", "hover:text-gray-600", "hover:border-gray-300", "dark:hover:text-gray-300", "dark:bg-gray-700"]
+const activeClasses = ["inline-block", "p-4", "border-b-2", "rounded-t-lg", "dark:text-gray-200"]
+const inactiveClasses = ["inline-block", "p-4", "border-b-2", "border-transparent", "rounded-t-lg", "hover:text-gray-600", "hover:border-gray-300", "dark:hover:text-gray-300", "dark:bg-neutral-700", "dark:text-gray-200"]
 const url = Astro.url
 const tilClasses = url.pathname.split("/")[1] === "til" ? activeClasses : inactiveClasses
 const blogClasses = url.pathname.split("/")[1] === "blog" ? activeClasses : inactiveClasses
@@ -24,18 +24,18 @@ const homeClasses = url.pathname.split("/")[1] === "" ? activeClasses : inactive
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body>
-    <div class="mb-4 border-b border-gray-200 dark:border-gray-700 flex justify-between">
+	<body class="bg-neutral-100 dark:bg-neutral-900 dark:text-white">
+    <div class="mb-4 border-b border-gray-200 dark:border-gray-700 flex justify-between dark:text-gray-50 dark:bg-neutral-900">
       <div class="flex"></div>
-      <ul class="flex flex-wrap -mb-px text-sm font-medium text-center justify-center" id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
-        <li class="mr-2" role="presentation">
-          <a href="/" class:list={homeClasses} id="home">Home</a>
+      <ul class="flex flex-wrap -mb-px text-sm font-medium text-center justify-center dark:text-gray-50" id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
+        <li class="mr-2 list-none" role="presentation">
+          <a href="/" class:list={[homeClasses, "text-gray-500 no-underline"]} id="home">Home</a>
         </li>
-        <li class="mr-2" role="presentation">
-          <a href="/blog" class:list={blogClasses} id="blog">Blog</a>
+        <li class="mr-2 list-none" role="presentation">
+          <a href="/blog" class:list={[blogClasses, "text-gray-500 no-underline"]} id="blog">Blog</a>
         </li>
-        <li class="mr-2" role="presentation">
-          <a href="/til" class:list={tilClasses} id="til">TIL</a>
+        <li class="mr-2 list-none" role="presentation">
+          <a href="/til" class:list={[tilClasses, "text-gray-500 no-underline"]} id="til">TIL</a>
         </li>
       </ul>
       <div class="flex">

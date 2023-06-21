@@ -1,10 +1,10 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Default from '../layouts/Default.astro';
 import Card from '../components/Card.astro';
 import Test from '../components/test.svelte';
 ---
 
-<Layout title="Welcome to Astro.">
+<Default title="Welcome to Astro.">
 	<main>
 		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
 		<p class="instructions">
@@ -13,4 +13,4 @@ import Test from '../components/test.svelte';
 		</p>
     <Test client:load/>
 	</main>
-</Layout>
+</Default>

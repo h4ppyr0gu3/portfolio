@@ -21,7 +21,10 @@ import hljs from 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/es/
 mermaid.initialize({ startOnLoad: true });
 hljs.highlightAll();
   </script>
-  <slot />
+  <div class="mx-4 px-4">
+    <!-- metadata here -->
+    <slot />
+  </div>
 </Layout>
 
 

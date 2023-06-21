@@ -10,6 +10,7 @@ require 'yaml'
 
 SOURCE_PATH = './lib'
 OUTPUT_PATH = './src/pages'
+JSON_FILE = './blogs.json'
 
 gemfile do
   source 'https://rubygems.org'
@@ -23,23 +24,23 @@ Dotenv.load
 GithubAPIError = StandardError.new
 GitlabAPIError = StandardError.new
 
-def github_response(content) # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
-  uri = URI.parse('https://api.github.com/markdown')
-  params = { 'text' => content.to_s, 'mode' => 'markdown' }
-  request = Net::HTTP::Post.new(uri)
-  request['Accept'] = 'application/vnd.github+json'
-  request['Authorization'] = "Bearer #{ENV['GITHUB_API_KEY']}"
-  request['X-GitHub-Api-Version'] = '2022-11-28'
+# def github_response(content)
+#   uri = URI.parse('https://api.github.com/markdown')
+#   params = { 'text' => content.to_s, 'mode' => 'markdown' }
+#   request = Net::HTTP::Post.new(uri)
+#   request['Accept'] = 'application/vnd.github+json'
+#   request['Authorization'] = "Bearer #{ENV['GITHUB_API_KEY']}"
+#   request['X-GitHub-Api-Version'] = '2022-11-28'
 
-  request.body = params.to_json
+#   request.body = params.to_json
 
-  response = Net::HTTP.start(uri.host, uri.port, use_ssl: true) do |http|
-    http.request(request)
-  end
-  raise GithubAPIError unless response.code == '200'
+#   response = Net::HTTP.start(uri.host, uri.port, use_ssl: true) do |http|
+#     http.request(request)
+#   end
+#   raise GithubAPIError unless response.code == '200'
 
-  response.body
-end
+#   response.body
+# end
 
 def gitlab_response(content) # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
   uri = URI.parse('https://gitlab.com/api/v4/markdown')
@@ -102,22 +103,37 @@ def output(metadata, content)
 end
 
 Dir.glob("#{SOURCE_PATH}/**/*.md").each do |file|
-pp file
+  pp file
+end
+
+def build_routes_json
+  existing = JSON.parse(File.read(JSON_FILE))
+  pp existing
+end
+
+build_routes_json
+
+def build_metadata(metadata, file)
+  {
+    title: metadata[:title] || '',
+    excerpt: metadata[:excerpt] || '',
+    date: metadata[:date] || '',
+    file: file,
+    tags: metadata[:tags] || [],
+  }
 end
 
 Dir.glob("#{SOURCE_PATH}/**/*.md").each do |file|
   content = File.open(file).read
   parsed_file = Content.new(content)
   metadata = read_yaml(parsed_file.yaml)
+  metadata = build_metadata(metadata, file)
   next if metadata.nil?
-  ghhtml = github_response(parsed_file.markdown)
-  glhtml = gitlab_response(parsed_file.markdown)
+
+  build_routes_json
+
+  # html = gitlab_response(parsed_file.markdown)
   file = file.gsub("#{SOURCE_PATH}/", '')
-  gl_file = file.gsub('.md', '_gitlab.astro')
-  gh_file = file.gsub('.md', '_github.astro')
-  pp gl_file
-  pp gh_file
-  pp file
-  File.write("#{OUTPUT_PATH}/#{gh_file}", output(metadata, ghhtml))
-  File.write("#{OUTPUT_PATH}/#{gl_file}", output(metadata, glhtml['html']))
+  file = file.gsub('.md', '.astro')
+  # File.write("#{OUTPUT_PATH}/#{file}", output(metadata, html['html']))
 end

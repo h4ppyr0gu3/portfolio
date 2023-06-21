@@ -19,9 +19,7 @@ import '../../markdown.css';
 </details>
 <p></p>
 <details>
-<summary>
-<p>Click this to <em>collapse/fold.</em></p>
-</summary>
+<summary>Click this to _collapse/fold._</summary>
 <p>These details <em>remain</em> <strong>hidden</strong> until expanded.</p>
 <pre><code>PASTE LOGS HERE
 </code></pre>
@@ -35,30 +33,68 @@ and another line</p>
 </code></pre>
 <p>In this <del>file</del> I <strong>would</strong> like to have <em>all</em> the possible features i would like and ensure that it generates correctly</p>
 <p>[TOC]</p>
+<div>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
 <h2><a id="user-content-code-blocks" class="anchor" aria-hidden="true" href="#code-blocks"><span aria-hidden="true" class="octicon octicon-link"></span></a>Code Blocks</h2>
+<pre><code>here is regular block
+here we go 
+
+&gt; here is a block
+</code></pre>
+<blockquote>
+<p>quote reply
+quote</p>
+</blockquote>
+<pre><code>&gt; indented quote
+</code></pre>
 <h3><a id="user-content-ruby" class="anchor" aria-hidden="true" href="#ruby"><span aria-hidden="true" class="octicon octicon-link"></span></a>Ruby</h3>
-<div class="highlight highlight-source-ruby"><pre><span class="pl-k">def</span> <span class="pl-en">function</span><span class="pl-kos">(</span><span class="pl-s1">args</span><span class="pl-kos">)</span>
-    <span class="pl-c1">@var</span> <span class="pl-c1">=</span> <span class="pl-c1">true</span>
-    <span class="pl-c"># do something</span>
-    <span class="pl-k">if</span> <span class="pl-s1">args</span><span class="pl-kos">.</span><span class="pl-en">size</span> &gt; <span class="pl-c1">0</span>
-      <span class="pl-c1">@var</span> <span class="pl-c1">=</span> <span class="pl-c1">false</span>
+<div class="highlight highlight-source-ruby"><pre><span class="pl-k">class</span> <span class="pl-v">Test</span>
+    <span class="pl-k">def</span> <span class="pl-en">function</span><span class="pl-kos">(</span><span class="pl-s1">args</span><span class="pl-kos">)</span>
+        <span class="pl-s1">test</span> <span class="pl-c1">=</span> <span class="pl-s">"string"</span>
+        <span class="pl-s1">number</span> <span class="pl-c1">=</span> <span class="pl-c1">20</span>
+        <span class="pl-s1">args</span><span class="pl-kos">.</span><span class="pl-en">format</span>
+        <span class="pl-c1">@var</span> <span class="pl-c1">=</span> <span class="pl-c1">true</span>
+        <span class="pl-c"># do something</span>
+        <span class="pl-k">if</span> <span class="pl-s1">args</span><span class="pl-kos">.</span><span class="pl-en">size</span> &gt; <span class="pl-c1">0</span>
+          <span class="pl-c1">@var</span> <span class="pl-c1">=</span> <span class="pl-c1">false</span>
+        <span class="pl-k">end</span>
+        <span class="pl-k">return</span> <span class="pl-c1">@var</span>
     <span class="pl-k">end</span>
-    <span class="pl-k">return</span> <span class="pl-c1">@var</span>
 <span class="pl-k">end</span></pre></div>
 <h3><a id="user-content-python" class="anchor" aria-hidden="true" href="#python"><span aria-hidden="true" class="octicon octicon-link"></span></a>Python</h3>
-<div class="highlight highlight-source-python"><pre><span class="pl-k">def</span> <span class="pl-s1">function</span>(<span class="pl-s1">args</span>):
-    <span class="pl-en">@<span class="pl-s1">var</span> <span class="pl-c1">=</span> <span class="pl-c1">True</span></span>
+<div class="highlight highlight-source-python"><pre><span class="pl-k">def</span> <span class="pl-en">function</span>(<span class="pl-s1">args</span>):
+    <span class="pl-s1">var</span> <span class="pl-c1">=</span> <span class="pl-c1">True</span>
     <span class="pl-c"># do something</span>
     <span class="pl-k">if</span> <span class="pl-s1">args</span>.<span class="pl-s1">size</span> <span class="pl-c1">&gt;</span> <span class="pl-c1">0</span>:
-        <span class="pl-en">@<span class="pl-s1">var</span> <span class="pl-c1">=</span> <span class="pl-c1">False</span></span>
-    <span class="pl-s1">return</span> <span class="pl-en">@<span class="pl-s1">var</span></span></pre></div>
+        <span class="pl-s1">var</span> <span class="pl-c1">=</span> <span class="pl-c1">False</span>
+    <span class="pl-k">return</span> <span class="pl-s1">var</span></pre></div>
 <h3><a id="user-content-javascript" class="anchor" aria-hidden="true" href="#javascript"><span aria-hidden="true" class="octicon octicon-link"></span></a>Javascript</h3>
-<div class="highlight highlight-source-js"><pre><span class="pl-s1">def</span> <span class="pl-k">function</span><span class="pl-kos">(</span><span class="pl-s1">args</span><span class="pl-kos">)</span>:
-    @<span class="pl-s1">var</span> <span class="pl-c1">=</span> <span class="pl-v">True</span>
-    # <span class="pl-k">do</span> <span class="pl-s1">something</span>
-    <span class="pl-k">if</span> <span class="pl-s1">args</span><span class="pl-kos">.</span><span class="pl-c1">size</span> <span class="pl-c1">&gt;</span> <span class="pl-c1">0</span>:
-        @<span class="pl-s1">var</span> <span class="pl-c1">=</span> <span class="pl-v">False</span>
-    <span class="pl-k">return</span> @<span class="pl-s1">var</span></pre></div>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">function</span> <span class="pl-en">function</span><span class="pl-kos">(</span><span class="pl-s1">args</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+    <span class="pl-s1">test</span> <span class="pl-c1">=</span> <span class="pl-s">"string"</span>
+    <span class="pl-s1">number</span> <span class="pl-c1">=</span> <span class="pl-c1">20</span>
+    <span class="pl-s1">args</span><span class="pl-kos">.</span><span class="pl-c1">format</span>
+    <span class="pl-k">var</span> <span class="pl-c1">=</span> <span class="pl-c1">true</span>
+    <span class="pl-c">// do something</span>
+    <span class="pl-k">if</span> <span class="pl-s1">args</span><span class="pl-kos">.</span><span class="pl-c1">size</span> <span class="pl-c1">&gt;</span> <span class="pl-c1">0</span> <span class="pl-kos">{</span>
+        var <span class="pl-c1">=</span> <span class="pl-c1">false</span>
+    <span class="pl-kos">}</span>
+<span class="pl-kos">}</span></pre></div>
 <h3><a id="user-content-html" class="anchor" aria-hidden="true" href="#html"><span aria-hidden="true" class="octicon octicon-link"></span></a>HTML</h3>
 <div class="highlight highlight-text-html-basic"><pre><span class="pl-kos">&lt;</span><span class="pl-ent">h1</span><span class="pl-kos">&gt;</span>Hello<span class="pl-kos">&lt;/</span><span class="pl-ent">h1</span><span class="pl-kos">&gt;</span></pre></div>
 <h3><a id="user-content-inline-blocks" class="anchor" aria-hidden="true" href="#inline-blocks"><span aria-hidden="true" class="octicon octicon-link"></span></a>Inline Blocks</h3>

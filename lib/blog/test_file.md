@@ -30,11 +30,7 @@ These details <em>remain</em> <strong>hidden</strong> until expanded.
 </p>
 
 <details>
-<summary>
-
-Click this to _collapse/fold._
-
-</summary>
+<summary>Click this to _collapse/fold._</summary>
 
 These details _remain_ **hidden** until expanded.
 
@@ -54,38 +50,76 @@ In this ~~file~~ I **would** like to have _all_ the possible features i would li
 
 [TOC]
 
+<div class="flex">
+    <span style="height: 100px; width: 100px; background-color: #32302f;"></span>
+    <span style="height: 100px; width: 100px; background-color: #3c3836;"></span>
+    <span style="height: 100px; width: 100px; background-color: #555555;"></span>
+    <span style="height: 100px; width: 100px; background-color: #32302f;"></span>
+    <span style="height: 100px; width: 100px; background-color: #bdae93;"></span>
+    <span style="height: 100px; width: 100px; background-color: #e1e1e1;"></span>
+    <span style="height: 100px; width: 100px; background-color: #ebdbb2;"></span>
+    <span style="height: 100px; width: 100px; background-color: #fbf1c7;"></span>
+    <span style="height: 100px; width: 100px; background-color: #e1e1e1;"></span>
+    <span style="height: 100px; width: 100px; background-color: #d3b987;"></span>
+    <span style="height: 100px; width: 100px; background-color: #b3deef;"></span>
+    <span style="height: 100px; width: 100px; background-color: #ffc24b;"></span>
+    <span style="height: 100px; width: 100px; background-color: #73cef4;"></span>
+    <span style="height: 100px; width: 100px; background-color: #8ec07c;"></span>
+    <span style="height: 100px; width: 100px; background-color: #f43753;"></span>
+    <span style="height: 100px; width: 100px; background-color: #c9d05c;"></span>
+</div>
+
 ## Code Blocks
+
+    here is regular block
+    here we go 
+
+    > here is a block
+
+> quote reply
+> quote
+
+    > indented quote
 
 ### Ruby
 ```ruby
-def function(args)
-    @var = true
-    # do something
-    if args.size > 0
-      @var = false
+class Test
+    def function(args)
+        test = "string"
+        number = 20
+        args.format
+        @var = true
+        # do something
+        if args.size > 0
+          @var = false
+        end
+        return @var
     end
-    return @var
 end
 ```
 
 ### Python
 ```python
 def function(args):
-    @var = True
+    var = True
     # do something
     if args.size > 0:
-        @var = False
-    return @var
+        var = False
+    return var
 ```
 
 ### Javascript
 ```javascript
-def function(args):
-    @var = True
-    # do something
-    if args.size > 0:
-        @var = False
-    return @var
+function function(args) {
+    test = "string"
+    number = 20
+    args.format
+    var = true
+    // do something
+    if args.size > 0 {
+        var = false
+    }
+}
 ```
 
 ### HTML

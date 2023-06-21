@@ -32,33 +32,109 @@
   li {
     @apply mx-3
   }
-  /* ul:nth-child(odd) { */
-  /*   @apply list-disc px-1 mx-2 bg-green-200 */
-  /* } */
-  /* ul:nth-child(even) { */
-  /*   @apply list-disc px-1 mx-2 bg-amber-200 */
-  /* } */
-  ul:not(:last-child) {
-    list-style-type: square;
-}
-
-ul:not(:last-child) > li > ul {
-  list-style-type: circle;
-}
-
-ul:not(:last-child) > li > ul:not(:last-child) {
-  list-style-type: square;
-}
-  /* li > ul > li > ul { */
-  /*   @apply list-disc px-1 mx-2 bg-gray-400 */
-  /* } */
-  /* ul { */
-  /*   @apply px-1 mx-2 bg-blue-200; */
-  /*   list-style-type: circle; */
-  /* } */
+  ul { 
+    @apply px-1 mx-2 list-disc;
+  }
+  ul ul { list-style-type: circle; }
+  ul ul ul { list-style-type: square; }
+  ul ul ul ul { list-style-type: disclosure-closed; }
+  ul ul ul ul ul { list-style-type: "-"; }
+  ul ul ul ul ul ul { list-style-type: ">"; }
+  code.hljs {
+    @apply rounded m-2 bg-neutral-700 text-gray-50
+  }
   code {
-    @apply rounded m-2 bg-gray-300 dark:bg-neutral-700 dark:text-gray-50
+    @apply rounded m-2 dark:bg-neutral-700 dark:text-gray-50 bg-gray-300
+  }
+  pre {
+    @apply rounded m-2 bg-neutral-700 text-gray-50
   }
 }
+
+.hljs-quote {
+  color: #d3b987;
+}
+
+/* dark blue */
+.hljs-variable {
+  color: #73cef4;
+}
+
+/* grey */
+.hljs-comment {
+  color: #777777;
+}
+
+/* orange */
+.hljs-number,
+.hljs-literal {
+  color: #ffc24b;
+}
+
+/* orange-brown */
+.hljs-string {
+  color: #d3b987;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-built_in,
+.hljs-name,
+.hljs-tag {
+  color: #c9d05c;
+}
+
+/* light blue */
+.hljs-title,
+.hljs-section,
+.hljs-attribute,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-deletion,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-meta,
+.hljs-addition {
+  color: #b3deef;
+}
+
+.hljs-doctag, 
+.hljs-attr {
+  color: #73cef4;
+}
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-link {
+  color: #e1e1e1;
+}
+
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+/* require('base16-colorscheme').setup({ */
+/*   base00 = '#32302f', -- dark grey */
+/*   base01 = '#3c3836', */
+/*   base03 = '#555555', -- comments */
+/*   base02 = '#32302f', -- light grey */
+/*   base04 = '#bdae93', */
+/*   base05 = '#e1e1e1', -- function parameters and brackets */
+/*   base06 = '#ebdbb2', */
+/*   base07 = '#fbf1c7', */
+/*   base08 = '#e1e1e1', -- variable declaration and function call params */
+/*   base0B = '#d3b987', -- strings and keys */
+/*   base0D = '#b3deef', -- function calls */
+/*   base09 = '#ffc24b', -- values ,int , boolean */
+/*   base0A = '#73cef4', -- class Reference */
+/*   base0C = '#8ec07c', */
+/*   base0F = '#f43753', -- commas and dots */
+/*   base0E = '#c9d05c', -- keywords class, def */
+/* }) */
 @tailwind components;
 @tailwind utilities;

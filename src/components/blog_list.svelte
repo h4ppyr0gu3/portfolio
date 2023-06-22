@@ -1,7 +1,7 @@
 <script>
   import json from '../../blogs.json';
 
-  let blogs = json.blogs;
+  let blogs = json.blog;
 </script>
 
 <h1>Blogs</h1>

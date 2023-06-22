@@ -1,10 +1,50 @@
-{ 
-  "blogs": [
+{
+  "til": [
     {
-      "href": "/blog/test",
-      "title":"Astro",
-      "excerpt": "A framework for your next project",
-      "date": "2022-01-01" 
+      "href": "/til/til",
+      "title": "til",
+      "excerpt": "",
+      "date": "22/06/2023",
+      "tags": [
+
+      ],
+      "published": false,
+      "updated": "22/06/2023"
     }
-  ] 
+  ],
+  "blog": [
+    {
+      "href": "/blog/about_this_site",
+      "title": "About this site",
+      "excerpt": "something short",
+      "date": "22/06/2023",
+      "tags": [
+        "choice"
+      ],
+      "published": false,
+      "updated": "22/06/2023"
+    },
+    {
+      "href": "/blog/blog",
+      "title": "blog",
+      "excerpt": "",
+      "date": "22/06/2023",
+      "tags": [
+
+      ],
+      "published": false,
+      "updated": "22/06/2023"
+    },
+    {
+      "href": "/blog/test_file",
+      "title": "About this site",
+      "excerpt": "something short",
+      "date": "22/06/2023",
+      "tags": [
+        "choice"
+      ],
+      "published": false,
+      "updated": "22/06/2023"
+    }
+  ]
 }

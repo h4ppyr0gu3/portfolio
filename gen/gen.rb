@@ -44,7 +44,9 @@ end
 
 def should_update_entry?(entry, metadata)
   return true if entry.nil?
-  entry[:updated] == metadata[:updated]
+
+  # check if metadata has changed
+  entry == metadata
 end
 
 def handle_files
@@ -64,7 +66,12 @@ def handle_files
       @data[type][json_index] = metadata
     end
     generate_file(file, content, metadata) if should_update_entry?(json_entry, metadata)
+    update_orginal(file, content, metadata)
   end
+end
+
+def update_original(file, content, metadata)
+  File.write(file, YAML.dump(metadata) + "\n---\n" + content.markdown)
 end
 
 def build_metadata(file, metadata)
@@ -76,15 +83,14 @@ def build_metadata(file, metadata)
     date: metadata[:date] || Time.now.strftime('%d/%m/%Y'),
     tags: metadata[:tags] || [],
     published: metadata[:published] || false,
-    updated: metadata[:updated] || Time.now.strftime('%d/%m/%Y'),
+    updated: metadata[:updated] || Time.now.strftime('%d/%m/%Y')
   }
 end
 
-
 def generate_file(file, content, metadata)
-  pp AstroFile.new(html: content.html, metadata: metadata).create
-  # entry = Entry.new(file, content)
-  # File.write("#{ROOT}#{OUTPUT_PATH}/#{file}", AstroFile.new(html: content.html).create)
+  astro_output = AstroFile.new(html: content.html, metadata:).create
+  path = file.split('/').drop(2).join('/').gsub('.md', '.astro')
+  File.write("#{OUTPUT_PATH}/#{path}", astro_output)
 end
 
 def execute

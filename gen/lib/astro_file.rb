@@ -15,8 +15,6 @@ class AstroFile
   end
 
   def create
-    pp metadata
-    pp html
     beginning_of_file(metadata) + html + end_of_file
   end
 

@@ -1,12 +1,12 @@
 ---
-start_date: 14/06/2023
-last_update: 14/06/2023
-title: About this site
-excerpt: something short
-tags: 
-    - choice
-read_time: 5 mins
-words: 120
+href: "/blog/test_file"
+title: Test file
+excerpt: This is a test file to test feature completedness on my blog
+date: 23/06/2023
+tags:
+- choice
+published: true
+updated: 25/06/2023
 ---
 
 # Example file

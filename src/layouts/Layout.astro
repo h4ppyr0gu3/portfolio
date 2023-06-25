@@ -25,6 +25,18 @@ const homeClasses = url.pathname.split("/")[1] === "" ? activeClasses : inactive
 		<title>{title}</title>
 	</head>
 	<body class="bg-neutral-100 dark:bg-neutral-900 dark:text-white">
+    <script is:inline>
+    function setTheme() {
+      if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark')
+        localStorage.setItem('theme', 'dark')
+      } else {
+        document.documentElement.classList.remove('dark')
+        localStorage.setItem('theme', 'light')
+      }
+    }
+    setTheme()
+    </script>
     <div class="mb-4 border-b border-gray-200 dark:border-gray-700 flex justify-between dark:text-gray-50 dark:bg-neutral-900">
       <div class="flex"></div>
       <ul class="flex flex-wrap -mb-px text-sm font-medium text-center justify-center dark:text-gray-50" id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
@@ -39,7 +51,7 @@ const homeClasses = url.pathname.split("/")[1] === "" ? activeClasses : inactive
         </li>
       </ul>
       <div class="flex">
-        <ThemeToggle client:only/>
+        <ThemeToggle client:only="svelte"/>
       </div>
     </div>
 		<slot />

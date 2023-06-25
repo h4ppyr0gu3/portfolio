@@ -1,8 +1,4 @@
 <script>
-	import { onMount } from 'svelte';
-
-	onMount(() => { setTheme() });
-
   function toggleTheme() {
     if (localStorage.theme === 'dark') {
       localStorage.setItem('theme', 'light')
@@ -14,16 +10,6 @@
     document.documentElement.classList.toggle("dark");
     document.getElementById("theme-toggle-dark-icon").classList.toggle("hidden")
     document.getElementById("theme-toggle-light-icon").classList.toggle("hidden")
-  }
-
-  function setTheme() {
-    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark')
-      localStorage.setItem('theme', 'dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-      localStorage.setItem('theme', 'light')
-    }
   }
 </script>
 

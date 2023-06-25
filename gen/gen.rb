@@ -1,32 +1,17 @@
-#!/usr/bin/env ruby
-
 # frozen_string_literal: true
 
-require 'bundler/inline'
-require 'net/http'
-require 'uri'
-require 'json'
-require 'yaml'
+require 'dotenv'
+
 require_relative './lib/content'
 require_relative './lib/astro_file'
 require_relative './lib/entry'
 
+Dotenv.load
 SOURCE_PATH = './lib'
 OUTPUT_PATH = './src/pages'
 JSON_FILE = './blogs.json'
 SUPPORTED_PATHS = %w[til blog].freeze
 ROOT = '/home/david/portfolio'
-
-gemfile do
-  source 'https://rubygems.org'
-
-  gem 'dotenv'
-  gem 'debug'
-end
-
-Dotenv.load
-
-pp ROOT
 
 def read_json
   current_data = JSON.parse(File.read(JSON_FILE))
@@ -46,35 +31,42 @@ def should_update_entry?(entry, metadata)
   return true if entry.nil?
 
   # check if metadata has changed
-  entry == metadata
+  entry.transform_keys(&:to_sym) != metadata
 end
 
-def handle_files
+def handle_files # rubocop:disable Metrics/MethodLength
   Dir.glob("#{SOURCE_PATH}/**/*.md").each do |file|
     type = file.split('/')[2]
     next unless SUPPORTED_PATHS.include?(type)
 
     content = Content.new(File.open(file).read)
-    metadata = content.metadata
-
-    json_entry = @data[type].select { |entry| entry['href'] == href(file) }.first
-    json_index = @data[type].index { |entry| entry['href'] == href(file) }
     metadata = build_metadata(file, content.metadata)
-    if json_index.nil?
-      @data[type] << metadata
-    else
-      @data[type][json_index] = metadata
-    end
-    generate_file(file, content, metadata) if should_update_entry?(json_entry, metadata)
-    update_orginal(file, content, metadata)
+    json_entry = handle_metadata(type, metadata, file)
+    next unless should_update_entry?(json_entry, metadata)
+
+    puts "Generating #{file}"
+    generate_file(file, content, metadata)
+    update_original(file, content, metadata)
   end
 end
 
-def update_original(file, content, metadata)
-  File.write(file, YAML.dump(metadata) + "\n---\n" + content.markdown)
+def handle_metadata(type, metadata, file)
+  json_entry = @data[type].select { |entry| entry['href'] == href(file) }.first
+  json_index = @data[type].index { |entry| entry['href'] == href(file) }
+  if json_index.nil?
+    @data[type] << metadata
+  else
+    @data[type][json_index] = metadata
+  end
+  json_entry
 end
 
-def build_metadata(file, metadata)
+def update_original(file, content, metadata)
+  yaml_data = YAML.dump(metadata.transform_keys(&:to_s))
+  File.write(file, "#{yaml_data}---\n#{content.file_markdown}")
+end
+
+def build_metadata(file, metadata) # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity
   metadata = {} if metadata.nil?
   {
     href: href(file),
@@ -98,20 +90,3 @@ def execute
   handle_files
   write_json
 end
-
-execute
-
-# Dir.glob("#{SOURCE_PATH}/**/*.md").each do |file|
-#   content = File.open(file).read
-#   parsed_file = Content.new(content)
-#   metadata = read_yaml(parsed_file.yaml)
-#   metadata = build_metadata(metadata, file)
-#   next if metadata.nil?
-
-#   build_routes_json
-
-#   # html = gitlab_response(parsed_file.markdown)
-#   file = file.gsub("#{SOURCE_PATH}/", '')
-#   file = file.gsub('.md', '.astro')
-#   # File.write("#{OUTPUT_PATH}/#{file}", output(metadata, html['html']))
-# end

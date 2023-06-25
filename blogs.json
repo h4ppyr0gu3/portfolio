@@ -3,12 +3,12 @@
     {
       "href": "/til/til",
       "title": "til",
-      "excerpt": "",
+      "excerpt": "sth else changed",
       "date": "23/06/2023",
       "tags": [
-
+        "sthing"
       ],
-      "published": false,
+      "published": true,
       "updated": "23/06/2023"
     }
   ],
@@ -16,7 +16,7 @@
     {
       "href": "/blog/about_this_site",
       "title": "About this site",
-      "excerpt": "something short",
+      "excerpt": "something shorter this time",
       "date": "23/06/2023",
       "tags": [
         "choice"
@@ -26,25 +26,25 @@
     },
     {
       "href": "/blog/blog",
-      "title": "blog",
-      "excerpt": "",
+      "title": "test blog",
+      "excerpt": "something shorter than the other time",
       "date": "23/06/2023",
       "tags": [
 
       ],
       "published": false,
-      "updated": "23/06/2023"
+      "updated": "23/07/2023"
     },
     {
       "href": "/blog/test_file",
-      "title": "About this site",
-      "excerpt": "something short",
+      "title": "Test file",
+      "excerpt": "This is a test file to test feature completedness on my blog",
       "date": "23/06/2023",
       "tags": [
         "choice"
       ],
-      "published": false,
-      "updated": "23/06/2023"
+      "published": true,
+      "updated": "25/06/2023"
     }
   ]
 }

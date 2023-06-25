@@ -1,9 +1,10 @@
 ---
 import Default from '../layouts/Default.astro';
 import BlogList from '../components/blog_list.svelte';
+import DisplayBlogs from '../components/display_blogs.svelte';
 ---
 
 <Default title="Blog | h4ppyr0gu3">
-  <div>Here are all of my blogs</div>
-  <BlogList />
+  <BlogList client:only="svelte"/>
+  <DisplayBlogs client:only="svelte"/>
 </Default>

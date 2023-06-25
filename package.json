@@ -16,6 +16,7 @@
     "@svelteuidev/core": "^0.13.0",
     "astro": "^2.6.3",
     "fuse.js": "^6.6.2",
+    "highlightjs": "^9.16.2",
     "mermaid": "^10.2.3",
     "svelte": "^3.59.1",
     "tailwindcss": "^3.3.2"

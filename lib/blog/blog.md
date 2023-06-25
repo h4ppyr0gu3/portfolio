@@ -1,8 +1,11 @@
-# Raw Markdown
+---
+href: "/blog/blog"
+title: test blog
+excerpt: something shorter than the other time
+date: 23/06/2023
+tags: []
+published: false
+updated: 23/07/2023
+---
 
-here i have raw mark down which will be converted by a ruby script to blog.astro file
-using the github api
-
-## Styling
-
-I would like my code blocks to have custom styling and look better
+# Testing

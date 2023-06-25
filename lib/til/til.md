@@ -1,3 +1,34 @@
-# Raw markdown
+---
+href: "/til/til"
+title: til
+excerpt: sth else changed
+date: 23/06/2023
+tags:
+- sthing
+published: true
+updated: 23/06/2023
+---
 
-will be converted to .astro files
+# Tailwind grouping
+
+When using grouping you can apply effects to groups
+using the following HTML
+
+```html
+<div class="group p-5 m-5 rounded border">
+  <button class="group-hover:bg-sky-400 rounded-lg p-2 m-2 border">test</button>
+</div>
+```
+
+renders: 
+
+```rawhtml
+<div class="group p-5 m-5 rounded border">
+  <button class="group-hover:bg-sky-400 rounded-lg p-2 m-2 border">test</button>
+</div>
+```
+```rawhtml
+<div class="group p-5 m-5 rounded border">
+  <button class="group-hover:bg-sky-400 rounded-lg p-2 m-2 border">test</button>
+</div>
+```

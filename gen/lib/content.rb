@@ -1,8 +1,10 @@
 # Parses the raw file and returns seperate yaml metadata and markdown content
 class Content
   GithubAPIError = StandardError.new
-  GitlabAPIError = StandardError.new
-  attr_reader :yaml, :markdown
+  GitlabAPIError = StandardError.new('Gitlab response error')
+  attr_reader :yaml, :markdown, :file_markdown
+
+  RAW_FORMATS = %w[rawhtml rawmath mermaid].freeze
 
   def initialize(content)
     @content = content
@@ -13,8 +15,33 @@ class Content
       @markdown = nil
     else
       @yaml = lines[0..(end_of_yaml - 1)].join("\n")
-      @markdown = lines[(end_of_yaml + 1)..].join("\n")
+      markdown_array = lines[(end_of_yaml + 1)..]
+      @file_markdown = markdown_array.join("\n")
+      @markdown = processed_markdown(markdown_array)
     end
+  end
+
+  def processed_markdown(markdown)
+    @map = { rawhtml: [], rawmath: [], mermaid: [] }
+    RAW_FORMATS.each do |x|
+      count = 0
+      start_index = markdown.index("```#{x}")
+      until start_index.nil? || count > 4
+        remaining_markdown = markdown[(start_index + 1)..]
+        end_index = markdown[(start_index + 1)..].index('```')
+        extract = markdown.slice!(start_index, (end_index + 2))
+        @map[x.to_sym] << {
+          index: count,
+          lines: extract[1..-2],
+          end_index:,
+          match: "<pre>#{x}-entry-#{count}</pre>"
+        }
+        markdown.insert(start_index, "<pre>#{x}-entry-#{count}</pre>")
+        count += 1
+        start_index = markdown.index("```#{x}")
+      end
+    end
+    markdown.join("\n")
   end
 
   def metadata
@@ -22,11 +49,40 @@ class Content
   end
 
   def html
+    puts 'Generating html from gitlab...'
+    # have to postprocess
     # github_response(markdown)
-    gitlab_response(markdown)['html']
+    html = gitlab_response(markdown)['html']
+    postprocess_html(html)
+  end
+
+  def postprocess_html(html)
+    html = html.split("\n")
+    html = handle_html(html)
+    # handle_math(html)
+    html = handle_mermaid(html)
+    html.join("\n")
   end
 
   private
+
+  def handle_mermaid(html)
+    @map[:mermaid].each do |obj|
+      index = html.index(obj[:match])
+      html.slice!(index, 1)
+      html.insert(index, "<pre class='mermaid'>\n#{obj[:lines].join("\n")}\n</pre>")
+    end
+    html
+  end
+
+  def handle_html(html)
+    @map[:rawhtml].each do |obj|
+      index = html.index(obj[:match])
+      html.slice!(index, 1)
+      html.insert(index, obj[:lines].join("\n"))
+    end
+    html
+  end
 
   def github_response(content) # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
     uri = URI.parse('https://api.github.com/markdown')

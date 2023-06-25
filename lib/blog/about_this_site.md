@@ -1,12 +1,12 @@
 ---
-start_date: 14/06/2023
-last_update: 14/06/2023
+href: "/blog/about_this_site"
 title: About this site
-excerpt: something short
-tags: 
-    - choice
-read_time: 5 mins
-words: 120
+excerpt: something shorter this time
+date: 23/06/2023
+tags:
+- choice
+published: false
+updated: 23/06/2023
 ---
 
 # About this site

@@ -5,6 +5,8 @@ excerpt: This is a test file to test feature completedness on my blog
 date: 23/06/2023
 tags:
 - choice
+- idk
+- sth
 published: true
 updated: 25/06/2023
 ---
@@ -50,24 +52,26 @@ In this ~~file~~ I **would** like to have _all_ the possible features i would li
 
 [TOC]
 
+```rawhtml
 <div class="flex">
-    <span style="height: 100px; width: 100px; background-color: #32302f;"></span>
-    <span style="height: 100px; width: 100px; background-color: #3c3836;"></span>
-    <span style="height: 100px; width: 100px; background-color: #555555;"></span>
-    <span style="height: 100px; width: 100px; background-color: #32302f;"></span>
-    <span style="height: 100px; width: 100px; background-color: #bdae93;"></span>
-    <span style="height: 100px; width: 100px; background-color: #e1e1e1;"></span>
-    <span style="height: 100px; width: 100px; background-color: #ebdbb2;"></span>
-    <span style="height: 100px; width: 100px; background-color: #fbf1c7;"></span>
-    <span style="height: 100px; width: 100px; background-color: #e1e1e1;"></span>
-    <span style="height: 100px; width: 100px; background-color: #d3b987;"></span>
-    <span style="height: 100px; width: 100px; background-color: #b3deef;"></span>
-    <span style="height: 100px; width: 100px; background-color: #ffc24b;"></span>
-    <span style="height: 100px; width: 100px; background-color: #73cef4;"></span>
-    <span style="height: 100px; width: 100px; background-color: #8ec07c;"></span>
-    <span style="height: 100px; width: 100px; background-color: #f43753;"></span>
-    <span style="height: 100px; width: 100px; background-color: #c9d05c;"></span>
+<span style="height: 100px; width: 100px; background-color: #32302f;"></span>
+<span style="height: 100px; width: 100px; background-color: #3c3836;"></span>
+<span style="height: 100px; width: 100px; background-color: #555555;"></span>
+<span style="height: 100px; width: 100px; background-color: #32302f;"></span>
+<span style="height: 100px; width: 100px; background-color: #bdae93;"></span>
+<span style="height: 100px; width: 100px; background-color: #e1e1e1;"></span>
+<span style="height: 100px; width: 100px; background-color: #ebdbb2;"></span>
+<span style="height: 100px; width: 100px; background-color: #fbf1c7;"></span>
+<span style="height: 100px; width: 100px; background-color: #e1e1e1;"></span>
+<span style="height: 100px; width: 100px; background-color: #d3b987;"></span>
+<span style="height: 100px; width: 100px; background-color: #b3deef;"></span>
+<span style="height: 100px; width: 100px; background-color: #ffc24b;"></span>
+<span style="height: 100px; width: 100px; background-color: #73cef4;"></span>
+<span style="height: 100px; width: 100px; background-color: #8ec07c;"></span>
+<span style="height: 100px; width: 100px; background-color: #f43753;"></span>
+<span style="height: 100px; width: 100px; background-color: #c9d05c;"></span>
 </div>
+```
 
 ## Code Blocks
 

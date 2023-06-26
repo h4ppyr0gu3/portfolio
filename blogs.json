@@ -41,7 +41,9 @@
       "excerpt": "This is a test file to test feature completedness on my blog",
       "date": "23/06/2023",
       "tags": [
-        "choice"
+        "choice",
+        "idk",
+        "sth"
       ],
       "published": true,
       "updated": "25/06/2023"

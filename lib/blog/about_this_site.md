@@ -1,10 +1,16 @@
 ---
 href: "/blog/about_this_site"
 title: About this site
-excerpt: something shorter this time
+excerpt: This site uses Astro, Tailwind, Ruby and AI. Astro means I can try any JS
+  framework. Tailwind is extensible and has great convenience features. Ruby is used
+  for backend tasks. AI generates keywords for search.
 date: 23/06/2023
 tags:
-- choice
+- web development
+- javascript
+- frameworks
+- AI
+- Tailwind
 published: false
 updated: 23/06/2023
 ---

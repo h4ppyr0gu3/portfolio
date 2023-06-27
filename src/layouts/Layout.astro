@@ -38,19 +38,19 @@ const homeClasses = url.pathname.split("/")[1] === "" ? activeClasses : inactive
     setTheme()
     </script>
     <div class="mb-4 border-b border-gray-200 dark:border-gray-700 flex justify-between dark:text-gray-50 dark:bg-neutral-900">
-      <div class="flex"></div>
+      <div class="flex w-10"></div>
       <ul class="flex flex-wrap -mb-px text-sm font-medium text-center justify-center dark:text-gray-50" id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
         <li class="mr-2 list-none" role="presentation">
-          <a href="/" class:list={[homeClasses, "text-gray-500 no-underline"]} id="home">Home</a>
+          <a href="/" class:list={[homeClasses, "font-semibold text-gray-500 no-underline"]} id="home">Home</a>
         </li>
         <li class="mr-2 list-none" role="presentation">
-          <a href="/blog" class:list={[blogClasses, "text-gray-500 no-underline"]} id="blog">Blog</a>
+          <a href="/blog" class:list={[blogClasses, "font-semibold text-gray-500 no-underline"]} id="blog">Blog</a>
         </li>
         <li class="mr-2 list-none" role="presentation">
-          <a href="/til" class:list={[tilClasses, "text-gray-500 no-underline"]} id="til">TIL</a>
+          <a href="/til" class:list={[tilClasses, "font-semibold text-gray-500 no-underline"]} id="til">TIL</a>
         </li>
       </ul>
-      <div class="flex">
+      <div class="flex w-10">
         <ThemeToggle client:only="svelte"/>
       </div>
     </div>

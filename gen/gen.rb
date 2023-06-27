@@ -5,6 +5,7 @@ require 'dotenv'
 require_relative './lib/content'
 require_relative './lib/astro_file'
 require_relative './lib/entry'
+require_relative './lib/ai_data'
 
 Dotenv.load
 SOURCE_PATH = './lib'
@@ -40,7 +41,7 @@ def handle_files # rubocop:disable Metrics/MethodLength
     next unless SUPPORTED_PATHS.include?(type)
 
     content = Content.new(File.open(file).read)
-    metadata = build_metadata(file, content.metadata)
+    metadata = build_metadata(file, content.metadata, content.file_markdown)
     json_entry = handle_metadata(type, metadata, file)
     next unless should_update_entry?(json_entry, metadata)
 
@@ -66,18 +67,11 @@ def update_original(file, content, metadata)
   File.write(file, "#{yaml_data}---\n#{content.file_markdown}")
 end
 
-def get_tags
-end
+def create_image; end
 
-def get_excerpt
-end
-
-def create_image
-end
-
-def build_metadata(file, metadata) # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity
+def build_metadata(file, metadata, content) # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity
   metadata = {} if metadata.nil?
-  {
+  metadata = {
     href: href(file),
     title: metadata[:title] || file.split('/').last.gsub('.md', '').gsub('_', ' '),
     excerpt: metadata[:excerpt] || '',
@@ -86,6 +80,10 @@ def build_metadata(file, metadata) # rubocop:disable Metrics/AbcSize, Metrics/Cy
     published: metadata[:published] || false,
     updated: metadata[:updated] || Time.now.strftime('%d/%m/%Y')
   }
+  ai_data = AiData.new(metadata, content)
+  metadata[:tags] = ai_data.tags
+  metadata[:excerpt] = ai_data.excerpt
+  metadata
 end
 
 def generate_file(file, content, metadata)

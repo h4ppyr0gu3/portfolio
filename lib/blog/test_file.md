@@ -4,11 +4,19 @@ title: Test file
 excerpt: This is a test file to test feature completedness on my blog
 date: 23/06/2023
 tags:
-- choice
-- idk
-- sth
+- 'Tags:'
+- Markdown,
+- tables,
+- code
+- blocks,
+- synchronization,
+- integration,
+- publication,
+- SmartyPants,
+- KaTeX,
+- Mermaid.
 published: true
-updated: 25/06/2023
+updated: 27/06/2023
 ---
 
 # Example file

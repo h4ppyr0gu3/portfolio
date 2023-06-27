@@ -3,10 +3,14 @@
     {
       "href": "/til/til",
       "title": "til",
-      "excerpt": "sth else changed",
+      "excerpt": "Applying effects to HTML groups using Tailwind CSS grouping.",
       "date": "23/06/2023",
       "tags": [
-        "sthing"
+        "Tailwind",
+        "CSS",
+        "grouping",
+        "effects",
+        "HTML"
       ],
       "published": true,
       "updated": "23/06/2023"
@@ -16,24 +20,32 @@
     {
       "href": "/blog/about_this_site",
       "title": "About this site",
-      "excerpt": "something shorter this time",
-      "date": "23/06/2023",
+      "excerpt": "This site uses Astro, Tailwind, Ruby and AI. Astro means I can try any JS framework. Tailwind is extensible and has great convenience features. Ruby is used for backend tasks. AI generates keywords for search.",
+      "date": "23/05/2023",
       "tags": [
-        "choice"
+        "web development",
+        "javascript",
+        "frameworks",
+        "AI",
+        "Tailwind"
       ],
-      "published": false,
-      "updated": "23/06/2023"
+      "published": true,
+      "updated": "20/05/2023"
     },
     {
       "href": "/blog/blog",
       "title": "test blog",
       "excerpt": "something shorter than the other time",
-      "date": "23/06/2023",
+      "date": "28/06/2023",
       "tags": [
-
+        "testing",
+        "hypotheses",
+        "experiments",
+        "data analysis",
+        "scientific research"
       ],
-      "published": false,
-      "updated": "23/07/2023"
+      "published": true,
+      "updated": "23/04/2023"
     },
     {
       "href": "/blog/test_file",
@@ -41,12 +53,20 @@
       "excerpt": "This is a test file to test feature completedness on my blog",
       "date": "23/06/2023",
       "tags": [
-        "choice",
-        "idk",
-        "sth"
+        "Tags:",
+        "Markdown,",
+        "tables,",
+        "code",
+        "blocks,",
+        "synchronization,",
+        "integration,",
+        "publication,",
+        "SmartyPants,",
+        "KaTeX,",
+        "Mermaid."
       ],
       "published": true,
-      "updated": "25/06/2023"
+      "updated": "27/06/2023"
     }
   ]
 }

@@ -66,6 +66,15 @@ def update_original(file, content, metadata)
   File.write(file, "#{yaml_data}---\n#{content.file_markdown}")
 end
 
+def get_tags
+end
+
+def get_excerpt
+end
+
+def create_image
+end
+
 def build_metadata(file, metadata) # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity
   metadata = {} if metadata.nil?
   {

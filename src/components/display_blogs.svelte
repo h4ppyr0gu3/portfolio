@@ -21,8 +21,8 @@
   {/if}
 	{#each $store as { href, title, excerpt, date, published, tags }, i}
     {#if published}
-      {#if i === 0 || parseDate(date).getMonth() !== parseDate($store[i-1].date).getMonth()}
-        <li class="month">{parseDate(date).toLocaleString('default', { month: 'long' })}</li>
+      {#if i === 0 || parseDate(date).getFullYear() !== parseDate($store[i-1].date).getFullYear()}
+        <li>{parseDate(date).getFullYear()}</li>
       {/if}
       <BlogEntry {href} {title} {excerpt} {date} {tags} />
     {/if}

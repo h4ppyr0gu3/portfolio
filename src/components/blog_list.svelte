@@ -11,7 +11,7 @@
 
   function handleSearch(e) {
     const options = {
-      keys: ['tags', 'title']
+      keys: ['title', 'excerpt']
     }
 
     const search = document.getElementById('blogSearch').value;

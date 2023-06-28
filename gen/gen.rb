@@ -78,7 +78,8 @@ def build_metadata(file, metadata, content) # rubocop:disable Metrics/AbcSize, M
     date: metadata[:date] || Time.now.strftime('%d/%m/%Y'),
     tags: metadata[:tags] || [],
     published: metadata[:published] || false,
-    updated: metadata[:updated] || Time.now.strftime('%d/%m/%Y')
+    updated: metadata[:updated] || Time.now.strftime('%d/%m/%Y'),
+    topics: metadata[:topics] || ""
   }
   ai_data = AiData.new(metadata, content)
   metadata[:tags] = ai_data.tags

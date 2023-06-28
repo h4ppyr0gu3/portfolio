@@ -31,8 +31,3 @@ renders:
   <button class="group-hover:bg-sky-400 rounded-lg p-2 m-2 border">test</button>
 </div>
 ```
-```rawhtml
-<div class="group p-5 m-5 rounded border">
-  <button class="group-hover:bg-sky-400 rounded-lg p-2 m-2 border">test</button>
-</div>
-```

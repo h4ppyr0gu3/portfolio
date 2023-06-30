@@ -1,8 +1,8 @@
 <script>
-  import DisplayBlogs from './display_blogs.svelte';
-  import json from '../../blogs.json';
+  import DisplayBlogs from './display.svelte';
+  import json from '../../../blogs.json';
   import Fuse from 'fuse.js';
-  import { store } from './store';
+  import { store } from '../store';
 
   const blogs = json.blog;
   $store = blogs;

@@ -35,7 +35,7 @@ def should_update_entry?(entry, metadata)
   entry.transform_keys(&:to_sym) != metadata
 end
 
-def handle_files # rubocop:disable Metrics/MethodLength
+def handle_files # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
   Dir.glob("#{SOURCE_PATH}/**/*.md").each do |file|
     type = file.split('/')[2]
     next unless SUPPORTED_PATHS.include?(type)
@@ -69,7 +69,7 @@ end
 
 def create_image; end
 
-def build_metadata(file, metadata, content) # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity
+def build_metadata(file, metadata, content) # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/MethodLength
   metadata = {} if metadata.nil?
   metadata = {
     href: href(file),
@@ -79,7 +79,7 @@ def build_metadata(file, metadata, content) # rubocop:disable Metrics/AbcSize, M
     tags: metadata[:tags] || [],
     published: metadata[:published] || false,
     updated: metadata[:updated] || Time.now.strftime('%d/%m/%Y'),
-    topics: metadata[:topics] || ""
+    topics: metadata[:topics] || ''
   }
   ai_data = AiData.new(metadata, content)
   metadata[:tags] = ai_data.tags

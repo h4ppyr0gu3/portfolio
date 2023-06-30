@@ -1,0 +1,41 @@
+---
+import ThemeToggle from "./theme_toggle.svelte";
+
+const activeClasses = ["inline-block", "p-4", "border-b-2", "rounded-t-lg", "dark:text-gray-200"]
+const inactiveClasses = ["inline-block", "p-4", "border-b-2", "border-transparent", "rounded-t-lg", "hover:text-gray-600", "hover:border-gray-300", "dark:hover:text-gray-300", "dark:bg-neutral-700", "dark:text-gray-200"]
+const url = Astro.url
+const tilClasses = url.pathname.split("/")[1] === "til" ? activeClasses : inactiveClasses
+const blogClasses = url.pathname.split("/")[1] === "blog" ? activeClasses : inactiveClasses
+const homeClasses = url.pathname.split("/")[1] === "" ? activeClasses : inactiveClasses
+---
+
+
+    <script is:inline>
+    function setTheme() {
+      if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark')
+        localStorage.setItem('theme', 'dark')
+      } else {
+        document.documentElement.classList.remove('dark')
+        localStorage.setItem('theme', 'light')
+      }
+    }
+    setTheme()
+    </script>
+    <div class="mb-4 border-b border-gray-200 dark:border-gray-700 flex justify-between dark:text-gray-50 dark:bg-neutral-900">
+      <div class="flex w-10"></div>
+      <ul class="flex flex-wrap -mb-px text-sm font-medium text-center justify-center dark:text-gray-50" id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
+        <li class="mr-2 list-none" role="presentation">
+          <a href="/" class:list={[homeClasses, "font-semibold text-gray-500 no-underline"]} id="home">Home</a>
+        </li>
+        <li class="mr-2 list-none" role="presentation">
+          <a href="/blog" class:list={[blogClasses, "font-semibold text-gray-500 no-underline"]} id="blog">Blog</a>
+        </li>
+        <li class="mr-2 list-none" role="presentation">
+          <a href="/til" class:list={[tilClasses, "font-semibold text-gray-500 no-underline"]} id="til">TIL</a>
+        </li>
+      </ul>
+      <div class="flex w-10">
+        <ThemeToggle client:only="svelte"/>
+      </div>
+    </div>

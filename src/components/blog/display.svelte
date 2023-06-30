@@ -1,6 +1,6 @@
 <script>
-  import BlogEntry from './blog_entry.svelte';
-  import { store } from './store';
+  import BlogEntry from './entry.svelte';
+  import { store } from '../store';
 
   $store.sort((a, b) => parseDate(b.date).getTime() - parseDate(a.date).getTime());
 

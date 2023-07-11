@@ -33,10 +33,37 @@ window.addEventListener('hashchange', function(event) {
   gotoHash();
 });
   </script>
-  <div class="lg:mx-10 sm:mx-2 xl:mx-20 lg:px-10 xl:px-20 sm:px-2 md:px-4">
-    <!-- metadata here -->
+  <div class="lg:px-10 xl:px-20 sm:px-2 md:px-4 relative" id="reading-mode-container", style="margin: 0 auto;">
+    <div class="top-0 right-20 absolute hover:cursor-pointer border-4 border-gray-800 dark:border-gray-200 p-1 rounded-md" title="Reading Mode" id="reading-mode">
+      <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 1h8M1 5h12M3 9h8M1 13h12"/>
+      </svg>
+    </div>
     <slot />
   </div>
+  <script is:inline>
+  const readingMode = document.getElementById('reading-mode');
+  const container = document.getElementById('reading-mode-container')
+  if (localStorage.getItem("readingMode") === "true") {
+    container.style.maxWidth = "1000px";
+    container.style.width = "1000px";
+  }
+  if (window.screen.width > 1100) {
+    readingMode.addEventListener('click', () => {
+      if (container.style.maxWidth === "1000px") {
+        container.style.width = "";
+        container.style.maxWidth = "";
+        localStorage.setItem("readingMode", "false");
+      } else {
+        container.style.width = "1000px";
+        container.style.maxWidth = "1000px";
+        localStorage.setItem("readingMode", "true");
+      }
+    })
+  } else {
+    readingMode.style.display = "none";
+  }
+  </script>
 </Layout>
 
 

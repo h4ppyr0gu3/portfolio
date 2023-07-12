@@ -16,6 +16,10 @@ we can always find all users where `user_name` is `h4ppyr0gu3` but what about al
 ```ruby
 User.select(min(id) as id, first_name).group(:first_name).having('count(*) > 1')
 ```
+_or_
+```ruby
+User.where.not(first_name: nil).group(:first_name).having('count(*) > 1')
+```
 
 This returns an array of `User` objects with the `id` and `first_name` columns.
 Now that we have all duplicated names we can map over them and get the ids:

@@ -11,7 +11,7 @@ tags:
 - utility
 published: true
 updated: 28/06/2023
-topics: ''
+topics: Vim
 ---
 
 # JSON formatting in vim

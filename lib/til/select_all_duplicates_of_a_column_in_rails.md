@@ -11,7 +11,7 @@ tags:
 - having
 published: false
 updated: 11/07/2023
-topics: ''
+topics: Rails
 ---
 
 # Select all duplicates of a column in Rails

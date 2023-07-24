@@ -1,0 +1,20 @@
+---
+    import Blog from '../../layouts/Blog.astro';
+    ---
+
+    <Blog title='Tailwind grouping'>
+    <h1 data-sourcepos="2:1-2:19" dir="auto">
+<a id="user-content-tailwind-grouping" class="anchor" href="#tailwind-grouping" aria-hidden="true"></a>Tailwind grouping</h1>
+<p data-sourcepos="4:1-5:24" dir="auto">When using grouping you can apply effects to groups
+using the following HTML</p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="7:1-11:3" data-canonical-lang="html" class="code highlight js-syntax-highlight language-html" lang="html" v-pre="true"><code><span id="LC1" class="line" lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"group p-5 m-5 rounded border"</span><span class="nt">&gt;</span></span>
+<span id="LC2" class="line" lang="html">  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"group-hover:bg-sky-400 rounded-lg p-2 m-2 border"</span><span class="nt">&gt;</span>test<span class="nt">&lt;/button&gt;</span></span>
+<span id="LC3" class="line" lang="html"><span class="nt">&lt;/div&gt;</span></span></code></pre>
+<copy-code></copy-code>
+</div>
+<p data-sourcepos="13:1-13:9" dir="auto">renders:</p>
+<div class="group p-5 m-5 rounded border">
+  <button class="group-hover:bg-sky-400 rounded-lg p-2 m-2 border">test</button>
+</div>
+</Blog>

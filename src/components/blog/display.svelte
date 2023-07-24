@@ -22,7 +22,7 @@
 	{#each $store as { href, title, excerpt, date, published, tags }, i}
     {#if published}
       {#if i === 0 || parseDate(date).getFullYear() !== parseDate($store[i-1].date).getFullYear()}
-        <li>{parseDate(date).getFullYear()}</li>
+        <li class="text-xl font-bold text-sky-400 flex justify-center content-center">{parseDate(date).getFullYear()}</li>
       {/if}
       <BlogEntry {href} {title} {excerpt} {date} {tags} />
     {/if}

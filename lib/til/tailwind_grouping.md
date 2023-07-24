@@ -1,6 +1,6 @@
 ---
-href: "/til/til"
-title: til
+href: "/til/tailwind_grouping"
+title: Tailwind grouping
 excerpt: Applying effects to HTML groups using Tailwind CSS grouping.
 date: 23/06/2023
 tags:
@@ -11,7 +11,7 @@ tags:
 - HTML
 published: true
 updated: 23/06/2023
-topics: ''
+topics: Tailwind
 ---
 
 # Tailwind grouping

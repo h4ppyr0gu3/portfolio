@@ -30,7 +30,7 @@
       ],
       "published": true,
       "updated": "28/06/2023",
-      "topics": ""
+      "topics": "Vim"
     },
     {
       "href": "/til/rails_migration_status",
@@ -47,7 +47,7 @@
       ],
       "published": false,
       "updated": "12/07/2023",
-      "topics": ""
+      "topics": "Rails"
     },
     {
       "href": "/til/select_all_duplicates_of_a_column_in_rails",
@@ -63,11 +63,11 @@
       ],
       "published": false,
       "updated": "11/07/2023",
-      "topics": ""
+      "topics": "Rails"
     },
     {
-      "href": "/til/til",
-      "title": "til",
+      "href": "/til/tailwind_grouping",
+      "title": "Tailwind grouping",
       "excerpt": "Applying effects to HTML groups using Tailwind CSS grouping.",
       "date": "23/06/2023",
       "tags": [
@@ -79,7 +79,7 @@
       ],
       "published": true,
       "updated": "23/06/2023",
-      "topics": ""
+      "topics": "Tailwind"
     }
   ],
   "blog": [

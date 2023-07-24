@@ -12,7 +12,7 @@ tags:
 - databases
 published: false
 updated: 12/07/2023
-topics: ''
+topics: Rails
 ---
 
 # Rails Migration Status

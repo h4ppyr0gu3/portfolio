@@ -1,6 +1,71 @@
 {
   "til": [
     {
+      "href": "/til/annotations_in_rails",
+      "title": "Annotations In Rails",
+      "excerpt": "You can use bin/rails notes to get all occurrences of commented annotations.",
+      "date": "10/07/2023",
+      "tags": [
+        "Rails annotations",
+        "custom entries",
+        "bin/rails notes",
+        "TODO",
+        "FIXME"
+      ],
+      "published": false,
+      "updated": "10/07/2023",
+      "topics": "Rails"
+    },
+    {
+      "href": "/til/json_formatting_in_vim",
+      "title": "JSON formatting in vim",
+      "excerpt": "Format JSON in vim using jq utility",
+      "date": "28/06/2023",
+      "tags": [
+        "JSON",
+        "vim",
+        "formatting",
+        "jq",
+        "utility"
+      ],
+      "published": true,
+      "updated": "28/06/2023",
+      "topics": ""
+    },
+    {
+      "href": "/til/rails_migration_status",
+      "title": "Rails Migration Status",
+      "excerpt": "Use 'rails db:migrate:status' to check migration status.",
+      "date": "12/07/2023",
+      "tags": [
+        "Rails",
+        "migration",
+        "status",
+        "command",
+        "rollback",
+        "databases"
+      ],
+      "published": false,
+      "updated": "12/07/2023",
+      "topics": ""
+    },
+    {
+      "href": "/til/select_all_duplicates_of_a_column_in_rails",
+      "title": "Select all duplicates of a column in Rails",
+      "excerpt": "Find duplicates of a column in Rails using group and having clauses",
+      "date": "11/07/2023",
+      "tags": [
+        "Rails",
+        "database",
+        "duplicates",
+        "group by",
+        "having"
+      ],
+      "published": false,
+      "updated": "11/07/2023",
+      "topics": ""
+    },
+    {
       "href": "/til/til",
       "title": "til",
       "excerpt": "Applying effects to HTML groups using Tailwind CSS grouping.",
@@ -13,7 +78,8 @@
         "HTML"
       ],
       "published": true,
-      "updated": "23/06/2023"
+      "updated": "23/06/2023",
+      "topics": ""
     }
   ],
   "blog": [
@@ -21,7 +87,7 @@
       "href": "/blog/about_this_site",
       "title": "About this site",
       "excerpt": "This site uses Astro, Tailwind, Ruby and AI. Astro means I can try any JS framework. Tailwind is extensible and has great convenience features. Ruby is used for backend tasks. AI generates keywords for search.",
-      "date": "23/05/2023",
+      "date": "23/06/2023",
       "tags": [
         "web development",
         "javascript",
@@ -30,13 +96,14 @@
         "Tailwind"
       ],
       "published": true,
-      "updated": "20/05/2023"
+      "updated": "23/06/2023",
+      "topics": ""
     },
     {
       "href": "/blog/blog",
       "title": "test blog",
       "excerpt": "something shorter than the other time",
-      "date": "28/06/2023",
+      "date": "23/06/2023",
       "tags": [
         "testing",
         "hypotheses",
@@ -44,8 +111,9 @@
         "data analysis",
         "scientific research"
       ],
-      "published": true,
-      "updated": "23/04/2023"
+      "published": false,
+      "updated": "23/07/2023",
+      "topics": ""
     },
     {
       "href": "/blog/test_file",
@@ -66,7 +134,8 @@
         "Mermaid."
       ],
       "published": true,
-      "updated": "27/06/2023"
+      "updated": "27/06/2023",
+      "topics": ""
     }
   ]
 }

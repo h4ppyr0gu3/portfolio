@@ -1,11 +1,17 @@
 ---
-href: '/til/annotations_in_rails'
+href: "/til/annotations_in_rails"
 title: Annotations In Rails
-excerpt: ''
+excerpt: You can use bin/rails notes to get all occurrences of commented annotations.
 date: 10/07/2023
-tags: 
+tags:
+- Rails annotations
+- custom entries
+- bin/rails notes
+- TODO
+- FIXME
 published: false
 updated: 10/07/2023
+topics: Rails
 ---
 
 # Annotations In Rails

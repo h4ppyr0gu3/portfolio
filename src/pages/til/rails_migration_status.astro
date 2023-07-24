@@ -1,0 +1,14 @@
+---
+    import Blog from '../../layouts/Blog.astro';
+    ---
+
+    <Blog title='Rails Migration Status'>
+    <h1 data-sourcepos="2:1-2:24" dir="auto">
+<a id="user-content-rails-migration-status" class="anchor" href="#rails-migration-status" aria-hidden="true"></a>Rails Migration Status</h1>
+<p data-sourcepos="4:1-4:56" dir="auto">To get rails migration status use the following command:</p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="5:1-7:3" data-canonical-lang="bash" class="code highlight js-syntax-highlight language-shell" lang="shell" v-pre="true"><code><span id="LC1" class="line" lang="shell">rails db:migrate:status</span></code></pre>
+<copy-code></copy-code>
+</div>
+<p data-sourcepos="9:1-9:172" dir="auto">this prints a list of all the migrations with either up or down next to it which is really helpful for rolling back or maintaining consistent state among multiple databases</p>
+</Blog>

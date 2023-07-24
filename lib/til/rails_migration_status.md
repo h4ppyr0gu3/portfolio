@@ -1,11 +1,18 @@
 ---
-href: '/til/rails_migration_status'
+href: "/til/rails_migration_status"
 title: Rails Migration Status
-excerpt: ''
+excerpt: Use 'rails db:migrate:status' to check migration status.
 date: 12/07/2023
-tags: 
+tags:
+- Rails
+- migration
+- status
+- command
+- rollback
+- databases
 published: false
 updated: 12/07/2023
+topics: ''
 ---
 
 # Rails Migration Status

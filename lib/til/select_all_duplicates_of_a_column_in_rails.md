@@ -1,11 +1,17 @@
 ---
-href: '/til/select_all_duplicates_of_a_column_in_rails'
+href: "/til/select_all_duplicates_of_a_column_in_rails"
 title: Select all duplicates of a column in Rails
-excerpt: ''
+excerpt: Find duplicates of a column in Rails using group and having clauses
 date: 11/07/2023
-tags: 
+tags:
+- Rails
+- database
+- duplicates
+- group by
+- having
 published: false
 updated: 11/07/2023
+topics: ''
 ---
 
 # Select all duplicates of a column in Rails

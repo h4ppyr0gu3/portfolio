@@ -22,8 +22,9 @@ unless File.exist?(full_path)
     f.puts "excerpt: ''"
     f.puts "date: #{Time.now.strftime('%d/%m/%Y')}"
     f.puts 'tags: '
-    f.puts 'published: false'
+    f.puts 'published: true'
     f.puts "updated: #{Time.now.strftime('%d/%m/%Y')}"
+    f.puts "topics: ''"
     f.puts '---'
     f.puts ''
     f.puts "# #{title}"

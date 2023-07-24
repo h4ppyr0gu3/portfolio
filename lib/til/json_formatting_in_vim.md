@@ -1,11 +1,17 @@
 ---
+href: "/til/json_formatting_in_vim"
 title: JSON formatting in vim
-excerpt: ""
+excerpt: Format JSON in vim using jq utility
 date: 28/06/2023
 tags:
+- JSON
+- vim
+- formatting
+- jq
+- utility
 published: true
 updated: 28/06/2023
-topic: "Vim"
+topics: ''
 ---
 
 # JSON formatting in vim
@@ -23,4 +29,3 @@ and to format selected text in vim you can use the following:
 the `'<,'>` symbol refers to the selected text in visual mode
 
 **N.B.** This requires `jq` utility to be installed
-

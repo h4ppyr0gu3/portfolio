@@ -1,0 +1,41 @@
+---
+    import Blog from '../../layouts/Blog.astro';
+    ---
+
+    <Blog title='Select all duplicates of a column in Rails'>
+    <h1 data-sourcepos="2:1-2:44" dir="auto">
+<a id="user-content-select-all-duplicates-of-a-column-in-rails" class="anchor" href="#select-all-duplicates-of-a-column-in-rails" aria-hidden="true"></a>Select all duplicates of a column in Rails</h1>
+<p data-sourcepos="4:1-5:102" dir="auto">Let's say we have a table <code>users</code> and we would like to find all places where <code>first_name</code> is the same:
+we can always find all users where <code>user_name</code> is <code>h4ppyr0gu3</code> but what about all possible duplicates:</p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="7:1-9:3" data-canonical-lang="ruby" class="code highlight js-syntax-highlight language-ruby" lang="ruby" v-pre="true"><code><span id="LC1" class="line" lang="ruby"><span class="no">User</span><span class="p">.</span><span class="nf">select</span><span class="p">(</span><span class="n">min</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="n">as</span> <span class="nb">id</span><span class="p">,</span> <span class="n">first_name</span><span class="p">).</span><span class="nf">group</span><span class="p">(</span><span class="ss">:first_name</span><span class="p">).</span><span class="nf">having</span><span class="p">(</span><span class="s1">'count(*) &gt; 1'</span><span class="p">)</span></span></code></pre>
+<copy-code></copy-code>
+</div>
+<p data-sourcepos="10:1-10:4" dir="auto"><em>or</em></p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="11:1-13:3" data-canonical-lang="ruby" class="code highlight js-syntax-highlight language-ruby" lang="ruby" v-pre="true"><code><span id="LC1" class="line" lang="ruby"><span class="no">User</span><span class="p">.</span><span class="nf">where</span><span class="p">.</span><span class="nf">not</span><span class="p">(</span><span class="ss">first_name: </span><span class="kp">nil</span><span class="p">).</span><span class="nf">group</span><span class="p">(</span><span class="ss">:first_name</span><span class="p">).</span><span class="nf">having</span><span class="p">(</span><span class="s1">'count(*) &gt; 1'</span><span class="p">)</span></span></code></pre>
+<copy-code></copy-code>
+</div>
+<p data-sourcepos="15:1-16:75" dir="auto">This returns an array of <code>User</code> objects with the <code>id</code> and <code>first_name</code> columns.
+Now that we have all duplicated names we can map over them and get the ids:</p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="18:1-23:3" data-canonical-lang="ruby" class="code highlight js-syntax-highlight language-ruby" lang="ruby" v-pre="true"><code><span id="LC1" class="line" lang="ruby"><span class="n">duplicated_user_names</span> <span class="o">=</span> </span>
+<span id="LC2" class="line" lang="ruby">    <span class="no">User</span><span class="p">.</span><span class="nf">select</span><span class="p">(</span><span class="n">min</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="n">as</span> <span class="nb">id</span><span class="p">,</span> <span class="n">first_name</span><span class="p">)</span></span>
+<span id="LC3" class="line" lang="ruby">        <span class="p">.</span><span class="nf">group</span><span class="p">(</span><span class="ss">:first_name</span><span class="p">).</span><span class="nf">having</span><span class="p">(</span><span class="s1">'count(*) &gt; 1'</span><span class="p">)</span></span>
+<span id="LC4" class="line" lang="ruby">        <span class="p">.</span><span class="nf">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:user_name</span><span class="p">)</span></span></code></pre>
+<copy-code></copy-code>
+</div>
+<p data-sourcepos="25:1-25:53" dir="auto">and then using the previous query we can get the ids:</p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="27:1-31:3" data-canonical-lang="ruby" class="code highlight js-syntax-highlight language-ruby" lang="ruby" v-pre="true"><code><span id="LC1" class="line" lang="ruby"><span class="n">duplicated_user_ids</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span></span>
+<span id="LC2" class="line" lang="ruby">    <span class="no">User</span><span class="p">.</span><span class="nf">where</span><span class="p">(</span><span class="ss">user_name: </span><span class="n">x</span><span class="p">).</span><span class="nf">more_processing</span></span>
+<span id="LC3" class="line" lang="ruby"><span class="k">end</span></span></code></pre>
+<copy-code></copy-code>
+</div>
+<p data-sourcepos="33:1-33:33" dir="auto">We could just write the query as:</p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="34:1-36:3" data-canonical-lang="ruby" class="code highlight js-syntax-highlight language-ruby" lang="ruby" v-pre="true"><code><span id="LC1" class="line" lang="ruby"><span class="no">User</span><span class="p">.</span><span class="nf">group</span><span class="p">(</span><span class="ss">:user_name</span><span class="p">).</span><span class="nf">having</span><span class="p">(</span><span class="s1">'count(*) &gt; 1'</span><span class="p">)</span></span></code></pre>
+<copy-code></copy-code>
+</div>
+<p data-sourcepos="37:1-37:33" dir="auto">but this raises PG::GroupingError</p>
+</Blog>

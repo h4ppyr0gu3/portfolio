@@ -150,7 +150,7 @@
         "NGINX"
       ],
       "published": true,
-      "updated": "22/04/2023",
+      "updated": "24/07/2023",
       "topics": ""
     },
     {
@@ -160,9 +160,18 @@
       "date": "28/09/2022",
       "tags": [
         "Unix",
-        "shell commands",
-        "file movement",
-        "man pages"
+        "shell",
+        "commands",
+        "man",
+        "ls",
+        "pwd",
+        "touch",
+        "rm",
+        "mkdir",
+        "rmdir",
+        "cd",
+        "cp",
+        "mv"
       ],
       "published": true,
       "updated": "28/09/2022",

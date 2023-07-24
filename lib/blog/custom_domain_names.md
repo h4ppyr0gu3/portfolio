@@ -11,7 +11,7 @@ tags:
 - dnsmasq
 - NGINX
 published: true
-updated: 22/04/2023
+updated: 24/07/2023
 topics: ''
 ---
 
@@ -27,7 +27,18 @@ Although we could just install [puma-dev](https://github.com/puma/puma-dev) foll
 To implement any solution it certainly helps to know what is going on behind the scenes and so what we have to understand is that there is a local DNS service on our machines that is searching in the cache for any site ip addresses which we are trying to look for in our browser. This is all well and good but it doesn't consider our local ports or in our case port 80 with a custom domain name so what we need is a **configurable** local DNS service that we can use to map 127.0.0.1 which is localhost by default to a custom domain able to handle subdomains.
 To do this we use [dnsmasq](https://dnsmasq.org/), however dnsmasq on its own will just return whatever is running on port 80 so we need a way to map our server which in my case was running on port 3000 to port 80 so for that we use [NGINX](https://docs.nginx.com/) as a proxy server/reverse proxy.
 
-![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/o67tsxallvyehzly60os.png)
+```mermaid
+flowchart LR
+    A[BROWSER] --> B[DNS Server\ndnsmasq]
+    A --> C[DNS Server\nsystemd resolved]
+    B --> D[nameserver 127.0.0.1]
+    B --> E[nameserver provided by router]
+    E --> F[Greater Internet]
+    C --> E
+    D --> G[NGINX proxy server]
+    G --> H[App 1\ncustom.domain]
+    G --> I[App 2\ntest.domain]
+```
 
 ## setting up NGINX
 

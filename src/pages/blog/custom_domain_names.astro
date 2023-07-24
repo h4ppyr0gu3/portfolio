@@ -2,8 +2,8 @@
 import Blog from '../../layouts/Blog.astro';
 ---
 
-    <Blog title='Custom Domain Names and subdomains for development'>
-    <h1 data-sourcepos="2:1-2:52" dir="auto">
+<Blog title='Custom Domain Names and subdomains for development'>
+<h1 data-sourcepos="2:1-2:52" dir="auto">
 <a id="user-content-custom-domain-names-and-subdomains-for-development" class="anchor" href="#custom-domain-names-and-subdomains-for-development" aria-hidden="true"></a>Custom Domain Names and subdomains for development</h1>
 <h2 data-sourcepos="4:1-4:8" dir="auto">
 <a id="user-content-intro" class="anchor" href="#intro" aria-hidden="true"></a>Intro</h2>
@@ -13,7 +13,18 @@ Although we could just install <a href="https://github.com/puma/puma-dev" rel="n
 <a id="user-content-down-the-rabbit-hole" class="anchor" href="#down-the-rabbit-hole" aria-hidden="true"></a>Down the Rabbit Hole</h2>
 <p data-sourcepos="11:1-12:298" dir="auto">To implement any solution it certainly helps to know what is going on behind the scenes and so what we have to understand is that there is a local DNS service on our machines that is searching in the cache for any site ip addresses which we are trying to look for in our browser. This is all well and good but it doesn't consider our local ports or in our case port 80 with a custom domain name so what we need is a <strong>configurable</strong> local DNS service that we can use to map 127.0.0.1 which is localhost by default to a custom domain able to handle subdomains.
 To do this we use <a href="https://dnsmasq.org/" rel="nofollow noreferrer noopener" target="_blank">dnsmasq</a>, however dnsmasq on its own will just return whatever is running on port 80 so we need a way to map our server which in my case was running on port 3000 to port 80 so for that we use <a href="https://docs.nginx.com/" rel="nofollow noreferrer noopener" target="_blank">NGINX</a> as a proxy server/reverse proxy.</p>
-<p data-sourcepos="14:1-14:103" dir="auto"><a class="no-attachment-icon" href="https://user-content.gitlab-static.net/1de2f6e31a8cdafb75061cbecd6957de00624acc/68747470733a2f2f6465762d746f2d75706c6f6164732e73332e616d617a6f6e6177732e636f6d2f75706c6f6164732f61727469636c65732f6f3637747378616c6c767965687a6c7936306f732e706e67" target="_blank" rel="nofollow noreferrer noopener" data-canonical-src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/o67tsxallvyehzly60os.png"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Image description" data-canonical-src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/o67tsxallvyehzly60os.png" decoding="async" class="lazy" data-src="https://user-content.gitlab-static.net/1de2f6e31a8cdafb75061cbecd6957de00624acc/68747470733a2f2f6465762d746f2d75706c6f6164732e73332e616d617a6f6e6177732e636f6d2f75706c6f6164732f61727469636c65732f6f3637747378616c6c767965687a6c7936306f732e706e67"></a></p>
+<pre class='mermaid'>
+flowchart LR
+    A[BROWSER] --> B[DNS Server\ndnsmasq]
+    A --> C[DNS Server\nsystemd resolved]
+    B --> D[nameserver 127.0.0.1]
+    B --> E[nameserver provided by router]
+    E --> F[Greater Internet]
+    C --> E
+    D --> G[NGINX proxy server]
+    G --> H[App 1\ncustom.domain]
+    G --> I[App 2\ntest.domain]
+</pre>
 <h2 data-sourcepos="16:1-16:19" dir="auto">
 <a id="user-content-setting-up-nginx" class="anchor" href="#setting-up-nginx" aria-hidden="true"></a>setting up NGINX</h2>
 <p data-sourcepos="18:1-22:120" dir="auto">installing NGINX on linux is pretty simple as it should be provided by default by the package manager of your distro, if not you may have to jump through some hoops to get it installed but for this blog that is outside the scope
@@ -117,7 +128,7 @@ I have this set up in an alias in my .zshrc file:</p>
 </div>
 <p data-sourcepos="122:1-122:42" dir="auto">And add a server to the NGINX config file:</p>
 <div class="gl-relative markdown-code-block js-markdown-code">
-<pre data-sourcepos="124:1-160:3" data-canonical-lang="txt" class="code highlight js-syntax-highlight language-plaintext" lang="plaintext" v-pre="true" is:raw><code><span id="LC1" class="line" lang="plaintext" is:raw>http {</span>
+<pre data-sourcepos="124:1-160:3" data-canonical-lang="txt" class="code highlight js-syntax-highlight language-plaintext" lang="plaintext" v-pre="true" is:raw><code><span id="LC1" class="line" lang="plaintext">http {</span>
 <span id="LC2" class="line" lang="plaintext">    .</span>
 <span id="LC3" class="line" lang="plaintext">    .</span>
 <span id="LC4" class="line" lang="plaintext">    .</span>

@@ -6,9 +6,18 @@ excerpt: 'Intro to Unix Shell Commands. Essential file movement: man, ls, pwd, t
 date: 28/09/2022
 tags:
 - Unix
-- shell commands
-- file movement
-- man pages
+- shell
+- commands
+- man
+- ls
+- pwd
+- touch
+- rm
+- mkdir
+- rmdir
+- cd
+- cp
+- mv
 published: true
 updated: 28/09/2022
 topics: ''

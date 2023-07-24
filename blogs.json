@@ -136,6 +136,53 @@
       "published": true,
       "updated": "27/06/2023",
       "topics": ""
+    },
+    {
+      "href": "/blog/custom_domain_names",
+      "title": "Custom Domain Names and subdomains for development",
+      "excerpt": "Developing a Rails app with subdomains is difficult. Need a local DNS service like dnsmasq and NGINX as a reverse proxy.",
+      "date": "10/05/2022",
+      "tags": [
+        "Rails development",
+        "subdomains",
+        "local DNS",
+        "dnsmasq",
+        "NGINX"
+      ],
+      "published": true,
+      "updated": "22/04/2023",
+      "topics": ""
+    },
+    {
+      "href": "/blog/intro_to_unix_shell_commands",
+      "title": "Intro to Unix Shell Commands",
+      "excerpt": "Intro to Unix Shell Commands. Essential file movement: man, ls, pwd, touch, rm, mkdir, rmdir, cd, cp, mv. Essential Knowledge: flags, man.",
+      "date": "28/09/2022",
+      "tags": [
+        "Unix",
+        "shell commands",
+        "file movement",
+        "man pages"
+      ],
+      "published": true,
+      "updated": "28/09/2022",
+      "topics": ""
+    },
+    {
+      "href": "/blog/the_journey_to_arch",
+      "title": "The Journey to Arch",
+      "excerpt": "Started with Ubuntu, switched to Arch. Debian had dependency errors. Dual booting Arch and Debian caused boot loop. Finally settled on Arch.",
+      "date": "15/04/2022",
+      "tags": [
+        "Ubuntu",
+        "Arch",
+        "Debian",
+        "distro hopping",
+        "dependency errors"
+      ],
+      "published": true,
+      "updated": "15/04/2022",
+      "topics": ""
     }
   ]
 }

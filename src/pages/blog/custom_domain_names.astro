@@ -1,0 +1,200 @@
+---
+import Blog from '../../layouts/Blog.astro';
+---
+
+    <Blog title='Custom Domain Names and subdomains for development'>
+    <h1 data-sourcepos="2:1-2:52" dir="auto">
+<a id="user-content-custom-domain-names-and-subdomains-for-development" class="anchor" href="#custom-domain-names-and-subdomains-for-development" aria-hidden="true"></a>Custom Domain Names and subdomains for development</h1>
+<h2 data-sourcepos="4:1-4:8" dir="auto">
+<a id="user-content-intro" class="anchor" href="#intro" aria-hidden="true"></a>Intro</h2>
+<p data-sourcepos="6:1-7:215" dir="auto">Developing a <a href="https://rubyonrails.org/" rel="nofollow noreferrer noopener" target="_blank">Ruby on Rails</a> application with subdomains is much more difficult than you would imagine.
+Although we could just install <a href="https://github.com/puma/puma-dev" rel="nofollow noreferrer noopener" target="_blank">puma-dev</a> following the installation guide, we wouldn't  understand why that works, or how, and so we close our minds to whats down that rabbit hole.</p>
+<h2 data-sourcepos="9:1-9:23" dir="auto">
+<a id="user-content-down-the-rabbit-hole" class="anchor" href="#down-the-rabbit-hole" aria-hidden="true"></a>Down the Rabbit Hole</h2>
+<p data-sourcepos="11:1-12:298" dir="auto">To implement any solution it certainly helps to know what is going on behind the scenes and so what we have to understand is that there is a local DNS service on our machines that is searching in the cache for any site ip addresses which we are trying to look for in our browser. This is all well and good but it doesn't consider our local ports or in our case port 80 with a custom domain name so what we need is a <strong>configurable</strong> local DNS service that we can use to map 127.0.0.1 which is localhost by default to a custom domain able to handle subdomains.
+To do this we use <a href="https://dnsmasq.org/" rel="nofollow noreferrer noopener" target="_blank">dnsmasq</a>, however dnsmasq on its own will just return whatever is running on port 80 so we need a way to map our server which in my case was running on port 3000 to port 80 so for that we use <a href="https://docs.nginx.com/" rel="nofollow noreferrer noopener" target="_blank">NGINX</a> as a proxy server/reverse proxy.</p>
+<p data-sourcepos="14:1-14:103" dir="auto"><a class="no-attachment-icon" href="https://user-content.gitlab-static.net/1de2f6e31a8cdafb75061cbecd6957de00624acc/68747470733a2f2f6465762d746f2d75706c6f6164732e73332e616d617a6f6e6177732e636f6d2f75706c6f6164732f61727469636c65732f6f3637747378616c6c767965687a6c7936306f732e706e67" target="_blank" rel="nofollow noreferrer noopener" data-canonical-src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/o67tsxallvyehzly60os.png"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Image description" data-canonical-src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/o67tsxallvyehzly60os.png" decoding="async" class="lazy" data-src="https://user-content.gitlab-static.net/1de2f6e31a8cdafb75061cbecd6957de00624acc/68747470733a2f2f6465762d746f2d75706c6f6164732e73332e616d617a6f6e6177732e636f6d2f75706c6f6164732f61727469636c65732f6f3637747378616c6c767965687a6c7936306f732e706e67"></a></p>
+<h2 data-sourcepos="16:1-16:19" dir="auto">
+<a id="user-content-setting-up-nginx" class="anchor" href="#setting-up-nginx" aria-hidden="true"></a>setting up NGINX</h2>
+<p data-sourcepos="18:1-22:120" dir="auto">installing NGINX on linux is pretty simple as it should be provided by default by the package manager of your distro, if not you may have to jump through some hoops to get it installed but for this blog that is outside the scope
+So... assuming nginx wasn't to difficult to install we shall continue.
+The next step is to configure nginx so that our application is served at <code>http://localhost/</code> instead of <code>http://localhost:3000/</code>, the difference being that by default a url withot the port specified, is directed to port 80 if it is using the HTTP protocol and port 443 if it is using the HTTPS protocol.
+To do that we to configure NGINX to pass/proxy our traffic from port 80 to port 3000.
+This is achived in the following configuration which will be somewhere in the /etc/nginx/ directory (location may vary):</p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="23:1-45:3" data-canonical-lang="txt" class="code highlight js-syntax-highlight language-plaintext" lang="plaintext" v-pre="true" is:raw><code><span id="LC1" class="line" lang="plaintext">http {</span>
+<span id="LC2" class="line" lang="plaintext">    .</span>
+<span id="LC3" class="line" lang="plaintext">    .</span>
+<span id="LC4" class="line" lang="plaintext">    .</span>
+<span id="LC5" class="line" lang="plaintext">    server {</span>
+<span id="LC6" class="line" lang="plaintext">        listen       80;</span>
+<span id="LC7" class="line" lang="plaintext">        server_name custom.domain *.custom.domain;</span>
+<span id="LC8" class="line" lang="plaintext"></span>
+<span id="LC9" class="line" lang="plaintext">        location / {</span>
+<span id="LC10" class="line" lang="plaintext">            proxy_pass http://localhost:3000;</span>
+<span id="LC11" class="line" lang="plaintext">            proxy_redirect off;</span>
+<span id="LC12" class="line" lang="plaintext">            proxy_set_header Host $host;</span>
+<span id="LC13" class="line" lang="plaintext">        }</span>
+<span id="LC14" class="line" lang="plaintext">        .</span>
+<span id="LC15" class="line" lang="plaintext">        .</span>
+<span id="LC16" class="line" lang="plaintext">        .</span>
+<span id="LC17" class="line" lang="plaintext">    }</span>
+<span id="LC18" class="line" lang="plaintext">    .</span>
+<span id="LC19" class="line" lang="plaintext">    .</span>
+<span id="LC20" class="line" lang="plaintext">    .</span>
+<span id="LC21" class="line" lang="plaintext">}</span></code></pre>
+<copy-code></copy-code>
+</div>
+<p data-sourcepos="46:1-46:123" dir="auto"><strong>N.B</strong> there will be other configurations in the both the server and http blocks which don't need to be removed or changed</p>
+<p data-sourcepos="48:1-48:76" dir="auto">The important code being <code>listen 80;</code> and <code>proxy_pass http://localhost:3000</code></p>
+<p data-sourcepos="50:1-50:157" dir="auto">now if everything has gone according to plan we should see our website at <code>http://localhost/</code> if we exclude the line with <code>server_name</code> in our configuration.</p>
+<p data-sourcepos="52:1-52:147" dir="auto">to add a custom domain name we need to add dnsmasq and the line including <code>server_name</code> to our NGINX config so first install and configure dnsmasq.</p>
+<h2 data-sourcepos="54:1-54:10" dir="auto">
+<a id="user-content-dnsmasq" class="anchor" href="#dnsmasq" aria-hidden="true"></a>dnsmasq</h2>
+<p data-sourcepos="56:1-58:70" dir="auto">Install dnsmasq from the default package manager or follow the recommended installation for your distro from the docs.
+dnsmasq generates a massive default config file with explanatory comments for every option however it is easier to just append to the file as you may want to change something else in future.
+For our purposes we are going to add the following to our config file:</p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="59:1-67:3" data-canonical-lang="txt" class="code highlight js-syntax-highlight language-plaintext" lang="plaintext" v-pre="true"><code><span id="LC1" class="line" lang="plaintext">port=53</span>
+<span id="LC2" class="line" lang="plaintext">domain-needed</span>
+<span id="LC3" class="line" lang="plaintext">bogus-priv</span>
+<span id="LC4" class="line" lang="plaintext">address=/custom.domain/127.0.0.1</span>
+<span id="LC5" class="line" lang="plaintext">address=/.custom.domain/127.0.0.1</span>
+<span id="LC6" class="line" lang="plaintext">listen-address=127.0.0.1</span>
+<span id="LC7" class="line" lang="plaintext">bind-interfaces</span></code></pre>
+<copy-code></copy-code>
+</div>
+<p data-sourcepos="69:1-74:93" dir="auto"><code>port=53</code> runs dnsmasq as the default local DNS
+<code>domain-needed</code> and <code>bogus-priv</code> prevent packets with malformed domain names and packets with private IP addresses from leaving your network, don't ask me what this means because I am not entirely sure, more info can be found <a href="https://www.linux.com/topic/networking/advanced-dnsmasq-tips-and-tricks/" rel="nofollow noreferrer noopener" target="_blank">here</a>.
+the <code>address</code> lines add custom.domain to the server redirecting them to 127.0.0.1 which is where our service is running as mentioned earlier on port 80 which is default lookup
+the .custom.domain allows for subdomains to also be resolved
+<code>listen-address</code> is self explanatory and is then listening on localhost
+<code>bind-interfaces</code> binds all interfaces and updates if some interfaces get dropped or changed.</p>
+<h2 data-sourcepos="76:1-76:29" dir="auto">
+<a id="user-content-setting-dnsmasq-as-default" class="anchor" href="#setting-dnsmasq-as-default" aria-hidden="true"></a>Setting dnsmasq as default</h2>
+<p data-sourcepos="78:1-78:180" dir="auto">by default on systemd systems the default DNS resolver is systemd-resolved so to enable dnsmasq which listens on the same port we have to first disable systemd-resolved by running:</p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="79:1-82:3" data-canonical-lang="bash" class="code highlight js-syntax-highlight language-shell" lang="shell" v-pre="true"><code><span id="LC1" class="line" lang="shell"><span class="nb">sudo </span>systemctl stop systemd-resolved</span>
+<span id="LC2" class="line" lang="shell"><span class="nb">sudo </span>systemctl disable systemd-resolved</span></code></pre>
+<copy-code></copy-code>
+</div>
+<p data-sourcepos="84:1-85:42" dir="auto">This should destroy some symlinked files so that the service won't run on start up.
+we then need to enable dnsmasq by running:</p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="87:1-90:3" data-canonical-lang="bash" class="code highlight js-syntax-highlight language-shell" lang="shell" v-pre="true"><code><span id="LC1" class="line" lang="shell"><span class="nb">sudo </span>systemctl <span class="nb">enable </span>dnsmasq</span>
+<span id="LC2" class="line" lang="shell"><span class="nb">sudo </span>systemctl start dnsmasq</span></code></pre>
+<copy-code></copy-code>
+</div>
+<p data-sourcepos="92:1-92:395" dir="auto">All this has done at this stage is enable dnsmasq as the default DNS server and allowed it to redirect custom.domain to port 80 which should allow us to use subdomains and use the custom address but if we would like to add multiple custom domains we need to restrict the proxy server to only proxy custom.domain, to do that we add the following line to our nginx config under the listen command:</p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="93:1-95:3" data-canonical-lang="txt" class="code highlight js-syntax-highlight language-plaintext" lang="plaintext" v-pre="true"><code><span id="LC1" class="line" lang="plaintext">server_name custom.domain *.custom.domain;</span></code></pre>
+<copy-code></copy-code>
+</div>
+<h2 data-sourcepos="97:1-97:39" dir="auto">
+<a id="user-content-adding-127001-to-etcresolvconf" class="anchor" href="#adding-127001-to-etcresolvconf" aria-hidden="true"></a>Adding 127.0.0.1 to /etc/resolv.conf</h2>
+<p data-sourcepos="99:1-100:49" dir="auto">Because we are using dnsmasq as our default DNS server we need it to resolve both local requests and internet wide and so it is using the /etc/resolv.conf file to look up the DNS server of the router or internet connection we are using, so to add ourselves to the list of available nameservers we have to append <code>nameserver 127.0.0.1</code> to our <code>/etc/resolv.conf</code> file, by doing this we have allowed our DNS server to first consider our local entries.
+I have this set up in an alias in my .zshrc file:</p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="101:1-103:3" data-canonical-lang="bash" class="code highlight js-syntax-highlight language-shell" lang="shell" v-pre="true"><code><span id="LC1" class="line" lang="shell"><span class="nb">alias </span>nameserver:add<span class="o">=</span><span class="s2">"sudo sed -i '1s/^/# Custom Entry</span><span class="se">\n</span><span class="s2">nameserver 127.0.0.1</span><span class="se">\n</span><span class="s2">/' /etc/resolv.conf"</span></span></code></pre>
+<copy-code></copy-code>
+</div>
+<h2 data-sourcepos="105:1-105:26" dir="auto">
+<a id="user-content-putting-it-all-together" class="anchor" href="#putting-it-all-together" aria-hidden="true"></a>Putting it all together</h2>
+<p data-sourcepos="107:1-107:133" dir="auto">Everything is in place and near ready to go so to get it all running together we may need to restart our services and visit the page:</p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="108:1-113:3" data-canonical-lang="bash" class="code highlight js-syntax-highlight language-shell" lang="shell" v-pre="true"><code><span id="LC1" class="line" lang="shell"><span class="nb">sudo </span>systemctl restart nginx</span>
+<span id="LC2" class="line" lang="shell"><span class="nb">sudo sed</span> <span class="nt">-i</span> <span class="s1">'1s/^/# Custom Entry\nnameserver 127.0.0.1\n/'</span> /etc/resolv.conf</span>
+<span id="LC3" class="line" lang="shell"><span class="c"># the above command can be replaced by nameserver:add if you have sourced your shell file</span></span>
+<span id="LC4" class="line" lang="shell"><span class="nb">sudo </span>systemctl restart dnsmasq</span></code></pre>
+<copy-code></copy-code>
+</div>
+<h2 data-sourcepos="115:1-115:22" dir="auto">
+<a id="user-content-adding-more-domains" class="anchor" href="#adding-more-domains" aria-hidden="true"></a>Adding more domains</h2>
+<p data-sourcepos="117:1-117:70" dir="auto">To add an additional domain add an address to the dnsmasq config file:</p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="118:1-120:3" data-canonical-lang="txt" class="code highlight js-syntax-highlight language-plaintext" lang="plaintext" v-pre="true"><code><span id="LC1" class="line" lang="plaintext">address=/new.domain/127.0.0.1</span></code></pre>
+<copy-code></copy-code>
+</div>
+<p data-sourcepos="122:1-122:42" dir="auto">And add a server to the NGINX config file:</p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="124:1-160:3" data-canonical-lang="txt" class="code highlight js-syntax-highlight language-plaintext" lang="plaintext" v-pre="true" is:raw><code><span id="LC1" class="line" lang="plaintext" is:raw>http {</span>
+<span id="LC2" class="line" lang="plaintext">    .</span>
+<span id="LC3" class="line" lang="plaintext">    .</span>
+<span id="LC4" class="line" lang="plaintext">    .</span>
+<span id="LC5" class="line" lang="plaintext">    server {</span>
+<span id="LC6" class="line" lang="plaintext">        listen       80;</span>
+<span id="LC7" class="line" lang="plaintext">        server_name custom.domain *.custom.domain;</span>
+<span id="LC8" class="line" lang="plaintext"></span>
+<span id="LC9" class="line" lang="plaintext">        location / {</span>
+<span id="LC10" class="line" lang="plaintext">            proxy_pass http://localhost:3000;</span>
+<span id="LC11" class="line" lang="plaintext">            proxy_redirect off;</span>
+<span id="LC12" class="line" lang="plaintext">            proxy_set_header Host $host;</span>
+<span id="LC13" class="line" lang="plaintext">        }</span>
+<span id="LC14" class="line" lang="plaintext">        .</span>
+<span id="LC15" class="line" lang="plaintext">        .</span>
+<span id="LC16" class="line" lang="plaintext">        .</span>
+<span id="LC17" class="line" lang="plaintext">    }</span>
+<span id="LC18" class="line" lang="plaintext"></span>
+<span id="LC19" class="line" lang="plaintext">    server {</span>
+<span id="LC20" class="line" lang="plaintext">        listen       80;</span>
+<span id="LC21" class="line" lang="plaintext">        server_name new.domain;</span>
+<span id="LC22" class="line" lang="plaintext"></span>
+<span id="LC23" class="line" lang="plaintext">        location / {</span>
+<span id="LC24" class="line" lang="plaintext">            proxy_pass http://localhost:4000;</span>
+<span id="LC25" class="line" lang="plaintext">            proxy_redirect off;</span>
+<span id="LC26" class="line" lang="plaintext">            proxy_set_header Host $host;</span>
+<span id="LC27" class="line" lang="plaintext">        }</span>
+<span id="LC28" class="line" lang="plaintext">        .</span>
+<span id="LC29" class="line" lang="plaintext">        .</span>
+<span id="LC30" class="line" lang="plaintext">        .</span>
+<span id="LC31" class="line" lang="plaintext">    }</span>
+<span id="LC32" class="line" lang="plaintext">    .</span>
+<span id="LC33" class="line" lang="plaintext">    .</span>
+<span id="LC34" class="line" lang="plaintext">    .</span>
+<span id="LC35" class="line" lang="plaintext">}</span></code></pre>
+<copy-code></copy-code>
+</div>
+<h2 data-sourcepos="162:1-162:13" dir="auto">
+<a id="user-content-conclusion" class="anchor" href="#conclusion" aria-hidden="true"></a>Conclusion</h2>
+<p data-sourcepos="164:1-165:69" dir="auto">If you have any problems the official docs are the ultimate source of truth
+This solution may not work for everyone but it works very well for me</p>
+<h3 data-sourcepos="167:1-167:10" dir="auto">
+<a id="user-content-update" class="anchor" href="#update" aria-hidden="true"></a>Update</h3>
+<p data-sourcepos="169:1-169:112" dir="auto">I have since moved away from using /etc/resolv.conf and have updated dnsmasq.conf to use a custom resolver file:</p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="171:1-182:3" data-canonical-lang="txt" class="code highlight js-syntax-highlight language-plaintext" lang="plaintext" v-pre="true"><code><span id="LC1" class="line" lang="plaintext"># /etc/dnsmasq.conf</span>
+<span id="LC2" class="line" lang="plaintext"></span>
+<span id="LC3" class="line" lang="plaintext">port=53</span>
+<span id="LC4" class="line" lang="plaintext">domain-needed</span>
+<span id="LC5" class="line" lang="plaintext">bogus-priv</span>
+<span id="LC6" class="line" lang="plaintext">address=/custom.domain/127.0.0.1</span>
+<span id="LC7" class="line" lang="plaintext">address=/.custom.domain/127.0.0.1</span>
+<span id="LC8" class="line" lang="plaintext">listen-address=127.0.0.1</span>
+<span id="LC9" class="line" lang="plaintext">bind-interfaces</span>
+<span id="LC10" class="line" lang="plaintext">resolv-file=/etc/dnsmasq-resolv.conf</span></code></pre>
+<copy-code></copy-code>
+</div>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="183:1-194:3" data-canonical-lang="txt" class="code highlight js-syntax-highlight language-plaintext" lang="plaintext" v-pre="true"><code><span id="LC1" class="line" lang="plaintext"># /etc/dnsmasq-resolv.conf</span>
+<span id="LC2" class="line" lang="plaintext"></span>
+<span id="LC3" class="line" lang="plaintext"># localhost</span>
+<span id="LC4" class="line" lang="plaintext">nameserver 127.0.0.1</span>
+<span id="LC5" class="line" lang="plaintext"># Google DNS</span>
+<span id="LC6" class="line" lang="plaintext">nameserver 8.8.8.8</span>
+<span id="LC7" class="line" lang="plaintext">nameserver 8.8.4.4</span>
+<span id="LC8" class="line" lang="plaintext"># Cloudflare DNS</span>
+<span id="LC9" class="line" lang="plaintext">nameserver 1.1.1.1</span>
+<span id="LC10" class="line" lang="plaintext">nameserver 1.0.0.1</span></code></pre>
+<copy-code></copy-code>
+</div>
+<p data-sourcepos="196:1-196:227" dir="auto">by doing this i don't need to alias auto writing to resolv.conf, and hopefully these DNS servers are fast enough, but in case they are not, the last line of dnsmasq.conf can be undone and you can use your local resolv.conf file</p>
+<p data-sourcepos="198:1-198:107" dir="auto">You also have to turn off the NetworkManager DNS service by editing /etc/NetworkManager/NetworkManager.conf</p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="200:1-205:3" data-canonical-lang="toml" class="code highlight js-syntax-highlight language-toml" lang="toml" v-pre="true"><code><span id="LC1" class="line" lang="toml"><span class="c"># /etc/NetworkManager/NetworkManager.conf</span></span>
+<span id="LC2" class="line" lang="toml"></span>
+<span id="LC3" class="line" lang="toml"><span class="nn">[main]</span></span>
+<span id="LC4" class="line" lang="toml"><span class="py">dns</span><span class="p">=</span><span class="err">none</span></span></code></pre>
+<copy-code></copy-code>
+</div>
+<p data-sourcepos="207:1-207:128" dir="auto">I updated to this latest version because my dns service was slow and impacted my work, i hope someone else can benefit from this</p>
+</Blog>

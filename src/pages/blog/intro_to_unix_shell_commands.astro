@@ -1,0 +1,81 @@
+---
+import Blog from '../../layouts/Blog.astro';
+---
+
+    <Blog title='Intro to Unix Shell Commands'>
+    <h1 data-sourcepos="2:1-2:30" dir="auto">
+<a id="user-content-intro-to-unix-shell-commands" class="anchor" href="#intro-to-unix-shell-commands" aria-hidden="true"></a>Intro to Unix Shell Commands</h1>
+<h3 data-sourcepos="4:1-4:9" dir="auto">
+<a id="user-content-tldr" class="anchor" href="#tldr" aria-hidden="true"></a>TL;DR</h3>
+<h4 data-sourcepos="6:1-6:29" dir="auto">
+<a id="user-content-essential-file-movement" class="anchor" href="#essential-file-movement" aria-hidden="true"></a>Essential file movement:</h4>
+<p data-sourcepos="8:1-8:69" dir="auto"><code>man</code>, <code>ls</code>, <code>pwd</code>, <code>touch</code>, <code>rm</code>, <code>mkdir</code>, <code>rmdir</code>, <code>cd</code>, <code>cp</code>, <code>mv</code></p>
+<h4 data-sourcepos="10:1-10:25" dir="auto">
+<a id="user-content-essential-knowledge" class="anchor" href="#essential-knowledge" aria-hidden="true"></a>Essential Knowledge:</h4>
+<p data-sourcepos="12:1-13:152" dir="auto">flags change the behaviour of the command so read through the <code>man</code> pages to find out what is possible and what the result will be
+the most important flag is <code>-h</code> or <code>--help</code>, these will print the help pages which are more concise than the man pages but at the same time more limited</p>
+<h2 data-sourcepos="15:1-15:15" dir="auto">
+<a id="user-content-introduction" class="anchor" href="#introduction" aria-hidden="true"></a>Introduction</h2>
+<p data-sourcepos="17:1-18:188" dir="auto">There are a few essential commands to learn to get started with a unix operating system
+These are default shell commands which should be a good foundation to begin to use the terminal more, obviously this is not an extensive list but should allow you to find further resources</p>
+<h3 data-sourcepos="20:1-20:9" dir="auto">
+<a id="user-content-flags" class="anchor" href="#flags" aria-hidden="true"></a>flags</h3>
+<p data-sourcepos="22:1-22:127" dir="auto">flags are preceded by a dash and modify the functionality of the program so for example <code>ls -a</code> is just <code>ls</code> with the <code>-a</code> flag</p>
+<h3 data-sourcepos="24:1-24:7" dir="auto">
+<a id="user-content-man" class="anchor" href="#man" aria-hidden="true"></a>man</h3>
+<p data-sourcepos="26:1-28:403" dir="auto"><code>man</code> are the linux man pages and takes a program name as an argument and gives detailed documentation of how exactly each available flag will modify the programs functionality
+for example:
+we can run the following command <code>man ls</code> to list the flags available to the ls command, in here we will find a lot of modifiers that could make our lives easier such as the <code>-a</code> flag which will print hidden directories as well as the standard ones, we could also use the <code>--color</code> flag which will colorize the output allowing us to easily differentiate between directories and different file extensions</p>
+<p align="center" dir="auto">
+  <a class="no-attachment-icon" href="https://user-content.gitlab-static.net/cf6d0da77151b8529fe40ca872930948423b8e2c/68747470733a2f2f6465762d746f2d75706c6f6164732e73332e616d617a6f6e6177732e636f6d2f75706c6f6164732f61727469636c65732f30686a6d3478627a3768367638636c34387078392e706e67" target="_blank" rel="nofollow noreferrer noopener" data-canonical-src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/0hjm4xbz7h6v8cl48px9.png"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" height="1500px" width="700px" data-canonical-src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/0hjm4xbz7h6v8cl48px9.png" decoding="async" class="lazy" data-src="https://user-content.gitlab-static.net/cf6d0da77151b8529fe40ca872930948423b8e2c/68747470733a2f2f6465762d746f2d75706c6f6164732e73332e616d617a6f6e6177732e636f6d2f75706c6f6164732f61727469636c65732f30686a6d3478627a3768367638636c34387078392e706e67"></a>
+</p>
+<h3 data-sourcepos="34:1-34:6" dir="auto">
+<a id="user-content-ls" class="anchor" href="#ls" aria-hidden="true"></a>ls</h3>
+<p data-sourcepos="36:1-37:140" dir="auto"><code>ls</code> simply translates to list directory contents, there are multiple flags for ls which make it more capable, from the screenshot of the ls man page you can see that there is a lot that can be edited and a lot of flags available
+This command is very basic but forms the backbone of many peoples daily workflow to know where they are in the computer and whats around you</p>
+<p data-sourcepos="39:1-39:96" dir="auto"><a class="no-attachment-icon" href="https://user-content.gitlab-static.net/19174c07654123e0a6317d4542a3144d5725ac1a/68747470733a2f2f6465762d746f2d75706c6f6164732e73332e616d617a6f6e6177732e636f6d2f75706c6f6164732f61727469636c65732f6d3666366c753578706d76323473626f673733312e706e67" target="_blank" rel="nofollow noreferrer noopener" data-canonical-src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/m6f6lu5xpmv24sbog731.png"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="ls command" data-canonical-src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/m6f6lu5xpmv24sbog731.png" decoding="async" class="lazy" data-src="https://user-content.gitlab-static.net/19174c07654123e0a6317d4542a3144d5725ac1a/68747470733a2f2f6465762d746f2d75706c6f6164732e73332e616d617a6f6e6177732e636f6d2f75706c6f6164732f61727469636c65732f6d3666366c753578706d76323473626f673733312e706e67"></a></p>
+<h3 data-sourcepos="41:1-41:7" dir="auto">
+<a id="user-content-pwd" class="anchor" href="#pwd" aria-hidden="true"></a>pwd</h3>
+<p data-sourcepos="43:1-43:225" dir="auto">Now that we know what is around us, we need to know where we are to do that we can use<code>pwd</code> if the shell prompt doesn't let you know your location already. <code>pwd</code> takes no arguments and simply prints the current path and exits</p>
+<p align="center" dir="auto">
+  <a class="no-attachment-icon" href="https://user-content.gitlab-static.net/bf0bc536a3c6f68cc524927fdcd55e9674aa20f0/68747470733a2f2f6465762d746f2d75706c6f6164732e73332e616d617a6f6e6177732e636f6d2f75706c6f6164732f61727469636c65732f3977366a3438316673793666306e73657a7170392e706e67" target="_blank" rel="nofollow noreferrer noopener" data-canonical-src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/9w6j481fsy6f0nsezqp9.png"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" height="150px" data-canonical-src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/9w6j481fsy6f0nsezqp9.png" decoding="async" class="lazy" data-src="https://user-content.gitlab-static.net/bf0bc536a3c6f68cc524927fdcd55e9674aa20f0/68747470733a2f2f6465762d746f2d75706c6f6164732e73332e616d617a6f6e6177732e636f6d2f75706c6f6164732f61727469636c65732f3977366a3438316673793666306e73657a7170392e706e67"></a>
+</p>
+<h3 data-sourcepos="49:1-49:9" dir="auto">
+<a id="user-content-touch" class="anchor" href="#touch" aria-hidden="true"></a>touch</h3>
+<p data-sourcepos="51:1-52:100" dir="auto"><code>touch</code> creates an empty file with the name as an argument and can also take a relative path<br>
+<em>N.B.</em> an error will be thrown unless the directory exists that you are trying to create the file in</p>
+<h3 data-sourcepos="54:1-54:6" dir="auto">
+<a id="user-content-rm" class="anchor" href="#rm" aria-hidden="true"></a>rm</h3>
+<p data-sourcepos="56:1-57:152" dir="auto"><code>rm</code> removes a file by passing the file name or path as an argument, it can also remove a directory by passing the <code>-r</code> flag before specifying the path or directory name but it is usually used to delete single files<br>
+<em>N.B.</em> Be aware of the power of <code>rm -rf /</code> as this will recursively delete every file on your computer although it may need super user priveleges <code>sudo</code></p>
+<p align="center" dir="auto">
+  <a class="no-attachment-icon" href="https://user-content.gitlab-static.net/04ad32356e96a81876a58f171ff92bf7ed1a4644/68747470733a2f2f6465762d746f2d75706c6f6164732e73332e616d617a6f6e6177732e636f6d2f75706c6f6164732f61727469636c65732f653773683068717a3535636463786768396a6d302e706e67" target="_blank" rel="nofollow noreferrer noopener" data-canonical-src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/e7sh0hqz55cdcxgh9jm0.png"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" height="500px" width="300px" data-canonical-src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/e7sh0hqz55cdcxgh9jm0.png" decoding="async" class="lazy" data-src="https://user-content.gitlab-static.net/04ad32356e96a81876a58f171ff92bf7ed1a4644/68747470733a2f2f6465762d746f2d75706c6f6164732e73332e616d617a6f6e6177732e636f6d2f75706c6f6164732f61727469636c65732f653773683068717a3535636463786768396a6d302e706e67"></a>
+</p>
+<h3 data-sourcepos="63:1-63:8" dir="auto">
+<a id="user-content-sudo" class="anchor" href="#sudo" aria-hidden="true"></a>sudo</h3>
+<p data-sourcepos="65:1-65:208" dir="auto"><code>sudo</code> can precede most commands on this list and gives you access to the system as the root user  temporarily, you may have to use root priveleges when installing packages from your distro package repository</p>
+<p data-sourcepos="67:1-67:17" dir="auto"><del>no image here</del></p>
+<h3 data-sourcepos="69:1-69:9" dir="auto">
+<a id="user-content-mkdir" class="anchor" href="#mkdir" aria-hidden="true"></a>mkdir</h3>
+<p data-sourcepos="71:1-71:151" dir="auto"><code>mkdir</code> means make directory and it does exactly that so you can create a directory in the current file or you can pass a relative path to the command.</p>
+<h3 data-sourcepos="73:1-73:9" dir="auto">
+<a id="user-content-rmdir" class="anchor" href="#rmdir" aria-hidden="true"></a>rmdir</h3>
+<p data-sourcepos="75:1-75:171" dir="auto"><code>rmdir</code> is the opposite of mkdir and can only remove empty directories so to remove a directory and its contents we use <code>rm</code> with the <code>-r</code> flag, which stands for recursive</p>
+<p data-sourcepos="77:1-77:110" dir="auto"><a class="no-attachment-icon" href="https://user-content.gitlab-static.net/3f0b047b8638a654c7b45e7a74bcc5b024e4e857/68747470733a2f2f6465762d746f2d75706c6f6164732e73332e616d617a6f6e6177732e636f6d2f75706c6f6164732f61727469636c65732f337176746c6c7a3433626a706570727a6263767a2e706e67" target="_blank" rel="nofollow noreferrer noopener" data-canonical-src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/3qvtllz43bjpeprzbcvz.png"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="mkdir and rmdir commands" data-canonical-src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/3qvtllz43bjpeprzbcvz.png" decoding="async" class="lazy" data-src="https://user-content.gitlab-static.net/3f0b047b8638a654c7b45e7a74bcc5b024e4e857/68747470733a2f2f6465762d746f2d75706c6f6164732e73332e616d617a6f6e6177732e636f6d2f75706c6f6164732f61727469636c65732f337176746c6c7a3433626a706570727a6263767a2e706e67"></a></p>
+<h3 data-sourcepos="79:1-79:6" dir="auto">
+<a id="user-content-cd" class="anchor" href="#cd" aria-hidden="true"></a>cd</h3>
+<p data-sourcepos="81:1-81:223" dir="auto"><code>cd</code> means change directory and allows us to move around changing our current working directory. The most useful commands with <code>cd</code> are <code>cd ..</code> which moves to a higher directory otherwise you can <code>cd</code> into a directory below</p>
+<p data-sourcepos="83:1-83:96" dir="auto"><a class="no-attachment-icon" href="https://user-content.gitlab-static.net/53daf7cab521495a4e924786af7d3a5f5748b9fb/68747470733a2f2f6465762d746f2d75706c6f6164732e73332e616d617a6f6e6177732e636f6d2f75706c6f6164732f61727469636c65732f6d3935776d3073686b70733531766168786478792e706e67" target="_blank" rel="nofollow noreferrer noopener" data-canonical-src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/m95wm0shkps51vahxdxy.png"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="cd command" data-canonical-src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/m95wm0shkps51vahxdxy.png" decoding="async" class="lazy" data-src="https://user-content.gitlab-static.net/53daf7cab521495a4e924786af7d3a5f5748b9fb/68747470733a2f2f6465762d746f2d75706c6f6164732e73332e616d617a6f6e6177732e636f6d2f75706c6f6164732f61727469636c65732f6d3935776d3073686b70733531766168786478792e706e67"></a></p>
+<h3 data-sourcepos="85:1-85:6" dir="auto">
+<a id="user-content-cp" class="anchor" href="#cp" aria-hidden="true"></a>cp</h3>
+<p data-sourcepos="87:1-87:204" dir="auto">This is the terminal version of copy and all you have to do is pass the source and destination file to the program, i.e. <code>cp &lt;source&gt; &lt;destination&gt;</code>, this will copy the source file to the destination file</p>
+<p data-sourcepos="89:1-89:96" dir="auto"><a class="no-attachment-icon" href="https://user-content.gitlab-static.net/464544f788194ee180debe2a5e9e6d12630362d0/68747470733a2f2f6465762d746f2d75706c6f6164732e73332e616d617a6f6e6177732e636f6d2f75706c6f6164732f61727469636c65732f776b7a3074326564363031766c6f30796e616e692e706e67" target="_blank" rel="nofollow noreferrer noopener" data-canonical-src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/wkz0t2ed601vlo0ynani.png"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="cp command" data-canonical-src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/wkz0t2ed601vlo0ynani.png" decoding="async" class="lazy" data-src="https://user-content.gitlab-static.net/464544f788194ee180debe2a5e9e6d12630362d0/68747470733a2f2f6465762d746f2d75706c6f6164732e73332e616d617a6f6e6177732e636f6d2f75706c6f6164732f61727469636c65732f776b7a3074326564363031766c6f30796e616e692e706e67"></a></p>
+<h3 data-sourcepos="91:1-91:6" dir="auto">
+<a id="user-content-mv" class="anchor" href="#mv" aria-hidden="true"></a>mv</h3>
+<p data-sourcepos="93:1-93:180" dir="auto"><code>mv</code> is similar to <code>cp</code> but it moves the source file to the destination location, it could also be considered a renaming tool because renaming is equivalent to moving to a new name</p>
+<p data-sourcepos="95:1-95:96" dir="auto"><a class="no-attachment-icon" href="https://user-content.gitlab-static.net/993ebaa25561d01f8607704d1d9599bb1fa24c4c/68747470733a2f2f6465762d746f2d75706c6f6164732e73332e616d617a6f6e6177732e636f6d2f75706c6f6164732f61727469636c65732f79666b6a79317a65357a6d35396e7439343473762e706e67" target="_blank" rel="nofollow noreferrer noopener" data-canonical-src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/yfkjy1ze5zm59nt944sv.png"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="mv command" data-canonical-src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/yfkjy1ze5zm59nt944sv.png" decoding="async" class="lazy" data-src="https://user-content.gitlab-static.net/993ebaa25561d01f8607704d1d9599bb1fa24c4c/68747470733a2f2f6465762d746f2d75706c6f6164732e73332e616d617a6f6e6177732e636f6d2f75706c6f6164732f61727469636c65732f79666b6a79317a65357a6d35396e7439343473762e706e67"></a></p>
+<h2 data-sourcepos="97:1-97:13" dir="auto">
+<a id="user-content-conclusion" class="anchor" href="#conclusion" aria-hidden="true"></a>Conclusion</h2>
+<p data-sourcepos="99:1-99:299" dir="auto">These are some basic shell commands but with them you will be able to move around your terminal as well as start to build on top of them, the most important thing to remember is that there are <code>man</code> pages available with extensive documentation as well as the help flag which will sumarize everything</p>
+<p data-sourcepos="101:1-101:58" dir="auto">Thanks for reading and good luck in your future endeavours</p>
+</Blog>

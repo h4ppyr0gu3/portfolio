@@ -18,14 +18,12 @@ class AstroFile
     beginning_of_file(metadata) + html + end_of_file
   end
 
-  def beginning_of_file(metadata)
-    "---
-    import Blog from '../../layouts/Blog.astro';
-    ---
-
-    <Blog title='#{metadata[:title]}'>
-    "
-  end
+  def beginning_of_file(metadata) # rubocop:disable
+    "---\n" +
+      "import Blog from '../../layouts/Blog.astro';\n" +
+      "---\n\n" +
+      "<Blog title='#{metadata[:title]}'>\n"
+  end # rubocop:enable
 
   def end_of_file
     "\n</Blog>"

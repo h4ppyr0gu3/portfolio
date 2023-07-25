@@ -23,7 +23,11 @@ const homeClasses = url.pathname.split("/")[1] === "" ? activeClasses : inactive
     setTheme()
     </script>
     <div class="mb-4 border-b border-gray-200 dark:border-gray-700 flex justify-between dark:text-gray-50 dark:bg-neutral-900">
-      <div class="flex w-10"></div>
+  <div class="flex w-10">
+    <a href="/" class="sm:block hidden">
+      <h1 class="text-2xl font-bold mt-2 ml-2"> h4ppyr0gu3 </h1>
+    </a>
+  </div>
       <ul class="flex flex-wrap -mb-px text-sm font-medium text-center justify-center dark:text-gray-50" id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
         <li class="mx-2 list-none" role="presentation">
           <a href="/" class:list={[homeClasses, "font-semibold text-gray-500 no-underline"]} id="home">Home</a>

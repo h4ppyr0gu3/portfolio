@@ -24,7 +24,7 @@ npm run build
 
 ### TIL
 To create a TIL run `./i_learnt` followed by the \<title\> of the post
-This will create an entry in lib/til/\<title\>.md
+This will create an entry in `lib/til/<title>.md`
 
 ### Blog
 **Not implemented Yet**
@@ -32,7 +32,7 @@ but will probably be `./write`
 
 ### Generate page
 
-Run `./generate`, this will convert all markdown files from lib/\*\*/\* to `.astro` files in the pages directory, it also generates metadata with the help of OpenAI API
+Run `./generate`, this will convert all markdown files from `lib/**/*` to `.astro` files in the pages directory, it also generates metadata with the help of OpenAI API
 
 ## Secrets
 

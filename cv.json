@@ -1,0 +1,71 @@
+{
+  "experience": [
+    {
+      "company": "Jalappeno",
+      "title": "Engineering Manager",
+      "location": "Warsaw, Poland/Remote",
+      "start": "April 2023",
+      "end": "Present",
+      "description": "Managing teams and organizational tasks",
+      "skills": ["Ruby", "Rails", "REST", "Postgres", "Redis"]
+    },
+    {
+      "company": "Monterail",
+      "title": "Ruby on Rails Developer",
+      "location": "Wroclaw, Poland",
+      "start": "October 2021",
+      "end": "Present",
+      "description": "Working on a legacy Ruby on Rails application which has been being worked on for 12 years, it has a variety of technologies inside, including: Graphql, Kubernetes, AWS-S3, Sidekiq, Redis, Postgres, Seperate Read-write databases and Datadog, Sentry for monitoring",
+      "skills": ["Ruby", "Rails", "Graphql", "Postgres", "Redis", "Kubernetes", "AWS"]
+    },
+    {
+      "company": "African Connection Logistics",
+      "title": "Loading Supervisor",
+      "location": "Banket, Zimbabwe",
+      "start": "December 2019",
+      "end": "September 2019",
+      "description": "Supervising the loading of chrome onto trucks, handling both lumpy and fines",
+      "skills": ["communication", "teamwork"]
+    }
+  ],
+  "education": [
+    {
+      "company": "Peterhouse Boys School",
+      "title": "CIE A Levels",
+      "location": "Marondera, Zimbabwe",
+      "start": "2018",
+      "end": "2019",
+      "description": "Maths, Physics and Chemistry.",
+      "skills": ["Maths: A", "Physics: A", "Chemistry: A"]
+    },
+    {
+      "company": "Peterhouse Boys School",
+      "title": "CIE AS Levels",
+      "location": "Marondera, Zimbabwe",
+      "start": "2017",
+      "end": "2018",
+      "description": "Maths, Physics and Chemistry.",
+      "skills": ["Maths: A", "Physics: A", "Chemistry: A", "English Language: E"]
+    },
+    {
+      "company": "Peterhouse Boys School",
+      "title": "IGCSE O Levels",
+      "location": "Marondera, Zimbabwe",
+      "start": "2013",
+      "end": "2017",
+      "description": "Maths, Physics and Chemistry.",
+      "skills": ["Maths: A", "Physics: A", "Chemistry: A", "English Language: A", "English Literature: C", "Design & Technology: A*", "Biology: A", "Geography: A", "French: A"]
+    }
+  ],
+  "skills": [
+    "Ruby", "Rails", "Graphql", "AWS", "Kubernetes", "Docker", "Postgres", "Redis", "Sentry", "Datadog", "Git", "Github", "Jira", "Agile", "Elixir", "Crystal", "OOP"
+  ],
+  "projects": [
+    {
+      "href": "https://github.com/h4ppyr0gu3/portfolio",
+      "title": "Portfolio",
+      "about": "A portfolio website built with Astro and TailwindCSS. With Ruby for scripting, backend free and json files for data storage, built with Svelte, Solidjs, Astro and Vuejs"
+    }
+  ]
+
+}

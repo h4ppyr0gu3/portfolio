@@ -8,6 +8,7 @@ import CV from '../../cv.json';
 const experience = CV.experience;
 const education = CV.education;
 const skills = CV.skills;
+const failedEducation = CV.failedEducation;
 const projects = {};
 ---
 
@@ -18,17 +19,27 @@ const projects = {};
       <p class="text-lg text-gray-600">Ruby on Rails | Web Developer</p>
     </header>
     <Title title="About Me">
-        <p class="text-lg">Welcome to my website where I discuss topics I am interested in and keep all my thoughts, Tech related or not, with an emphasis on web development and free and open source software.<br>
-            I am a passionate web developer with a love for creating user-friendly and visually appealing websites. My journey began with a deep interest in technology and coding, which eventually led me to pursue a degree in Computer Science.
-            I have hands-on experience with front-end technologies like HTML, CSS, JavaScript, and Vue.js. I believe in continuously learning and improving my skills to stay updated with the latest trends in web development.
-            When I'm not coding, you can find me writing tech-related blogs and sharing my insights with the community. I enjoy writing about my learnings, challenges, and tips that can help fellow developers on their journey.
+      <div  class="text-lg">
+        <p>
+          Welcome to my website where I discuss topics I am interested in and keep all my thoughts, Tech related or not, with an emphasis on web development and free and open source software.
         </p>
+        <p>
+          I am a passionate web developer with a love for creating user-friendly and visually appealing websites. My journey began with a deep interest in technology and coding, which eventually led me to pursue a degree in Computer Science.
+        </p>
+        <p>
+          I have hands-on experience with front-end technologies like HTML, CSS, JavaScript, and Vue.js. I believe in continuously learning and improving my skills to stay updated with the latest trends in web development.
+        </p>
+        <p>
+          When I'm not coding, you can find me writing tech-related blogs and sharing my insights with the community. I enjoy writing about my learnings, challenges, and tips that can help fellow developers on their journey.
+        </p>
+      </div>
     </Title>
     <Title title="Skills Summary">
       <Skills skills={skills}/>
     </Title>
     <Experience experience={experience} title="Experience"/>
     <Experience experience={education} title="Education"/>
+    <Experience experience={failedEducation} title="Failed Education"/>
     <Title title="Get in Touch">
       <p>Phone: 516809024</p>
       <p>Email: <a href="mailto:rogersdpdr@gmail.com">rogersdpdr@gmail.com</a></p>

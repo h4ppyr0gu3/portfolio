@@ -10,7 +10,7 @@ tags:
 - group by
 - having
 published: false
-updated: 11/07/2023
+updated: 28/07/2023
 topics: Rails
 ---
 
@@ -50,3 +50,14 @@ We could just write the query as:
 User.group(:user_name).having('count(*) > 1')
 ```
 but this raises PG::GroupingError
+
+**Edit**
+
+an improvement would be to use `array_agg` method to retrieve ids
+
+```ruby
+duplicated_user_ids = 
+    User.group(:first_name)
+        .having('count(id) > 1')
+        .pluck('array_agg(id)')
+```

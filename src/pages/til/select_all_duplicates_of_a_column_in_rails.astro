@@ -1,9 +1,9 @@
 ---
-    import Blog from '../../layouts/Blog.astro';
-    ---
+import Blog from '../../layouts/Blog.astro';
+---
 
-    <Blog title='Select all duplicates of a column in Rails'>
-    <h1 data-sourcepos="2:1-2:44" dir="auto">
+<Blog title='Select all duplicates of a column in Rails'>
+<h1 data-sourcepos="2:1-2:44" dir="auto">
 <a id="user-content-select-all-duplicates-of-a-column-in-rails" class="anchor" href="#select-all-duplicates-of-a-column-in-rails" aria-hidden="true"></a>Select all duplicates of a column in Rails</h1>
 <p data-sourcepos="4:1-5:102" dir="auto">Let's say we have a table <code>users</code> and we would like to find all places where <code>first_name</code> is the same:
 we can always find all users where <code>user_name</code> is <code>h4ppyr0gu3</code> but what about all possible duplicates:</p>
@@ -38,4 +38,13 @@ Now that we have all duplicated names we can map over them and get the ids:</p>
 <copy-code></copy-code>
 </div>
 <p data-sourcepos="37:1-37:33" dir="auto">but this raises PG::GroupingError</p>
+<p data-sourcepos="39:1-39:8" dir="auto"><strong>Edit</strong></p>
+<p data-sourcepos="41:1-41:65" dir="auto">an improvement would be to use <code>array_agg</code> method to retrieve ids</p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="43:1-48:3" data-canonical-lang="ruby" class="code highlight js-syntax-highlight language-ruby" lang="ruby" v-pre="true"><code><span id="LC1" class="line" lang="ruby"><span class="n">duplicated_user_ids</span> <span class="o">=</span> </span>
+<span id="LC2" class="line" lang="ruby">    <span class="no">User</span><span class="p">.</span><span class="nf">group</span><span class="p">(</span><span class="ss">:first_name</span><span class="p">)</span></span>
+<span id="LC3" class="line" lang="ruby">        <span class="p">.</span><span class="nf">having</span><span class="p">(</span><span class="s1">'count(id) &gt; 1'</span><span class="p">)</span></span>
+<span id="LC4" class="line" lang="ruby">        <span class="p">.</span><span class="nf">pluck</span><span class="p">(</span><span class="s1">'array_agg(id)'</span><span class="p">)</span></span></code></pre>
+<copy-code></copy-code>
+</div>
 </Blog>

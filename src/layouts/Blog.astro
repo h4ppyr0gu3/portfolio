@@ -2,10 +2,10 @@
 import '../markdown.css';
 import Layout from './Layout.astro';
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
 ---
 
-<Layout title={title}>
+<Layout title={title, description}>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css" integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous">
 
   <!-- The loading of KaTeX is deferred to speed up page rendering -->

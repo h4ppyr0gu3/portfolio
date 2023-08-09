@@ -2,16 +2,24 @@
 import Default from '../layouts/Default.astro';
 import Title from '../components/cv/title.jsx';
 import Elements from '../components/cv/elements.jsx';
+import Preview from '../components/cv/preview.jsx';
+import Export from '../components/cv/export.jsx';
 ---
 
 <Default title="CV Generator | h4ppyr0gu3" description="Custom CV Generator">
   <div class="flex grid grid-cols-2 sm: grid-cols-1">
     <div class="flex-1">
       <Title title="Preview"/>
+      <Preview client:load/>
     </div>
     <div class="flex-1">
-      <Title title="Elements"/>
-      <Elements client:load/>
+      <div class="grid grid-cols-2">
+        <div class="flex">
+          <Title title="Elements"/>
+        </div>
+        <Export client:load/>
+      </div>
+      <Elements client:only="solid-js"/>
     </div>
   </div>
 </Default>

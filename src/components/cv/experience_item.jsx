@@ -4,14 +4,16 @@ import { Show } from "solid-js";
 export default function ExperienceItem(props) {
   let xp = props.experience
   let skillName;
-  if (xp.skillName !== undefined) {
-    console.log(skillName);
-    skillName = xp.skillName
-  } else {
-    if (props.parent == "Experience") {
-      skillName = "Skills"
-    } else if (props.parent == "Education") {
-      skillName = "Grades"
+  if (xp !== undefined) {
+    if (xp.skillName !== undefined) {
+      console.log(skillName);
+      skillName = xp.skillName
+    } else {
+      if (props.parent == "Experience") {
+        skillName = "Skills"
+      } else if (props.parent == "Education") {
+        skillName = "Grades"
+      }
     }
   }
 

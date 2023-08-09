@@ -34,7 +34,7 @@ export default function Elements(props) {
     let update = cvElems();
     let idx = update[key].findIndex(i => i.title == obj.title)
     update[key][idx]["selected"] = !update[key][idx].selected;
-    setCvElems(update)
+    setCvElems(cvElems()[key][idx]["selected"] = update[key][idx].selected);
   }
 
   return (

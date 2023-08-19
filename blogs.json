@@ -80,6 +80,20 @@
       "published": true,
       "updated": "23/06/2023",
       "topics": "Tailwind"
+    },
+    {
+      "href": "/til/console_debugging_in_rails",
+      "title": "Console Debugging in Rails",
+      "excerpt": "Console debugging in Rails: Finding methods and their implementation.",
+      "date": "19/08/2023",
+      "tags": [
+        "console debugging",
+        "Rails",
+        "method search"
+      ],
+      "published": true,
+      "updated": "19/08/2023",
+      "topics": ""
     }
   ],
   "blog": [

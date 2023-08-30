@@ -4,9 +4,11 @@ title: Console Debugging in Rails
 excerpt: 'Console debugging in Rails: Finding methods and their implementation.'
 date: 19/08/2023
 tags:
-- console debugging
 - Rails
-- method search
+- debugging
+- methods
+- location
+- implementation
 published: true
 updated: 19/08/2023
 topics: ''

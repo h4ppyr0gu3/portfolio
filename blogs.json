@@ -87,12 +87,30 @@
       "excerpt": "Console debugging in Rails: Finding methods and their implementation.",
       "date": "19/08/2023",
       "tags": [
-        "console debugging",
         "Rails",
-        "method search"
+        "debugging",
+        "methods",
+        "location",
+        "implementation"
       ],
       "published": true,
       "updated": "19/08/2023",
+      "topics": ""
+    },
+    {
+      "href": "/til/reset_file_to_main_branch",
+      "title": "Reset File to Main Branch",
+      "excerpt": "Reset file to main branch. Use git command: git checkout main -- <file-name>",
+      "date": "30/08/2023",
+      "tags": [
+        "Reset",
+        "File",
+        "Main branch",
+        "Git",
+        "Command"
+      ],
+      "published": true,
+      "updated": "30/08/2023",
       "topics": ""
     }
   ],

@@ -11,7 +11,7 @@ tags:
 - implementation
 published: true
 updated: 19/08/2023
-topics: ''
+topics: Rails
 ---
 
 # Console Debugging in Rails

@@ -11,7 +11,7 @@ tags:
 - Command
 published: true
 updated: 30/08/2023
-topics: ''
+topics: git
 ---
 
 # Reset File to Main Branch

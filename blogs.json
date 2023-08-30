@@ -95,7 +95,7 @@
       ],
       "published": true,
       "updated": "19/08/2023",
-      "topics": ""
+      "topics": "Rails"
     },
     {
       "href": "/til/reset_file_to_main_branch",
@@ -111,7 +111,7 @@
       ],
       "published": true,
       "updated": "30/08/2023",
-      "topics": ""
+      "topics": "git"
     }
   ],
   "blog": [

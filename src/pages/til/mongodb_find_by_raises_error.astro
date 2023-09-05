@@ -1,0 +1,10 @@
+---
+import Blog from '../../layouts/Blog.astro';
+---
+
+<Blog title='MongoDB find_by raises error'>
+<h1 data-sourcepos="2:1-2:32" dir="auto">
+<a id="user-content-mongodb-find_by-raises-error" class="anchor" href="#mongodb-find_by-raises-error" aria-hidden="true"></a>MongoDB <code>find_by</code> raises error</h1>
+<p data-sourcepos="4:1-4:89" dir="auto">when using <code>Record.find_by(...)</code> with rails it raises <code>Mongoid::Errors::DocumentNotFound</code></p>
+<p data-sourcepos="6:1-6:149" dir="auto">where as with postgres using <code>Record.find_by(...)</code> would just return <code>nil</code>, this means that additional error handling has to be used when using Mongo</p>
+</Blog>

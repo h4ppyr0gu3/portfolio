@@ -1,0 +1,31 @@
+{
+  "failedEducation": [
+    {
+      "company": "Warsaw University of Technology",
+      "title": "BSc Aerospace Engineering",
+      "location": "Warsaw, Poland",
+      "start": "October 2020",
+      "end": "Failed",
+      "description": "During this time we had the pandemic and so I was delayed and ended up arriving in Poland on the 5th of December, I started with online lessons, but had to miss quite a few because of the fact that I was trying to organize my visa, which I had to do in South Africa. Once i reached Poland, I met my roommate who taught me Ruby on Rails from a book by Michael Hartl, after which I dedicated little time to studies and more to learning this skill, at this point I had accepted failure, so had to go to my next Failure to retain student status in Poland",
+      "skills": ["Only Passed Philosophy"]
+    },
+    {
+      "company": "Vistula University",
+      "title": "BSc Computer Science",
+      "location": "Warsaw, Poland",
+      "start": "February 2021",
+      "end": "Failed",
+      "description": "I was really enjoying learning Ruby on Rails and was constantly working on this, attending any of the lectures from University seemed counter productive so I continued to pursue my passion project in Rails and continued to learn more and more about computers API's and databases.",
+      "skills": ["Failed all subjects"]
+    },
+    {
+      "company": "Warsaw University of Technology",
+      "title": "BSc Computer Science",
+      "location": "Warsaw, Poland",
+      "start": "October 2021",
+      "end": "Failed",
+      "description": "I started a job at the same time as University and ended up learning a lot more from my job than from University, I also found out how scummy university is, it seems that everyone is just trying to finish and does whatever it takes, I was constantly speaking to my family telling them 'Now I have a salary I can just pay someone to sit my exams' because I didn't care to learn about all the extra things around computers, I just wanted to run my program and understand just the computers themselves. In response to my statement, I was reminded that that is not how I was raised and so I simply abandoned University and immediately went to fulltime work",
+      "skills": ["Passed the first semester then abandoned the second"]
+    }
+  ]
+}

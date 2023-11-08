@@ -1,0 +1,13 @@
+---
+import Blog from '../../layouts/Blog.astro';
+---
+
+<Blog title='How to get a count of all rows'>
+<h1 data-sourcepos="2:1-2:32" dir="auto">
+<a id="user-content-how-to-get-a-count-of-all-rows" class="anchor" href="#how-to-get-a-count-of-all-rows" aria-hidden="true"></a>How to get a count of all rows</h1>
+<p data-sourcepos="4:1-4:140" dir="auto">In rails when using heroku plans you sometimes run into limits and to find out which is the real memory hog you can run the following query:</p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="5:1-7:3" data-canonical-lang="ruby" class="code highlight js-syntax-highlight language-ruby" lang="ruby" v-pre="true"><code><span id="LC1" class="line" lang="ruby"><span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="p">.</span><span class="nf">connection</span><span class="p">.</span><span class="nf">tables</span><span class="p">.</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="p">{</span><span class="n">t</span><span class="o">=&gt;</span>  <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span><span class="p">.</span><span class="nf">connection</span><span class="p">.</span><span class="nf">execute</span><span class="p">(</span><span class="s2">"select count(*) from </span><span class="si">#{</span><span class="n">t</span><span class="si">}</span><span class="s2">"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]}</span> <span class="p">}</span></span></code></pre>
+<copy-code></copy-code>
+</div>
+</Blog>

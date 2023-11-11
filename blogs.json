@@ -161,6 +161,22 @@
       "published": true,
       "updated": "29/10/2023",
       "topics": "Rails"
+    },
+    {
+      "href": "/til/you_can_retrieve_the_result_of_previous_command_with__",
+      "title": "You can retrieve the result of previous command with _",
+      "excerpt": "Retrieve the result of previous command with _",
+      "date": "11/11/2023",
+      "tags": [
+        "ruby",
+        "IRB",
+        "sessions",
+        "previous command",
+        "variable"
+      ],
+      "published": true,
+      "updated": "11/11/2023",
+      "topics": "Ruby"
     }
   ],
   "blog": [

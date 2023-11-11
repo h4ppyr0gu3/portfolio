@@ -1,0 +1,21 @@
+---
+import Blog from '../../layouts/Blog.astro';
+---
+
+<Blog title='You can retrieve the result of previous command with _'>
+<h1 data-sourcepos="2:1-2:56" dir="auto">
+<a id="user-content-you-can-retrieve-the-result-of-previous-command-with-_" class="anchor" href="#you-can-retrieve-the-result-of-previous-command-with-_" aria-hidden="true"></a>You can retrieve the result of previous command with _</h1>
+<p data-sourcepos="4:1-4:80" dir="auto">In Ruby IRB sessions, you can retrieve the result of previous command with <code>__</code>.</p>
+<p data-sourcepos="6:1-6:20" dir="auto">Here is an example:</p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="7:1-15:3" data-canonical-lang="ruby" class="code highlight js-syntax-highlight language-ruby" lang="ruby" v-pre="true"><code><span id="LC1" class="line" lang="ruby"><span class="n">irb</span><span class="p">(</span><span class="n">main</span><span class="p">):</span><span class="mo">001</span><span class="o">&gt;</span> <span class="p">{</span><span class="ss">test: </span><span class="s2">"testing"</span><span class="p">}</span></span>
+<span id="LC2" class="line" lang="ruby"><span class="o">=&gt;</span> <span class="p">{</span><span class="ss">:test</span><span class="o">=&gt;</span><span class="s2">"testing"</span><span class="p">}</span></span>
+<span id="LC3" class="line" lang="ruby"><span class="n">irb</span><span class="p">(</span><span class="n">main</span><span class="p">):</span><span class="mo">002</span><span class="o">&gt;</span> <span class="n">test_hash</span> <span class="o">=</span> <span class="n">_</span></span>
+<span id="LC4" class="line" lang="ruby"><span class="o">=&gt;</span> <span class="p">{</span><span class="ss">:test</span><span class="o">=&gt;</span><span class="s2">"testing"</span><span class="p">}</span></span>
+<span id="LC5" class="line" lang="ruby"><span class="n">irb</span><span class="p">(</span><span class="n">main</span><span class="p">):</span><span class="mo">003</span><span class="o">&gt;</span> <span class="n">test_hash</span></span>
+<span id="LC6" class="line" lang="ruby"><span class="o">=&gt;</span> <span class="p">{</span><span class="ss">:test</span><span class="o">=&gt;</span><span class="s2">"testing"</span><span class="p">}</span></span>
+<span id="LC7" class="line" lang="ruby"><span class="n">irb</span><span class="p">(</span><span class="n">main</span><span class="p">):</span><span class="mo">004</span><span class="o">&gt;</span></span></code></pre>
+<copy-code></copy-code>
+</div>
+<p data-sourcepos="17:1-17:157" dir="auto">As you can see, if you forget to equate the previous result to a variable, you will still be able to retrieve it as opposed to rerunning an expensive command</p>
+</Blog>

@@ -1,0 +1,24 @@
+---
+import Blog from '../../layouts/Blog.astro';
+---
+
+<Blog title='Inline Bundling with Ruby'>
+<h1 data-sourcepos="2:1-2:27" dir="auto">
+<a id="user-content-inline-bundling-with-ruby" class="anchor" href="#inline-bundling-with-ruby" aria-hidden="true"></a>Inline Bundling with Ruby</h1>
+<p data-sourcepos="4:1-4:231" dir="auto">Ruby provides an option to have a script that executes and requires dependencies inline and bundle it on runtime, This is pretty impressive and allows for very complex scripts to be written and only require dependencies on run time</p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="6:1-19:3" data-canonical-lang="ruby" class="code highlight js-syntax-highlight language-ruby" lang="ruby" v-pre="true"><code><span id="LC1" class="line" lang="ruby"><span class="c1">#! /usr/bin/env ruby</span></span>
+<span id="LC2" class="line" lang="ruby"><span class="c1"># frozen_string_literal: true</span></span>
+<span id="LC3" class="line" lang="ruby"></span>
+<span id="LC4" class="line" lang="ruby"><span class="nb">require</span> <span class="s1">'bundler/inline'</span></span>
+<span id="LC5" class="line" lang="ruby"></span>
+<span id="LC6" class="line" lang="ruby"><span class="n">gemfile</span> <span class="kp">true</span> <span class="k">do</span></span>
+<span id="LC7" class="line" lang="ruby">  <span class="n">source</span> <span class="s1">'https://rubygems.org'</span></span>
+<span id="LC8" class="line" lang="ruby"></span>
+<span id="LC9" class="line" lang="ruby">  <span class="n">gem</span> <span class="s1">'debug'</span><span class="p">,</span> <span class="s1">'~&gt; 1.4'</span></span>
+<span id="LC10" class="line" lang="ruby"><span class="k">end</span></span>
+<span id="LC11" class="line" lang="ruby"></span>
+<span id="LC12" class="line" lang="ruby"><span class="c1"># rest of code here</span></span></code></pre>
+<copy-code></copy-code>
+</div>
+</Blog>

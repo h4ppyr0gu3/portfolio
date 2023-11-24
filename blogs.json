@@ -177,6 +177,22 @@
       "published": true,
       "updated": "11/11/2023",
       "topics": "Ruby"
+    },
+    {
+      "href": "/til/inline_bundling_with_ruby",
+      "title": "Inline Bundling with Ruby",
+      "excerpt": "Ruby allows inline bundling, run time dependencies, impressive complex scripts",
+      "date": "24/06/2023",
+      "tags": [
+        "Ruby",
+        "script",
+        "dependencies",
+        "inline bundling",
+        "run time"
+      ],
+      "published": true,
+      "updated": "24/06/2023",
+      "topics": "Ruby"
     }
   ],
   "blog": [

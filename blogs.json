@@ -193,6 +193,21 @@
       "published": true,
       "updated": "24/06/2023",
       "topics": "Ruby"
+    },
+    {
+      "href": "/til/bundle_add",
+      "title": "Bundle add",
+      "excerpt": "Use bundle add to install gems and write their version number to the Gemfile during installation.",
+      "date": "24/11/2023",
+      "tags": [
+        "bundle add",
+        "gem installation",
+        "Gemfile",
+        "version number"
+      ],
+      "published": true,
+      "updated": "24/11/2023",
+      "topics": ""
     }
   ],
   "blog": [

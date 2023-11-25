@@ -5,13 +5,13 @@ excerpt: Use bundle add to install gems and write their version number to the Ge
   during installation.
 date: 24/11/2023
 tags:
+- gems
+- gemfile
 - bundle add
-- gem installation
-- Gemfile
-- version number
+- installation process
 published: true
-updated: 24/11/2023
-topics: ''
+updated: 25/11/2023
+topics: Ruby
 ---
 
 # Bundle add

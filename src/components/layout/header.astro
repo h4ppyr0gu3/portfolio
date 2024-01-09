@@ -1,8 +1,8 @@
 ---
 import ThemeToggle from "./theme_toggle.svelte";
 
-const activeClasses = ["inline-block", "p-4", "border-b-2", "rounded-t-lg", "dark:text-gray-200"]
-const inactiveClasses = ["inline-block", "p-4", "border-b-2", "border-transparent", "rounded-t-lg", "hover:text-gray-600", "hover:border-gray-300", "dark:hover:text-gray-300", "dark:bg-neutral-700", "dark:text-gray-200"]
+const activeClasses = ["inline-block", "p-4", "border-b-2", "dark:text-gray-200"]
+const inactiveClasses = ["inline-block", "p-4", "border-b-2", "border-gray-700", "hover:text-gray-600", "hover:border-gray-500", "dark:hover:text-gray-400", "dark:text-gray-200"]
 const url = Astro.url
 const tilClasses = url.pathname.split("/")[1] === "til" ? activeClasses : inactiveClasses
 const blogClasses = url.pathname.split("/")[1] === "blog" ? activeClasses : inactiveClasses

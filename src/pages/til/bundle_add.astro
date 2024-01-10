@@ -1,26 +1,25 @@
 ---
 import Blog from '../../layouts/Blog.astro';
 ---
-
-<Blog title='Bundle add'>
+<Blog title='Bundle add' date='24/11/2023' updated='25/11/2023'>
 <h1 data-sourcepos="2:1-2:12" dir="auto">
 <a id="user-content-bundle-add" class="anchor" href="#bundle-add" aria-hidden="true"></a>Bundle add</h1>
 <p data-sourcepos="4:1-5:14" dir="auto">When adding gems to a gemfile for a private project we will often just type the gem name and then bundle install, this is not the best way,
 use bundle add</p>
 <div class="gl-relative markdown-code-block js-markdown-code">
-<pre data-sourcepos="7:1-12:3" data-canonical-lang="ruby" class="code highlight js-syntax-highlight language-ruby" lang="ruby" v-pre="true"><code><span id="LC1" class="line" lang="ruby"><span class="c1"># Gemfile</span></span>
+<pre data-sourcepos="7:1-12:3" data-canonical-lang="ruby" class="code highlight js-syntax-highlight language-ruby" lang="ruby" v-pre="true"><code is:raw><span id="LC1" class="line" lang="ruby"><span class="c1"># Gemfile</span></span>
 <span id="LC2" class="line" lang="ruby"><span class="n">source</span> <span class="s2">"https://rubygems.org"</span></span>
 <span id="LC3" class="line" lang="ruby"></span>
 <span id="LC4" class="line" lang="ruby"><span class="n">gem</span> <span class="s2">"sinatra"</span></span></code></pre>
 <copy-code></copy-code>
 </div>
 <div class="gl-relative markdown-code-block js-markdown-code">
-<pre data-sourcepos="14:1-16:3" data-canonical-lang="sh" class="code highlight js-syntax-highlight language-shell" lang="shell" v-pre="true"><code><span id="LC1" class="line" lang="shell">bundle <span class="nb">install</span></span></code></pre>
+<pre data-sourcepos="14:1-16:3" data-canonical-lang="sh" class="code highlight js-syntax-highlight language-shell" lang="shell" v-pre="true"><code is:raw><span id="LC1" class="line" lang="shell">bundle <span class="nb">install</span></span></code></pre>
 <copy-code></copy-code>
 </div>
-<p data-sourcepos="18:1-18:188" dir="auto">bundle add <code>&lt;gem_name&gt;</code> will install the gem as well as write the version number to the Gemfile this can save time locking gem versions manually by doing it during the installation process</p>
+<p data-sourcepos="18:1-18:188" dir="auto">bundle add <code is:raw>&lt;gem_name&gt;</code> will install the gem as well as write the version number to the Gemfile this can save time locking gem versions manually by doing it during the installation process</p>
 <div class="gl-relative markdown-code-block js-markdown-code">
-<pre data-sourcepos="20:1-25:3" data-canonical-lang="ruby" class="code highlight js-syntax-highlight language-ruby" lang="ruby" v-pre="true"><code><span id="LC1" class="line" lang="ruby"><span class="c1"># Gemfile</span></span>
+<pre data-sourcepos="20:1-25:3" data-canonical-lang="ruby" class="code highlight js-syntax-highlight language-ruby" lang="ruby" v-pre="true"><code is:raw><span id="LC1" class="line" lang="ruby"><span class="c1"># Gemfile</span></span>
 <span id="LC2" class="line" lang="ruby"><span class="n">source</span> <span class="s2">"https://rubygems.org"</span></span>
 <span id="LC3" class="line" lang="ruby"></span>
 <span id="LC4" class="line" lang="ruby"><span class="n">gem</span> <span class="s2">"sinatra"</span><span class="p">,</span> <span class="s2">"~&gt; 3.1"</span></span></code></pre>

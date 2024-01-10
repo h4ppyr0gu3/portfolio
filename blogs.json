@@ -200,10 +200,15 @@
       "excerpt": "Use bundle add to install gems and write their version number to the Gemfile during installation.",
       "date": "24/11/2023",
       "tags": [
-        "gems",
-        "gemfile",
-        "bundle add",
-        "installation process"
+        "Tags:",
+        "bundle",
+        "add,",
+        "gemfile,",
+        "gem",
+        "installation,",
+        "version",
+        "locking,",
+        "efficiency"
       ],
       "published": true,
       "updated": "25/11/2023",
@@ -240,7 +245,7 @@
         "scientific research"
       ],
       "published": false,
-      "updated": "23/07/2023",
+      "updated": "24/07/2023",
       "topics": ""
     },
     {

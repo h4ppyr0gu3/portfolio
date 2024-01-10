@@ -1,10 +1,9 @@
 ---
 import Blog from '../../layouts/Blog.astro';
 ---
-
-<Blog title='Log ActiveRecord Queries to STDOUT'>
+<Blog title='Log ActiveRecord Queries to STDOUT' date='04/09/2023' updated='04/09/2023'>
 <h1 data-sourcepos="2:1-2:36" dir="auto">
 <a id="user-content-log-activerecord-queries-to-stdout" class="anchor" href="#log-activerecord-queries-to-stdout" aria-hidden="true"></a>Log ActiveRecord Queries to STDOUT</h1>
 <p data-sourcepos="4:1-4:73" dir="auto">run the following in your console to log the raw sql queries generated:</p>
-<p data-sourcepos="6:1-6:48" dir="auto"><code>ActiveRecord::Base.logger = Logger.new(STDOUT)</code></p>
+<p data-sourcepos="6:1-6:48" dir="auto"><code is:raw>ActiveRecord::Base.logger = Logger.new(STDOUT)</code></p>
 </Blog>

@@ -1,13 +1,12 @@
 ---
 import Blog from '../../layouts/Blog.astro';
 ---
-
-<Blog title='Console Debugging in Rails'>
+<Blog title='Console Debugging in Rails' date='19/08/2023' updated='19/08/2023'>
 <h1 data-sourcepos="2:1-2:28" dir="auto">
 <a id="user-content-console-debugging-in-rails" class="anchor" href="#console-debugging-in-rails" aria-hidden="true"></a>Console Debugging in Rails</h1>
 <p data-sourcepos="4:1-4:80" dir="auto">if you don't know where a method is defined but you know the class you can type</p>
 <div class="gl-relative markdown-code-block js-markdown-code">
-<pre data-sourcepos="6:1-12:3" data-canonical-lang="ruby" class="code highlight js-syntax-highlight language-ruby" lang="ruby" v-pre="true"><code><span id="LC1" class="line" lang="ruby"><span class="no">ClassName</span><span class="p">.</span><span class="nf">method</span><span class="p">(</span><span class="ss">:method_name</span><span class="p">).</span><span class="nf">source</span></span>
+<pre data-sourcepos="6:1-12:3" data-canonical-lang="ruby" class="code highlight js-syntax-highlight language-ruby" lang="ruby" v-pre="true"><code is:raw><span id="LC1" class="line" lang="ruby"><span class="no">ClassName</span><span class="p">.</span><span class="nf">method</span><span class="p">(</span><span class="ss">:method_name</span><span class="p">).</span><span class="nf">source</span></span>
 <span id="LC2" class="line" lang="ruby"><span class="c1"># or </span></span>
 <span id="LC3" class="line" lang="ruby"><span class="no">ClassName</span><span class="p">.</span><span class="nf">method</span><span class="p">(</span><span class="ss">:method_name</span><span class="p">).</span><span class="nf">source_location</span></span>
 <span id="LC4" class="line" lang="ruby"><span class="c1"># or</span></span>
@@ -19,7 +18,7 @@ import Blog from '../../layouts/Blog.astro';
 <a id="user-content-finding-possible-methods" class="anchor" href="#finding-possible-methods" aria-hidden="true"></a>Finding Possible Methods</h1>
 <p data-sourcepos="18:1-18:78" dir="auto">if you need to find a method that should start with or contain certain phrase:</p>
 <div class="gl-relative markdown-code-block js-markdown-code">
-<pre data-sourcepos="20:1-22:3" data-canonical-lang="ruby" class="code highlight js-syntax-highlight language-ruby" lang="ruby" v-pre="true"><code><span id="LC1" class="line" lang="ruby"><span class="no">ClassName</span><span class="p">.</span><span class="nf">methods</span><span class="p">.</span><span class="nf">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:to_s</span><span class="p">).</span><span class="nf">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="n">x</span><span class="p">.</span><span class="nf">include?</span><span class="p">(</span><span class="s2">"phrase"</span><span class="p">)</span> <span class="p">}.</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">x</span> <span class="p">}</span></span></code></pre>
+<pre data-sourcepos="20:1-22:3" data-canonical-lang="ruby" class="code highlight js-syntax-highlight language-ruby" lang="ruby" v-pre="true"><code is:raw><span id="LC1" class="line" lang="ruby"><span class="no">ClassName</span><span class="p">.</span><span class="nf">methods</span><span class="p">.</span><span class="nf">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:to_s</span><span class="p">).</span><span class="nf">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="n">x</span><span class="p">.</span><span class="nf">include?</span><span class="p">(</span><span class="s2">"phrase"</span><span class="p">)</span> <span class="p">}.</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="o">|</span> <span class="nb">puts</span> <span class="n">x</span> <span class="p">}</span></span></code></pre>
 <copy-code></copy-code>
 </div>
 <p data-sourcepos="24:1-25:77" dir="auto">These 2 in conjunction means that you can find the location and implementation of all methods that you need to use

@@ -27,7 +27,7 @@ unless File.exist?(full_path)
     f.puts "topics: ''"
     f.puts '---'
     f.puts ''
-    f.puts "# #{title}"
+    f.puts "<!-- # #{title} -->"
   end
 end
 

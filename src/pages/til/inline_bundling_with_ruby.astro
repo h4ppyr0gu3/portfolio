@@ -1,13 +1,12 @@
 ---
 import Blog from '../../layouts/Blog.astro';
 ---
-
-<Blog title='Inline Bundling with Ruby'>
+<Blog title='Inline Bundling with Ruby' date='24/06/2023' updated='24/06/2023'>
 <h1 data-sourcepos="2:1-2:27" dir="auto">
 <a id="user-content-inline-bundling-with-ruby" class="anchor" href="#inline-bundling-with-ruby" aria-hidden="true"></a>Inline Bundling with Ruby</h1>
 <p data-sourcepos="4:1-4:231" dir="auto">Ruby provides an option to have a script that executes and requires dependencies inline and bundle it on runtime, This is pretty impressive and allows for very complex scripts to be written and only require dependencies on run time</p>
 <div class="gl-relative markdown-code-block js-markdown-code">
-<pre data-sourcepos="6:1-19:3" data-canonical-lang="ruby" class="code highlight js-syntax-highlight language-ruby" lang="ruby" v-pre="true"><code><span id="LC1" class="line" lang="ruby"><span class="c1">#! /usr/bin/env ruby</span></span>
+<pre data-sourcepos="6:1-19:3" data-canonical-lang="ruby" class="code highlight js-syntax-highlight language-ruby" lang="ruby" v-pre="true"><code is:raw><span id="LC1" class="line" lang="ruby"><span class="c1">#! /usr/bin/env ruby</span></span>
 <span id="LC2" class="line" lang="ruby"><span class="c1"># frozen_string_literal: true</span></span>
 <span id="LC3" class="line" lang="ruby"></span>
 <span id="LC4" class="line" lang="ruby"><span class="nb">require</span> <span class="s1">'bundler/inline'</span></span>

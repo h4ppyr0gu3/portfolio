@@ -2,7 +2,7 @@
 import '../markdown.css';
 import Layout from './Layout.astro';
 
-const { title, description } = Astro.props;
+const { title, description, date, updated } = Astro.props;
 ---
 
 <Layout title={title, description}>
@@ -40,6 +40,10 @@ window.addEventListener('hashchange', function(event) {
       </svg>
     </div>
     <slot />
+    <div class="text-gray-400 mt-6">
+      <p>Last Updated: {updated}</p>
+      <p>Published: {date}</p>
+    </div>
   </div>
   <script is:inline>
   const readingMode = document.getElementById('reading-mode');
@@ -62,6 +66,32 @@ window.addEventListener('hashchange', function(event) {
     })
   } else {
     readingMode.style.display = "none";
+  }
+
+  // Copy Code Button taken from https://www.roboleary.net/2022/01/13/copy-code-to-clipboard-blog.html
+  const copyButtonLabel = "Copy Code";
+  var blocks = document.querySelectorAll('pre:not(.mermaid)');
+  blocks.forEach((block) => {
+    if (navigator.clipboard) {
+      let button = document.createElement("button");
+      button.innerText = copyButtonLabel;
+      button.classList.add("copy-code-button");
+      block.appendChild(button);
+      button.addEventListener("click", async () => {
+        await copyCode(block, button);
+      });
+    }
+  });
+
+  async function copyCode(block, button) {
+    let code = block.querySelector("code");
+    let text = code.innerText;
+    await navigator.clipboard.writeText(text);
+    button.innerText = "Code Copied";
+
+    setTimeout(() => {
+      button.innerText = copyButtonLabel;
+    }, 700);
   }
   </script>
 </Layout>

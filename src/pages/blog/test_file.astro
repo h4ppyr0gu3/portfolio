@@ -1,8 +1,7 @@
 ---
 import Blog from '../../layouts/Blog.astro';
 ---
-
-<Blog title='Test file'>
+<Blog title='Test file' date='23/06/2023' updated='25/07/2023'>
 <h1 data-sourcepos="2:1-2:14" dir="auto">
 <a id="user-content-example-file" class="anchor" href="#example-file" aria-hidden="true"></a>Example file</h1>
 <h2 data-sourcepos="3:1-3:15" dir="auto">
@@ -22,7 +21,7 @@ import Blog from '../../layouts/Blog.astro';
 <summary>Click this to collapse/fold.</summary>
 <p data-sourcepos="15:1-15:69">These details <em>remain</em> <strong>hidden</strong> until expanded.</p>
 <div class="gl-relative markdown-code-block js-markdown-code">
-<pre class="code highlight js-syntax-highlight language-plaintext" lang="plaintext" v-pre="true"><code><span id="LC1" class="line" lang="plaintext">PASTE LOGS HERE</span></code></pre>
+<pre class="code highlight js-syntax-highlight language-plaintext" lang="plaintext" v-pre="true"><code is:raw><span id="LC1" class="line" lang="plaintext">PASTE LOGS HERE</span></code></pre>
 <copy-code></copy-code>
 </div>
 </details>
@@ -31,7 +30,7 @@ import Blog from '../../layouts/Blog.astro';
 <summary>Click this to _collapse/fold._</summary>
 <p data-sourcepos="25:1-25:49">These details <em>remain</em> <strong>hidden</strong> until expanded.</p>
 <div class="gl-relative markdown-code-block js-markdown-code">
-<pre data-sourcepos="27:1-29:3" class="code highlight js-syntax-highlight language-plaintext" lang="plaintext" v-pre="true"><code><span id="LC1" class="line" lang="plaintext">PASTE LOGS HERE</span></code></pre>
+<pre data-sourcepos="27:1-29:3" class="code highlight js-syntax-highlight language-plaintext" lang="plaintext" v-pre="true"><code is:raw><span id="LC1" class="line" lang="plaintext">PASTE LOGS HERE</span></code></pre>
 <copy-code></copy-code>
 </div>
 </details>
@@ -40,7 +39,7 @@ import Blog from '../../layouts/Blog.astro';
 and another line</p>
 </blockquote>
 <div class="gl-relative markdown-code-block js-markdown-code">
-<pre data-sourcepos="36:5-38:0" class="code highlight js-syntax-highlight language-plaintext" lang="plaintext" v-pre="true"><code><span id="LC1" class="line" lang="plaintext">    something</span>
+<pre data-sourcepos="36:5-38:0" class="code highlight js-syntax-highlight language-plaintext" lang="plaintext" v-pre="true"><code is:raw><span id="LC1" class="line" lang="plaintext">    something</span>
 <span id="LC2" class="line" lang="plaintext">    else</span></code></pre>
 <copy-code></copy-code>
 </div>
@@ -127,7 +126,7 @@ and another line</p>
 <h2 data-sourcepos="45:1-45:14" dir="auto">
 <a id="user-content-code-blocks" class="anchor" href="#code-blocks" aria-hidden="true"></a>Code Blocks</h2>
 <div class="gl-relative markdown-code-block js-markdown-code">
-<pre data-sourcepos="47:5-51:0" class="code highlight js-syntax-highlight language-plaintext" lang="plaintext" v-pre="true"><code><span id="LC1" class="line" lang="plaintext">here is regular block</span>
+<pre data-sourcepos="47:5-51:0" class="code highlight js-syntax-highlight language-plaintext" lang="plaintext" v-pre="true"><code is:raw><span id="LC1" class="line" lang="plaintext">here is regular block</span>
 <span id="LC2" class="line" lang="plaintext">here we go </span>
 <span id="LC3" class="line" lang="plaintext"></span>
 <span id="LC4" class="line" lang="plaintext">&gt; here is a block</span></code></pre>
@@ -138,13 +137,13 @@ and another line</p>
 quote</p>
 </blockquote>
 <div class="gl-relative markdown-code-block js-markdown-code">
-<pre data-sourcepos="55:5-56:0" class="code highlight js-syntax-highlight language-plaintext" lang="plaintext" v-pre="true"><code><span id="LC1" class="line" lang="plaintext">&gt; indented quote</span></code></pre>
+<pre data-sourcepos="55:5-56:0" class="code highlight js-syntax-highlight language-plaintext" lang="plaintext" v-pre="true"><code is:raw><span id="LC1" class="line" lang="plaintext">&gt; indented quote</span></code></pre>
 <copy-code></copy-code>
 </div>
 <h3 data-sourcepos="57:1-57:8" dir="auto">
 <a id="user-content-ruby" class="anchor" href="#ruby" aria-hidden="true"></a>Ruby</h3>
 <div class="gl-relative markdown-code-block js-markdown-code">
-<pre data-sourcepos="58:1-72:3" data-canonical-lang="ruby" class="code highlight js-syntax-highlight language-ruby" lang="ruby" v-pre="true"><code><span id="LC1" class="line" lang="ruby"><span class="k">class</span> <span class="nc">Test</span></span>
+<pre data-sourcepos="58:1-72:3" data-canonical-lang="ruby" class="code highlight js-syntax-highlight language-ruby" lang="ruby" v-pre="true"><code is:raw><span id="LC1" class="line" lang="ruby"><span class="k">class</span> <span class="nc">Test</span></span>
 <span id="LC2" class="line" lang="ruby">    <span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">args</span><span class="p">)</span></span>
 <span id="LC3" class="line" lang="ruby">        <span class="nb">test</span> <span class="o">=</span> <span class="s2">"string"</span></span>
 <span id="LC4" class="line" lang="ruby">        <span class="n">number</span> <span class="o">=</span> <span class="mi">20</span></span>
@@ -162,7 +161,7 @@ quote</p>
 <h3 data-sourcepos="74:1-74:10" dir="auto">
 <a id="user-content-python" class="anchor" href="#python" aria-hidden="true"></a>Python</h3>
 <div class="gl-relative markdown-code-block js-markdown-code">
-<pre data-sourcepos="75:1-82:3" data-canonical-lang="python" class="code highlight js-syntax-highlight language-python" lang="python" v-pre="true"><code><span id="LC1" class="line" lang="python"><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">args</span><span class="p">):</span></span>
+<pre data-sourcepos="75:1-82:3" data-canonical-lang="python" class="code highlight js-syntax-highlight language-python" lang="python" v-pre="true"><code is:raw><span id="LC1" class="line" lang="python"><span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">args</span><span class="p">):</span></span>
 <span id="LC2" class="line" lang="python">    <span class="n">var</span> <span class="o">=</span> <span class="bp">True</span></span>
 <span id="LC3" class="line" lang="python">    <span class="c1"># do something</span></span>
 <span id="LC4" class="line" lang="python">    <span class="k">if</span> <span class="n">args</span><span class="p">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span></span>
@@ -173,7 +172,7 @@ quote</p>
 <h3 data-sourcepos="84:1-84:14" dir="auto">
 <a id="user-content-javascript" class="anchor" href="#javascript" aria-hidden="true"></a>Javascript</h3>
 <div class="gl-relative markdown-code-block js-markdown-code">
-<pre data-sourcepos="85:1-96:3" data-canonical-lang="javascript" class="code highlight js-syntax-highlight language-javascript" lang="javascript" v-pre="true"><code><span id="LC1" class="line" lang="javascript"><span class="kd">function</span> <span class="nf">function</span><span class="p">(</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span></span>
+<pre data-sourcepos="85:1-96:3" data-canonical-lang="javascript" class="code highlight js-syntax-highlight language-javascript" lang="javascript" v-pre="true"><code is:raw><span id="LC1" class="line" lang="javascript"><span class="kd">function</span> <span class="nf">function</span><span class="p">(</span><span class="nx">args</span><span class="p">)</span> <span class="p">{</span></span>
 <span id="LC2" class="line" lang="javascript">    <span class="nx">test</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span></span>
 <span id="LC3" class="line" lang="javascript">    <span class="nx">number</span> <span class="o">=</span> <span class="mi">20</span></span>
 <span id="LC4" class="line" lang="javascript">    <span class="nx">args</span><span class="p">.</span><span class="nx">format</span></span>
@@ -188,12 +187,12 @@ quote</p>
 <h3 data-sourcepos="98:1-98:8" dir="auto">
 <a id="user-content-html" class="anchor" href="#html" aria-hidden="true"></a>HTML</h3>
 <div class="gl-relative markdown-code-block js-markdown-code">
-<pre data-sourcepos="99:1-101:3" data-canonical-lang="html" class="code highlight js-syntax-highlight language-html" lang="html" v-pre="true"><code><span id="LC1" class="line" lang="html"><span class="nt">&lt;h1&gt;</span>Hello<span class="nt">&lt;/h1&gt;</span></span></code></pre>
+<pre data-sourcepos="99:1-101:3" data-canonical-lang="html" class="code highlight js-syntax-highlight language-html" lang="html" v-pre="true"><code is:raw><span id="LC1" class="line" lang="html"><span class="nt">&lt;h1&gt;</span>Hello<span class="nt">&lt;/h1&gt;</span></span></code></pre>
 <copy-code></copy-code>
 </div>
 <h3 data-sourcepos="103:1-103:17" dir="auto">
 <a id="user-content-inline-blocks" class="anchor" href="#inline-blocks" aria-hidden="true"></a>Inline Blocks</h3>
-<p data-sourcepos="105:1-105:60" dir="auto">here is an inlin <code>block i think</code> lets see what it looks like</p>
+<p data-sourcepos="105:1-105:60" dir="auto">here is an inlin <code is:raw>block i think</code> lets see what it looks like</p>
 <h2 data-sourcepos="107:1-107:8" dir="auto">
 <a id="user-content-table" class="anchor" href="#table" aria-hidden="true"></a>Table</h2>
 <table data-sourcepos="109:1-111:9" dir="auto">
@@ -315,17 +314,17 @@ graph TD
 <tbody>
 <tr data-sourcepos="217:1-217:80">
 <td data-sourcepos="217:2-217:17">Single backticks</td>
-<td data-sourcepos="217:19-217:49"><code>'Isn't this fun?'</code></td>
+<td data-sourcepos="217:19-217:49"><code is:raw>'Isn't this fun?'</code></td>
 <td data-sourcepos="217:51-217:79">'Isn't this fun?'</td>
 </tr>
 <tr data-sourcepos="218:1-218:80">
 <td data-sourcepos="218:2-218:17">Quotes</td>
-<td data-sourcepos="218:19-218:49"><code>"Isn't this fun?"</code></td>
+<td data-sourcepos="218:19-218:49"><code is:raw>"Isn't this fun?"</code></td>
 <td data-sourcepos="218:51-218:79">"Isn't this fun?"</td>
 </tr>
 <tr data-sourcepos="219:1-219:80">
 <td data-sourcepos="219:2-219:17">Dashes</td>
-<td data-sourcepos="219:19-219:49"><code>-- is en-dash, --- is em-dash</code></td>
+<td data-sourcepos="219:19-219:49"><code is:raw>-- is en-dash, --- is em-dash</code></td>
 <td data-sourcepos="219:51-219:79">-- is en-dash, --- is em-dash</td>
 </tr>
 </tbody>

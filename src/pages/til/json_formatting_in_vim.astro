@@ -1,21 +1,20 @@
 ---
-    import Blog from '../../layouts/Blog.astro';
-    ---
-
-    <Blog title='JSON formatting in vim'>
-    <h1 data-sourcepos="2:1-2:24" dir="auto">
+import Blog from '../../layouts/Blog.astro';
+---
+<Blog title='JSON formatting in vim' date='28/06/2023' updated='28/06/2023'>
+<h1 data-sourcepos="2:1-2:24" dir="auto">
 <a id="user-content-json-formatting-in-vim" class="anchor" href="#json-formatting-in-vim" aria-hidden="true"></a>JSON formatting in vim</h1>
 <p data-sourcepos="4:1-4:58" dir="auto">To format JSON in a file in vim you can use the following:</p>
 <div class="gl-relative markdown-code-block js-markdown-code">
-<pre data-sourcepos="5:1-7:3" data-canonical-lang="vim" class="code highlight js-syntax-highlight language-viml" lang="viml" v-pre="true"><code><span id="LC1" class="line" lang="viml"><span class="p">:</span>%<span class="p">!</span>jq <span class="p">.</span></span></code></pre>
+<pre data-sourcepos="5:1-7:3" data-canonical-lang="vim" class="code highlight js-syntax-highlight language-viml" lang="viml" v-pre="true"><code is:raw><span id="LC1" class="line" lang="viml"><span class="p">:</span>%<span class="p">!</span>jq <span class="p">.</span></span></code></pre>
 <copy-code></copy-code>
 </div>
-<p data-sourcepos="8:1-8:52" dir="auto"><code>%</code> symbol refers to the content of the current file</p>
+<p data-sourcepos="8:1-8:52" dir="auto"><code is:raw>%</code> symbol refers to the content of the current file</p>
 <p data-sourcepos="10:1-10:61" dir="auto">and to format selected text in vim you can use the following:</p>
 <div class="gl-relative markdown-code-block js-markdown-code">
-<pre data-sourcepos="11:1-13:3" data-canonical-lang="vim" class="code highlight js-syntax-highlight language-viml" lang="viml" v-pre="true"><code><span id="LC1" class="line" lang="viml"><span class="p">:</span><span class="s1">'&lt;,'</span><span class="p">&gt;!</span>jq <span class="p">.</span></span></code></pre>
+<pre data-sourcepos="11:1-13:3" data-canonical-lang="vim" class="code highlight js-syntax-highlight language-viml" lang="viml" v-pre="true"><code is:raw><span id="LC1" class="line" lang="viml"><span class="p">:</span><span class="s1">'&lt;,'</span><span class="p">&gt;!</span>jq <span class="p">.</span></span></code></pre>
 <copy-code></copy-code>
 </div>
-<p data-sourcepos="14:1-14:61" dir="auto">the <code>'&lt;,'&gt;</code> symbol refers to the selected text in visual mode</p>
-<p data-sourcepos="16:1-16:51" dir="auto"><strong>N.B.</strong> This requires <code>jq</code> utility to be installed</p>
+<p data-sourcepos="14:1-14:61" dir="auto">the <code is:raw>'&lt;,'&gt;</code> symbol refers to the selected text in visual mode</p>
+<p data-sourcepos="16:1-16:51" dir="auto"><strong>N.B.</strong> This requires <code is:raw>jq</code> utility to be installed</p>
 </Blog>

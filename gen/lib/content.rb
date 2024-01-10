@@ -61,7 +61,9 @@ class Content
     html = handle_html(html)
     # handle_math(html)
     html = handle_mermaid(html)
-    html.join("\n")
+    html = html.join("\n")
+    html = handle_code_blocks(html)
+    html
   end
 
   private
@@ -73,6 +75,10 @@ class Content
       html.insert(index, "<pre class='mermaid'>\n#{obj[:lines].join("\n")}\n</pre>")
     end
     html
+  end
+
+  def handle_code_blocks(html)
+    html.gsub('<code>', '<code is:raw>')
   end
 
   def handle_html(html)

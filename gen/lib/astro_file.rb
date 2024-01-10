@@ -4,7 +4,8 @@ class AstroFile
   DEFAULT_METADATA = {
     published: false,
     title: nil,
-    date: Time.now.strftime('%d/%m/%Y')
+    date: Time.now.strftime('%d/%m/%Y'),
+    updated: Time.now.strftime('%d/%m/%Y')
   }.freeze
 
   def initialize(html:, metadata: DEFAULT_METADATA)
@@ -19,10 +20,10 @@ class AstroFile
   end
 
   def beginning_of_file(metadata) # rubocop:disable
-    "---\n" +
-      "import Blog from '../../layouts/Blog.astro';\n" +
-      "---\n\n" +
-      "<Blog title='#{metadata[:title]}'>\n"
+"---
+import Blog from '../../layouts/Blog.astro';
+---
+<Blog title='#{metadata[:title]}' date='#{metadata[:date]}' updated='#{metadata[:updated]}'>\n"
   end # rubocop:enable
 
   def end_of_file

@@ -1,8 +1,13 @@
 ---
 import Blog from '../../layouts/Blog.astro';
 ---
-<Blog title='You need to load ruby in cron if you have a ruby cron script' date='12/03/2024' updated='17/04/2024'>
+<Blog title='You need to load ruby in cron if you have a ruby cron script' date='12/03/2024' updated='18/04/2024'>
 <h1 data-sourcepos="2:1-2:62" dir="auto">
 <a id="user-content-you-need-to-load-ruby-in-cron-if-you-have-a-ruby-cron-script" class="anchor" href="#you-need-to-load-ruby-in-cron-if-you-have-a-ruby-cron-script" aria-hidden="true"></a>You need to load ruby in cron if you have a ruby cron script</h1>
 <p data-sourcepos="4:1-4:295" dir="auto">When running a ruby crontab script, your chosen ruby version manager should be sourced before running the script, or at the very least, the complete ruby executable path should be used before calling the ruby script, even if that ruby script starts with the correct shebang <code data-sourcepos="4:276-4:294">#!/usr/bin/env ruby</code></p>
+<p data-sourcepos="6:1-6:38" dir="auto">For example when running <code data-sourcepos="6:27-6:36">crontab -e</code>:</p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="7:1-9:3" data-canonical-lang="crontab" class="code highlight js-syntax-highlight language-plaintext" v-pre="true"><code is:raw><span id="LC1" class="line" lang="plaintext">*/10 * * * * /home/user/.asdf/shims/ruby /usr/local/bin/dns_updater</span></code></pre>
+<copy-code></copy-code>
+</div>
 </Blog>

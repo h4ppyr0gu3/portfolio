@@ -32,3 +32,5 @@ end
 
 # rest of code here
 ```
+
+<!-- 'https://lipanski.com/posts/one-ruby-file-to-rule-them-all' -->

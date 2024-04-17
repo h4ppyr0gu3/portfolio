@@ -213,6 +213,38 @@
       "published": true,
       "updated": "25/11/2023",
       "topics": "Ruby"
+    },
+    {
+      "href": "/til/inline_activerecord_migrations",
+      "title": "Inline ActiveRecord Migrations",
+      "excerpt": "ActiveRecord migrations can be executed directly from the Rails console.",
+      "date": "02/02/2024",
+      "tags": [
+        "ActiveRecord",
+        "migrations",
+        "Sinatra",
+        "metadata",
+        "ruby"
+      ],
+      "published": true,
+      "updated": "17/04/2024",
+      "topics": "Ruby"
+    },
+    {
+      "href": "/til/you_need_to_load_ruby_in_cron_if_you_have_a_ruby_cron_script",
+      "title": "You need to load ruby in cron if you have a ruby cron script",
+      "excerpt": "Load ruby in cron with version manager sourced or full path used before script execution",
+      "date": "12/03/2024",
+      "tags": [
+        "ruby",
+        "crontab",
+        "script",
+        "version manager",
+        "shebang"
+      ],
+      "published": true,
+      "updated": "12/03/2024",
+      "topics": "Cron"
     }
   ],
   "blog": [
@@ -324,6 +356,26 @@
       ],
       "published": true,
       "updated": "25/07/2023",
+      "topics": ""
+    },
+    {
+      "href": "/blog/installing_debian_on_hardware",
+      "title": "About this site",
+      "excerpt": "Install Debian on hardware by downloading desired version, checking SHA256 checksum, making ISO bootable with USB stick using `dd` command",
+      "date": "03/04/2024",
+      "tags": [
+        "Debian",
+        "installation",
+        "hardware",
+        "ISO",
+        "bootable",
+        "USB",
+        "checksum",
+        "SHA256",
+        "dd"
+      ],
+      "published": false,
+      "updated": "03/04/2024",
       "topics": ""
     }
   ]

@@ -1,0 +1,31 @@
+---
+import Blog from '../../layouts/Blog.astro';
+---
+<Blog title='About this site' date='03/04/2024' updated='03/04/2024'>
+<h1 data-sourcepos="2:1-2:31" dir="auto">
+<a id="user-content-installing-debian-on-hardware" class="anchor" href="#installing-debian-on-hardware" aria-hidden="true"></a>Installing Debian on Hardware</h1>
+<h2 data-sourcepos="4:1-4:17" dir="auto">
+<a id="user-content-pre-requisites" class="anchor" href="#pre-requisites" aria-hidden="true"></a>Pre-requisites</h2>
+<ul data-sourcepos="5:1-8:0" dir="auto">
+<li data-sourcepos="5:1-5:11">USB stick</li>
+<li data-sourcepos="6:1-6:22">Computer to write to</li>
+<li data-sourcepos="7:1-8:0">Internet/Ethernet connection</li>
+</ul>
+<h2 data-sourcepos="9:1-9:41" dir="auto">
+<a id="user-content-download-the-desired-version-of-debian" class="anchor" href="#download-the-desired-version-of-debian" aria-hidden="true"></a>Download the desired version of Debian</h2>
+<p data-sourcepos="11:1-12:101" dir="auto">Download the desired version of Debian from <a data-sourcepos="11:45-11:75" href="https://www.debian.org/" rel="nofollow noreferrer noopener" target="_blank">here</a>.
+<strong data-sourcepos="12:1-12:8">N.B.</strong> Compare the SHA256 checksum to ensure that it is untampered with using the following command</p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="13:1-15:3" data-canonical-lang="shell" class="code highlight js-syntax-highlight language-shell" v-pre="true"><code is:raw><span id="LC1" class="line" lang="shell"><span class="nb">sha256sum</span> &lt;path to downloaded iso file&gt;</span></code></pre>
+<copy-code></copy-code>
+</div>
+<h2 data-sourcepos="17:1-17:24" dir="auto">
+<a id="user-content-make-the-iso-bootable" class="anchor" href="#make-the-iso-bootable" aria-hidden="true"></a>Make the ISO bootable</h2>
+<p data-sourcepos="19:1-21:97" dir="auto">Install the ISO file on a USB stick, then use the following command to make it bootable
+There are a couple of things to be aware of, first you will have to clear the USB stick and then copy the ISO image to it using <code data-sourcepos="20:130-20:131">dd</code>
+<strong data-sourcepos="21:1-21:8">N.B.</strong> make sure to use the correct path otherwise you could end up overwriting your own system</p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="23:1-24:3" data-canonical-lang="shell" class="code highlight js-syntax-highlight language-shell" v-pre="true"><code is:raw></code></pre>
+<copy-code></copy-code>
+</div>
+</Blog>

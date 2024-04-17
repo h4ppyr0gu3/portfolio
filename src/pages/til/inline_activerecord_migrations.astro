@@ -1,0 +1,46 @@
+---
+import Blog from '../../layouts/Blog.astro';
+---
+<Blog title='Inline ActiveRecord Migrations' date='02/02/2024' updated='17/04/2024'>
+<h1 data-sourcepos="2:1-2:32" dir="auto">
+<a id="user-content-inline-activerecord-migrations" class="anchor" href="#inline-activerecord-migrations" aria-hidden="true"></a>Inline ActiveRecord Migrations</h1>
+<p data-sourcepos="4:1-4:132" dir="auto">Credit to Florin Lipan in his post about <a data-sourcepos="4:42-4:132" href="https://lipanski.com/posts/one-ruby-file-to-rule-them-all" rel="nofollow noreferrer noopener" target="_blank">one ruby file to rule them all</a></p>
+<p data-sourcepos="6:1-6:189" dir="auto">You can manually create inline active record migrations, this was quite a shock to me at first because I didn't understand the inner workings of it, but afterwards it makes a lot more sense</p>
+<h2 data-sourcepos="8:1-8:27" dir="auto">
+<a id="user-content-what-can-it-be-used-for" class="anchor" href="#what-can-it-be-used-for" aria-hidden="true"></a>What can it be used for?</h2>
+<p data-sourcepos="10:1-10:188" dir="auto">If you have essential migrations that need to be run on server startup that hold metadata, this doesn't seem very useful in the case of rails, but when using sinatra, it may come in handy.</p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="12:1-38:3" data-canonical-lang="ruby" class="code highlight js-syntax-highlight language-ruby" v-pre="true"><code is:raw><span id="LC1" class="line" lang="ruby"><span class="k">class</span> <span class="nc">CreateRandomMigration</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span><span class="p">[</span><span class="mf">7.1</span><span class="p">]</span></span>
+<span id="LC2" class="line" lang="ruby">  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">version</span></span>
+<span id="LC3" class="line" lang="ruby">    <span class="mi">1</span></span>
+<span id="LC4" class="line" lang="ruby">  <span class="k">end</span></span>
+<span id="LC5" class="line" lang="ruby"></span>
+<span id="LC6" class="line" lang="ruby">  <span class="k">def</span> <span class="nf">change</span></span>
+<span id="LC7" class="line" lang="ruby">    <span class="n">create_table</span> <span class="ss">:randoms</span> <span class="k">do</span> <span class="o">|</span><span class="n">t</span><span class="o">|</span></span>
+<span id="LC8" class="line" lang="ruby">      <span class="n">t</span><span class="p">.</span><span class="nf">string</span> <span class="ss">:name</span></span>
+<span id="LC9" class="line" lang="ruby">    <span class="k">end</span></span>
+<span id="LC10" class="line" lang="ruby">  <span class="k">end</span></span>
+<span id="LC11" class="line" lang="ruby"><span class="k">end</span></span>
+<span id="LC12" class="line" lang="ruby"></span>
+<span id="LC13" class="line" lang="ruby"><span class="k">class</span> <span class="nc">AlterRandomMigration</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migration</span><span class="p">[</span><span class="mf">7.1</span><span class="p">]</span></span>
+<span id="LC14" class="line" lang="ruby">  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">version</span></span>
+<span id="LC15" class="line" lang="ruby">    <span class="mi">2</span></span>
+<span id="LC16" class="line" lang="ruby">  <span class="k">end</span></span>
+<span id="LC17" class="line" lang="ruby"></span>
+<span id="LC18" class="line" lang="ruby">  <span class="k">def</span> <span class="nf">change</span></span>
+<span id="LC19" class="line" lang="ruby">    <span class="n">add_column</span> <span class="ss">:randoms</span><span class="p">,</span> <span class="ss">:created_at</span><span class="p">,</span> <span class="ss">:datetime</span></span>
+<span id="LC20" class="line" lang="ruby">  <span class="k">end</span></span>
+<span id="LC21" class="line" lang="ruby"><span class="k">end</span></span>
+<span id="LC22" class="line" lang="ruby"></span>
+<span id="LC23" class="line" lang="ruby"><span class="c1"># Perform migrations</span></span>
+<span id="LC24" class="line" lang="ruby"><span class="n">migrations</span> <span class="o">=</span> <span class="p">[</span><span class="no">CreateRandomMigration</span><span class="p">,</span> <span class="no">AlterRandomMigration</span><span class="p">]</span></span>
+<span id="LC25" class="line" lang="ruby"><span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Migrator</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">:up</span><span class="p">,</span> <span class="n">migrations</span><span class="p">).</span><span class="nf">migrate</span></span></code></pre>
+<copy-code></copy-code>
+</div>
+<h2 data-sourcepos="40:1-40:15" dir="auto">
+<a id="user-content-how-it-works" class="anchor" href="#how-it-works" aria-hidden="true"></a>How it works</h2>
+<p data-sourcepos="42:1-44:126" dir="auto">The version is used as a unique identifier for the migration, in the case of rails, it is the timestamp of the migration.
+It can use the class itself, but it is an essential definition required on the migrations themselves.
+It allows you to independently run/rerun migrations from the command line listing them out by running <code data-sourcepos="44:104-44:125">rake db:migrate:status</code></p>
+<p data-sourcepos="46:1-46:91" dir="auto">You can independently run migrations from the command line with <code data-sourcepos="46:66-46:90">rake db:migrate VERSION=2</code></p>
+</Blog>

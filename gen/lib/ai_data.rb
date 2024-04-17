@@ -30,8 +30,7 @@ class AiData
 
   def generate_ai_content
     pp '...'
-    pp 'asking the AI'
-    pp '...'
+    pp 'asking the AI...'
     client = OpenAI::Client.new(access_token: ENV.fetch('OPENAI_API_KEY'))
     response = client.chat(
       parameters: {
@@ -51,8 +50,6 @@ class AiData
     json_response = response.dig('choices', 0, 'message', 'content')
     JSON.parse(json_response).transform_keys { |x| x.downcase.to_sym }
   rescue StandardError
-    puts "ERROR in AI response:\n\t#{json_response}"
-    split = json_response.split("\n")
-    { excerpt: split[0], tags: split[1].split(' ') }
+    puts "ERROR in AI response:\n\t#{response}"
   end
 end

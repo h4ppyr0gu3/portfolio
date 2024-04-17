@@ -1,7 +1,7 @@
 ---
 import Blog from '../../layouts/Blog.astro';
 ---
-<Blog title='About this site' date='03/04/2024' updated='03/04/2024'>
+<Blog title='About this site' date='03/04/2024' updated='17/04/2024'>
 <h1 data-sourcepos="2:1-2:31" dir="auto">
 <a id="user-content-installing-debian-on-hardware" class="anchor" href="#installing-debian-on-hardware" aria-hidden="true"></a>Installing Debian on Hardware</h1>
 <h2 data-sourcepos="4:1-4:17" dir="auto">
@@ -24,8 +24,28 @@ import Blog from '../../layouts/Blog.astro';
 <p data-sourcepos="19:1-21:97" dir="auto">Install the ISO file on a USB stick, then use the following command to make it bootable
 There are a couple of things to be aware of, first you will have to clear the USB stick and then copy the ISO image to it using <code data-sourcepos="20:130-20:131">dd</code>
 <strong data-sourcepos="21:1-21:8">N.B.</strong> make sure to use the correct path otherwise you could end up overwriting your own system</p>
+<p data-sourcepos="23:1-23:61" dir="auto">first make sure you can see the device on your computer using</p>
 <div class="gl-relative markdown-code-block js-markdown-code">
-<pre data-sourcepos="23:1-24:3" data-canonical-lang="shell" class="code highlight js-syntax-highlight language-shell" v-pre="true"><code is:raw></code></pre>
+<pre data-sourcepos="24:1-26:3" data-canonical-lang="shell" class="code highlight js-syntax-highlight language-shell" v-pre="true"><code is:raw><span id="LC1" class="line" lang="shell">lsblk <span class="nt">-p</span> | <span class="nb">grep </span>disk</span></code></pre>
 <copy-code></copy-code>
 </div>
+<p data-sourcepos="27:1-27:77" dir="auto">resize the partitions so that there is only one partition correctly formatted</p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="28:1-30:3" data-canonical-lang="shell" class="code highlight js-syntax-highlight language-shell" v-pre="true"><code is:raw><span id="LC1" class="line" lang="shell"><span class="nb">sudo </span>cfdisk /dev/sdX</span></code></pre>
+<copy-code></copy-code>
+</div>
+<p data-sourcepos="31:1-31:21" dir="auto">Unmount the USB stick</p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="32:1-34:3" data-canonical-lang="shell" class="code highlight js-syntax-highlight language-shell" v-pre="true"><code is:raw><span id="LC1" class="line" lang="shell"><span class="nb">sudo </span>umount /dev/sdX</span></code></pre>
+<copy-code></copy-code>
+</div>
+<p data-sourcepos="35:1-35:35" dir="auto">copy the ISO image to the USB stick</p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="36:1-38:3" data-canonical-lang="shell" class="code highlight js-syntax-highlight language-shell" v-pre="true"><code is:raw><span id="LC1" class="line" lang="shell"><span class="nb">sudo dd </span><span class="k">if</span><span class="o">=</span><span class="nv">$HOME</span>/&lt;path-to-iso-file&gt; <span class="nv">of</span><span class="o">=</span>/dev/sdX <span class="nv">bs</span><span class="o">=</span>4M <span class="nv">conv</span><span class="o">=</span>fdatasync <span class="nv">status</span><span class="o">=</span>progress</span></code></pre>
+<copy-code></copy-code>
+</div>
+<h2 data-sourcepos="40:1-40:29" dir="auto">
+<a id="user-content-booting-from-the-usb-stick" class="anchor" href="#booting-from-the-usb-stick" aria-hidden="true"></a>Booting from the USB stick</h2>
+<p data-sourcepos="42:1-42:165" dir="auto">If a bootable disk is already present, you may have to open your bios settings and enable the boot from USB option, or change the order of booting from which devices</p>
+<p data-sourcepos="44:1-44:96" dir="auto">Bios settings can normally be opened by pressing <code data-sourcepos="44:51-44:53">F12</code>, <code data-sourcepos="44:58-44:59">F2</code> or <code data-sourcepos="44:66-44:68">ESC</code> key repeatedly on start up</p>
 </Blog>

@@ -1,6 +1,6 @@
 ---
 href: "/blog/installing_debian_on_hardware"
-title: About this site
+title: Installing Debian on Hardware
 excerpt: Install Debian on hardware by downloading desired version, checking SHA256
   checksum, making ISO bootable with USB stick using `dd` command
 date: 03/04/2024

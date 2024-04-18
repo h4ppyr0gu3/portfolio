@@ -1,7 +1,7 @@
 ---
 import Blog from '../../layouts/Blog.astro';
 ---
-<Blog title='About this site' date='03/04/2024' updated='17/04/2024'>
+<Blog title='About this site' date='03/04/2024' updated='18/04/2024'>
 <h1 data-sourcepos="2:1-2:31" dir="auto">
 <a id="user-content-installing-debian-on-hardware" class="anchor" href="#installing-debian-on-hardware" aria-hidden="true"></a>Installing Debian on Hardware</h1>
 <h2 data-sourcepos="4:1-4:17" dir="auto">
@@ -48,4 +48,34 @@ There are a couple of things to be aware of, first you will have to clear the US
 <a id="user-content-booting-from-the-usb-stick" class="anchor" href="#booting-from-the-usb-stick" aria-hidden="true"></a>Booting from the USB stick</h2>
 <p data-sourcepos="42:1-42:165" dir="auto">If a bootable disk is already present, you may have to open your bios settings and enable the boot from USB option, or change the order of booting from which devices</p>
 <p data-sourcepos="44:1-44:96" dir="auto">Bios settings can normally be opened by pressing <code data-sourcepos="44:51-44:53">F12</code>, <code data-sourcepos="44:58-44:59">F2</code> or <code data-sourcepos="44:66-44:68">ESC</code> key repeatedly on start up</p>
+<p data-sourcepos="46:1-46:74" dir="auto">Go through the graphical setup to get your computer ready to boot from USB</p>
+<h2 data-sourcepos="48:1-48:25" dir="auto">
+<a id="user-content-add-user-to-sudo-group" class="anchor" href="#add-user-to-sudo-group" aria-hidden="true"></a>Add user to sudo group</h2>
+<p data-sourcepos="50:1-51:54" dir="auto">run the following command to allow the user to use sudo
+<strong data-sourcepos="51:1-51:8">N.B.</strong> you have to run this command as the root user</p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="52:1-54:3" data-canonical-lang="shell" class="code highlight js-syntax-highlight language-shell" v-pre="true"><code is:raw><span id="LC1" class="line" lang="shell">usermod <span class="nt">-aG</span> <span class="nb">sudo</span> &lt;username&gt;</span></code></pre>
+<copy-code></copy-code>
+</div>
+<p data-sourcepos="55:1-55:41" dir="auto">exit as root and login as your user again</p>
+<h2 data-sourcepos="57:1-57:48" dir="auto">
+<a id="user-content-setup-and-configure-your-system-as-youd-like" class="anchor" href="#setup-and-configure-your-system-as-youd-like" aria-hidden="true"></a>Setup and configure your system as you'd like</h2>
+<p data-sourcepos="59:1-59:50" dir="auto">My recommendation for a decent base installation:</p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="60:1-67:3" data-canonical-lang="shell" class="code highlight js-syntax-highlight language-shell" v-pre="true"><code is:raw><span id="LC1" class="line" lang="shell"><span class="nb">sudo </span>apt <span class="nb">install </span>git curl ssh neovim build-essential ufw</span>
+<span id="LC2" class="line" lang="shell"><span class="nb">sudo </span>systemctl start ssh</span>
+<span id="LC3" class="line" lang="shell"><span class="nb">sudo </span>systemctl start ufw</span>
+<span id="LC4" class="line" lang="shell"><span class="nb">sudo </span>ufw allow 22/tcp <span class="c"># sudo ufw allow from 192.168.1.100 to any port 22</span></span>
+<span id="LC5" class="line" lang="shell"><span class="nb">sudo </span>systemctl <span class="nb">enable </span>ssh</span>
+<span id="LC6" class="line" lang="shell"><span class="nb">sudo </span>systemctl <span class="nb">enable </span>ufw</span></code></pre>
+<copy-code></copy-code>
+</div>
+<h2 data-sourcepos="69:1-69:23" dir="auto">
+<a id="user-content-format-the-usb-stick" class="anchor" href="#format-the-usb-stick" aria-hidden="true"></a>Format the USB stick</h2>
+<p data-sourcepos="71:1-71:80" dir="auto">After you are finished with the USB stick, format it using the following command</p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="73:1-76:3" data-canonical-lang="shell" class="code highlight js-syntax-highlight language-shell" v-pre="true"><code is:raw><span id="LC1" class="line" lang="shell"><span class="nb">sudo </span>umount /dev/sdX</span>
+<span id="LC2" class="line" lang="shell"><span class="nb">sudo </span>mkfs.ext4 /dev/sdX</span></code></pre>
+<copy-code></copy-code>
+</div>
 </Blog>

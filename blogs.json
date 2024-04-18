@@ -366,16 +366,14 @@
       "tags": [
         "Debian",
         "installation",
-        "hardware",
-        "ISO",
         "bootable",
         "USB",
-        "checksum",
-        "SHA256",
-        "dd"
+        "sudo group",
+        "system setup",
+        "formatting"
       ],
-      "published": false,
-      "updated": "17/04/2024",
+      "published": true,
+      "updated": "18/04/2024",
       "topics": "Linux"
     }
   ]

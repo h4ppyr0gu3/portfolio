@@ -245,6 +245,22 @@
       "published": true,
       "updated": "18/04/2024",
       "topics": "Cron"
+    },
+    {
+      "href": "/til/you_can_use_bundle_open_gem_to_view_the_gem_source",
+      "title": "You can use bundle open gem to view the gem source",
+      "excerpt": "Bundle open gem allows viewing gem source",
+      "date": "27/09/2024",
+      "tags": [
+        "bundle",
+        "open",
+        "gem",
+        "source",
+        "viewing"
+      ],
+      "published": true,
+      "updated": "27/09/2024",
+      "topics": "Ruby"
     }
   ],
   "blog": [

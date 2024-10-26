@@ -5,6 +5,15 @@
   ],
   "experience": [
     {
+      "company": "IG Group/tastytrade",
+      "title": "Ruby Developer",
+      "location": "Krakow, Poland/Remote",
+      "start": "November 2023",
+      "end": "Present",
+      "description": "Managing teams and organizational tasks",
+      "skills": ["Ruby", "Rails", "REST", "Postgres", "Redis"]
+    },
+    {
       "company": "Jalappeno",
       "title": "Engineering Manager",
       "location": "Warsaw, Poland/Remote",
@@ -18,7 +27,7 @@
       "title": "Ruby on Rails Developer",
       "location": "Wroclaw, Poland",
       "start": "October 2021",
-      "end": "Present",
+      "end": "October 2023",
       "description": "Working on a legacy Ruby on Rails application which has been being worked on for 12 years, it has a variety of technologies inside, including: Graphql, Kubernetes, AWS-S3, Sidekiq, Redis, Postgres, Seperate Read-write databases and Datadog, Sentry for monitoring",
       "skills": ["Ruby", "Rails", "Graphql", "Postgres", "Redis", "Kubernetes", "AWS"]
     },

@@ -4,11 +4,11 @@ import json from '../../../blogs.json';
 import Fuse from 'fuse.js';
 
 export default function Search() {
-  const [searchText, setSearchText] = useState('');
   const [til, setTil] = useState(() => json.til.sort((a, b) => a.topics.localeCompare(b.topics)));
 
   const handleSearch = (event) => {
     event.preventDefault();
+    const searchText = document.getElementById('tilSearch').value
 
     if (searchText === '') {
       setTil(json.til);
@@ -49,12 +49,11 @@ export default function Search() {
           </div>
           <input
             type="search"
-            value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
             name="search"
-            id="blogSearch"
+            id="tilSearch"
             className="block p-4 pl-10 text-sm text-gray-900 border-b border-gray-300 bg-transparent dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:outline-none dark:focus:border-sky-400 focus:border-sky-500 w-full"
             placeholder="Search for a Lesson..."
+            onChange={handleSearch}
           />
           <button
             type="submit"

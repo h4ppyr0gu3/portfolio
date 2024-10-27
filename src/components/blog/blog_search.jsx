@@ -21,7 +21,6 @@ export default function BlogSearch() {
     };
     const fuse = new Fuse(blogs, options);
     const results = fuse.search(searchValue).map(obj => obj.item);
-    console.log(results);
     setStore(results);
   };
 
@@ -55,6 +54,7 @@ export default function BlogSearch() {
             id="blogSearch"
             className="block p-4 pl-10 text-sm text-gray-900 border-b border-gray-300 bg-transparent dark:border-gray-600 dark:placeholder-gray-400 dark:text-white border-b focus:outline-none dark:focus:border-sky-400 focus:border-sky-500 w-full"
             placeholder="Search for a Blog..."
+            onChange={handleSearch}
           />
           <button
             type="submit"

@@ -3,7 +3,7 @@ import ExperienceForm from './experience_form.jsx';
 import FieldForm from './field_form.jsx';
 import Title from './title.jsx';
 import SortableItem from './sortable_item.jsx';
-import { onMount, For, Show, createSignal, createEffect } from 'solid-js';
+import { onMount, For, Show, createSignal, createEffect } from 'react';
 import { useCvElems } from './cv_signals.jsx';
 import { unwrap } from 'solid-js/store';
 

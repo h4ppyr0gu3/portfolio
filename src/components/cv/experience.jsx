@@ -1,15 +1,16 @@
-import Skills from "./skills";
-import Title from "./title";
-import ExperienceItem from "./experience_item";
-import { Show } from "solid-js";
+import React from 'react';
+import Skills from './skills';
+import Title from './title';
+import ExperienceItem from './experience_item';
+
 export default function Experience(props) {
-  const experience = props.experience
+  const { experience, title } = props;
 
   return (
-    <Title title={props.title}>
-      <For each={experience}>{(xp, i) =>
-        <ExperienceItem experience={xp} parent={props.title} />
-      }</For>
+    <Title title={title}>
+      {experience.map((xp, i) => (
+        <ExperienceItem key={i} experience={xp} parent={title} />
+      ))}
     </Title>
   );
 }

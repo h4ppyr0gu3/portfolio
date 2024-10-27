@@ -1,4 +1,4 @@
-import { createStore, unwrap, reconcile } from 'solid-js/store';
+import { createStore, unwrap, reconcile } from 'react';
 
 const [cvElems, setCvElems] = createStore(
   JSON.parse(localStorage.getItem('cvElements')) || {}

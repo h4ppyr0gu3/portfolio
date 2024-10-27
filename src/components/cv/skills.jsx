@@ -1,11 +1,14 @@
-import Title from "./title";
+import React from 'react';
+import Title from './title';
+
 export default function Skills(props) {
-  const skills = props.skills
+  const { skills } = props;
+  
   return (
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
-      <For each={skills}>{(skill, i) =>
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
+      {skills.map((skill, i) => (
         <div key={i}>{skill}</div>
-      }</For>
+      ))}
     </div>
-  )
+  );
 }

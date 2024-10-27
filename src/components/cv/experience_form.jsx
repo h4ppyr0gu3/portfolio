@@ -1,6 +1,6 @@
 import Title from './title.jsx';
 import { useCvElems } from './cv_signals.jsx';
-import { onMount } from 'solid-js';
+import { onMount } from 'react';
 
 export default function ExperienceForm(props) {
   let titleField, companyField, startField, endField, locationField, descriptionField;

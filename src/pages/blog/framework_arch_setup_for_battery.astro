@@ -1,7 +1,7 @@
 ---
 import Blog from '../../layouts/Blog.astro';
 ---
-<Blog title='FrameWork Arch Setup for Battery' date='19/04/2025' updated='19/04/2025'>
+<Blog title='FrameWork Arch Setup for Battery' date='19/04/2025' updated='20/04/2025'>
 <h1 data-sourcepos="2:1-2:34" dir="auto">
 <a href="#framework-arch-setup-for-battery" aria-hidden="true" class="anchor" id="user-content-framework-arch-setup-for-battery"></a>FrameWork Arch Setup for Battery</h1>
 <p data-sourcepos="4:1-4:362" dir="auto">The framework laptop has exceeded my expectations in terms of build quality, I expected a lot more tacky setup but it turns out that it has great build quality and a lot of tools around it to make it as seemless as possible, there are obviously a lot of challenges that come with using Arch on it, and that is most of the problem but I would have it no other way</p>
@@ -11,48 +11,53 @@ import Blog from '../../layouts/Blog.astro';
 <p data-sourcepos="10:1-11:19" dir="auto">This is built on the back of my dotfiles which can be found <a data-sourcepos="10:61-10:106" href="https://github.com/h4ppyr0gu3/dotfiles" rel="nofollow noreferrer noopener" target="_blank">here</a>
 I am running SwayWM</p>
 <p data-sourcepos="13:1-13:50" dir="auto">configurations have to be changed for a few things</p>
-<p data-sourcepos="15:1-18:82" dir="auto">Requirements:
-- <a data-sourcepos="16:7-16:49" href="https://wiki.archlinux.org/title/TLP" rel="nofollow noreferrer noopener" target="_blank">TLP</a> - pretty much used as plug and play
-- <a data-sourcepos="17:7-17:64" href="https://aur.archlinux.org/packages/fw-ectool-git" rel="nofollow noreferrer noopener" target="_blank">ectool</a> - used to get battery info
-- <a data-sourcepos="18:7-18:59" href="https://github.com/equaeghe/batenergy" rel="nofollow noreferrer noopener" target="_blank">batenergy.sh</a> - adds some debug logs</p>
-<h4 data-sourcepos="20:1-20:14" dir="auto">
+<p data-sourcepos="15:1-15:14" dir="auto">Requirements:</p>
+<ul data-sourcepos="17:1-20:0" dir="auto">
+<li data-sourcepos="17:1-17:81">
+<a data-sourcepos="17:3-17:45" href="https://wiki.archlinux.org/title/TLP" rel="nofollow noreferrer noopener" target="_blank">TLP</a> - pretty much used as plug and play</li>
+<li data-sourcepos="18:1-18:87">
+<a data-sourcepos="18:3-18:60" href="https://aur.archlinux.org/packages/fw-ectool-git" rel="nofollow noreferrer noopener" target="_blank">ectool</a> - used to get battery info</li>
+<li data-sourcepos="19:1-20:0">
+<a data-sourcepos="19:3-19:55" href="https://github.com/equaeghe/batenergy" rel="nofollow noreferrer noopener" target="_blank">batenergy.sh</a> - adds some debug logs</li>
+</ul>
+<h4 data-sourcepos="21:1-21:14" dir="auto">
 <a href="#batenergy" aria-hidden="true" class="anchor" id="user-content-batenergy"></a>Batenergy</h4>
-<p data-sourcepos="21:1-24:76" dir="auto">Install batenergy by copying the batenergy.sh script to <code data-sourcepos="21:57-21:96">/lib/systemd/system-sleep/batenergy.sh</code>
-(<strong data-sourcepos="22:2-22:9">N.B.</strong> Make sure it is executable)<br data-sourcepos="22:38-22:39">
+<p data-sourcepos="22:1-25:76" dir="auto">Install batenergy by copying the batenergy.sh script to <code data-sourcepos="22:57-22:96">/lib/systemd/system-sleep/batenergy.sh</code>
+(<strong data-sourcepos="23:2-23:9">N.B.</strong> Make sure it is executable)<br data-sourcepos="23:38-23:39">
 this is essentially hooks that are run on sleeping / hibernating
-Make sure to test it manually, i had to change <code data-sourcepos="24:48-24:53">BAT0</code> to <code data-sourcepos="24:58-24:63">BAT1</code> on my laptop</p>
-<h4 data-sourcepos="26:1-26:11" dir="auto">
+Make sure to test it manually, i had to change <code data-sourcepos="25:48-25:53">BAT0</code> to <code data-sourcepos="25:58-25:63">BAT1</code> on my laptop</p>
+<h4 data-sourcepos="27:1-27:11" dir="auto">
 <a href="#ectool" aria-hidden="true" class="anchor" id="user-content-ectool"></a>Ectool</h4>
-<p data-sourcepos="27:1-29:83" dir="auto">using <code data-sourcepos="27:7-27:11">yay</code> to install <code data-sourcepos="27:24-27:31">ectool</code> is simple and straigt forward,
-to use the AC power only use <code data-sourcepos="28:30-28:61">sudo ectool chargecontrol idle</code>
-to set max and min charge levels use <code data-sourcepos="29:38-29:83">sudo ectool chargecontrol normal &lt;min&gt; &lt;max&gt;</code></p>
-<h4 data-sourcepos="31:1-31:8" dir="auto">
+<p data-sourcepos="28:1-30:83" dir="auto">using <code data-sourcepos="28:7-28:11">yay</code> to install <code data-sourcepos="28:24-28:31">ectool</code> is simple and straigt forward,
+to use the AC power only use <code data-sourcepos="29:30-29:61">sudo ectool chargecontrol idle</code>
+to set max and min charge levels use <code data-sourcepos="30:38-30:83">sudo ectool chargecontrol normal &lt;min&gt; &lt;max&gt;</code></p>
+<h4 data-sourcepos="32:1-32:8" dir="auto">
 <a href="#tlp" aria-hidden="true" class="anchor" id="user-content-tlp"></a>TLP</h4>
-<p data-sourcepos="33:1-35:97" dir="auto">tlp is pretty straight forward and available in pacman repos
-it is started in my sway config with <code data-sourcepos="34:38-34:53">exec tlp start</code>
-I think it can also be enabled on the machine to start on startup with <code data-sourcepos="35:72-35:97">sudo systmctl enable tlp</code></p>
-<h2 data-sourcepos="37:1-37:12" dir="auto">
+<p data-sourcepos="34:1-36:97" dir="auto">tlp is pretty straight forward and available in pacman repos
+it is started in my sway config with <code data-sourcepos="35:38-35:53">exec tlp start</code>
+I think it can also be enabled on the machine to start on startup with <code data-sourcepos="36:72-36:97">sudo systmctl enable tlp</code></p>
+<h2 data-sourcepos="38:1-38:12" dir="auto">
 <a href="#hibernate" aria-hidden="true" class="anchor" id="user-content-hibernate"></a>Hibernate</h2>
-<p data-sourcepos="38:1-39:153" dir="auto">I am trying to make it hibernate in all cases so that it doesn't end up using battery whilst sleeping
-to enable hibernate, swap memory is required, to create swap memory after provisioning the system refer to <a data-sourcepos="39:108-39:152" href="https://wiki.archlinux.org/title/Swap" rel="nofollow noreferrer noopener" target="_blank">wiki</a>:</p>
+<p data-sourcepos="39:1-40:153" dir="auto">I am trying to make it hibernate in all cases so that it doesn't end up using battery whilst sleeping
+to enable hibernate, swap memory is required, to create swap memory after provisioning the system refer to <a data-sourcepos="40:108-40:152" href="https://wiki.archlinux.org/title/Swap" rel="nofollow noreferrer noopener" target="_blank">wiki</a>:</p>
 <div class="gl-relative markdown-code-block js-markdown-code">
-<pre data-sourcepos="40:1-44:3" data-canonical-lang="bash" class="code highlight js-syntax-highlight language-shell" v-pre="true"><code is:raw><span id="LC1" class="line" lang="shell">mkswap <span class="nt">-U</span> clear <span class="nt">--size</span> 30G <span class="nt">--file</span> /swapfile <span class="c"># technically should be 2 - 3x the size of RAM</span></span>
+<pre data-sourcepos="41:1-45:3" data-canonical-lang="bash" class="code highlight js-syntax-highlight language-shell" v-pre="true"><code is:raw><span id="LC1" class="line" lang="shell">mkswap <span class="nt">-U</span> clear <span class="nt">--size</span> 30G <span class="nt">--file</span> /swapfile <span class="c"># technically should be 2 - 3x the size of RAM</span></span>
 <span id="LC2" class="line" lang="shell"></span>
 <span id="LC3" class="line" lang="shell">swapon /swapfile</span></code></pre>
 <copy-code></copy-code><insert-code-snippet></insert-code-snippet>
 </div>
-<p data-sourcepos="46:1-46:57" dir="auto">to enable on startup it needs to be added to <code data-sourcepos="46:46-46:57">/etc/fstab</code></p>
+<p data-sourcepos="47:1-47:57" dir="auto">to enable on startup it needs to be added to <code data-sourcepos="47:46-47:57">/etc/fstab</code></p>
 <div class="gl-relative markdown-code-block js-markdown-code">
-<pre data-sourcepos="48:1-52:3" data-canonical-lang="bash" class="code highlight js-syntax-highlight language-shell" v-pre="true"><code is:raw><span id="LC1" class="line" lang="shell"><span class="c"># /etc/fstab</span></span>
+<pre data-sourcepos="49:1-53:3" data-canonical-lang="bash" class="code highlight js-syntax-highlight language-shell" v-pre="true"><code is:raw><span id="LC1" class="line" lang="shell"><span class="c"># /etc/fstab</span></span>
 <span id="LC2" class="line" lang="shell"></span>
 <span id="LC3" class="line" lang="shell">/swapfile none swap defaults 0 0</span></code></pre>
 <copy-code></copy-code><insert-code-snippet></insert-code-snippet>
 </div>
-<p data-sourcepos="54:1-56:102" dir="auto">to reliably read the hiberantion state to and from the system it needs to be set in <code data-sourcepos="54:85-54:110">/sys/power/resume_offset</code>
+<p data-sourcepos="55:1-57:102" dir="auto">to reliably read the hiberantion state to and from the system it needs to be set in <code data-sourcepos="55:85-55:110">/sys/power/resume_offset</code>
 which i gather is the physical offset on the disk of the swap space
-more info can be found <a data-sourcepos="56:24-56:102" href="https://wiki.archlinux.org/title/Power_management/Suspend_and_hibernate" rel="nofollow noreferrer noopener" target="_blank">here</a></p>
+more info can be found <a data-sourcepos="57:24-57:102" href="https://wiki.archlinux.org/title/Power_management/Suspend_and_hibernate" rel="nofollow noreferrer noopener" target="_blank">here</a></p>
 <div class="gl-relative markdown-code-block js-markdown-code">
-<pre data-sourcepos="58:1-70:3" data-canonical-lang="bash" class="code highlight js-syntax-highlight language-shell" v-pre="true"><code is:raw><span id="LC1" class="line" lang="shell">filefrag <span class="nt">-v</span> /swapfile</span>
+<pre data-sourcepos="59:1-71:3" data-canonical-lang="bash" class="code highlight js-syntax-highlight language-shell" v-pre="true"><code is:raw><span id="LC1" class="line" lang="shell">filefrag <span class="nt">-v</span> /swapfile</span>
 <span id="LC2" class="line" lang="shell"><span class="c"># this returns a lot of info about the disk</span></span>
 <span id="LC3" class="line" lang="shell"></span>
 <span id="LC4" class="line" lang="shell"><span class="c"># Filesystem type is: ef53</span></span>
@@ -65,15 +70,15 @@ more info can be found <a data-sourcepos="56:24-56:102" href="https://wiki.archl
 <span id="LC11" class="line" lang="shell"><span class="c"># ...</span></span></code></pre>
 <copy-code></copy-code><insert-code-snippet></insert-code-snippet>
 </div>
-<p data-sourcepos="72:1-72:97" dir="auto">the physical offset is: <code data-sourcepos="72:25-72:34">12003328</code>, this needs to be put into the file <code data-sourcepos="72:72-72:97">/sys/power/resume_offset</code></p>
-<p data-sourcepos="74:1-74:42" dir="auto"><code data-sourcepos="74:1-74:42">echo 12003328 &gt; /sys/power/resume_offset</code></p>
-<p data-sourcepos="76:1-76:70" dir="auto">There is a lot of options that can be set in <code data-sourcepos="76:46-76:70">/etc/systemd/sleep.conf</code></p>
-<p data-sourcepos="78:1-78:69" dir="auto">A few more things need to be done to ensure that it works as expected</p>
-<h5 data-sourcepos="80:1-80:26" dir="auto">
+<p data-sourcepos="73:1-73:97" dir="auto">the physical offset is: <code data-sourcepos="73:25-73:34">12003328</code>, this needs to be put into the file <code data-sourcepos="73:72-73:97">/sys/power/resume_offset</code></p>
+<p data-sourcepos="75:1-75:42" dir="auto"><code data-sourcepos="75:1-75:42">echo 12003328 &gt; /sys/power/resume_offset</code></p>
+<p data-sourcepos="77:1-77:70" dir="auto">There is a lot of options that can be set in <code data-sourcepos="77:46-77:70">/etc/systemd/sleep.conf</code></p>
+<p data-sourcepos="79:1-79:69" dir="auto">A few more things need to be done to ensure that it works as expected</p>
+<h5 data-sourcepos="81:1-81:26" dir="auto">
 <a href="#configure-mkinitcpio" aria-hidden="true" class="anchor" id="user-content-configure-mkinitcpio"></a>configure mkinitcpio</h5>
-<p data-sourcepos="82:1-82:55" dir="auto">need to add a hook for resume to <code data-sourcepos="82:34-82:55">/etc/mkinitcpio.conf</code></p>
+<p data-sourcepos="83:1-83:55" dir="auto">need to add a hook for resume to <code data-sourcepos="83:34-83:55">/etc/mkinitcpio.conf</code></p>
 <div class="gl-relative markdown-code-block js-markdown-code">
-<pre data-sourcepos="84:1-91:3" data-canonical-lang="bash" class="code highlight js-syntax-highlight language-shell" v-pre="true"><code is:raw><span id="LC1" class="line" lang="shell"><span class="c"># /etc/mkinitcpio.conf</span></span>
+<pre data-sourcepos="85:1-92:3" data-canonical-lang="bash" class="code highlight js-syntax-highlight language-shell" v-pre="true"><code is:raw><span id="LC1" class="line" lang="shell"><span class="c"># /etc/mkinitcpio.conf</span></span>
 <span id="LC2" class="line" lang="shell"></span>
 <span id="LC3" class="line" lang="shell"><span class="nv">HOOKS</span><span class="o">=(</span>base udev autodetect microcode modconf kms keyboard keymap consolefont block filesystems fsck<span class="o">)</span></span>
 <span id="LC4" class="line" lang="shell"><span class="c"># becomes </span></span>
@@ -81,20 +86,20 @@ more info can be found <a data-sourcepos="56:24-56:102" href="https://wiki.archl
 <span id="LC6" class="line" lang="shell"><span class="c"># the change is adding resume between udev and autodetect</span></span></code></pre>
 <copy-code></copy-code><insert-code-snippet></insert-code-snippet>
 </div>
-<p data-sourcepos="93:1-93:62" dir="auto">after changing this file the following command needs to be run</p>
+<p data-sourcepos="94:1-94:62" dir="auto">after changing this file the following command needs to be run</p>
 <div class="gl-relative markdown-code-block js-markdown-code">
-<pre data-sourcepos="95:1-97:3" data-canonical-lang="bash" class="code highlight js-syntax-highlight language-shell" v-pre="true"><code is:raw><span id="LC1" class="line" lang="shell"><span class="nb">sudo </span>mkinitcpio <span class="nt">-p</span> linux</span></code></pre>
+<pre data-sourcepos="96:1-98:3" data-canonical-lang="bash" class="code highlight js-syntax-highlight language-shell" v-pre="true"><code is:raw><span id="LC1" class="line" lang="shell"><span class="nb">sudo </span>mkinitcpio <span class="nt">-p</span> linux</span></code></pre>
 <copy-code></copy-code><insert-code-snippet></insert-code-snippet>
 </div>
-<h5 data-sourcepos="99:1-99:35" dir="auto">
+<h5 data-sourcepos="100:1-100:35" dir="auto">
 <a href="#configure-boot-loader-entries" aria-hidden="true" class="anchor" id="user-content-configure-boot-loader-entries"></a>configure boot loader entries</h5>
-<p data-sourcepos="101:1-104:179" dir="auto">the file name may differ but should be in <code data-sourcepos="101:43-101:77">/boot/loader/entries/*_linux.conf</code>
-mine is <code data-sourcepos="102:9-102:61">/boot/loader/entries/2025-03-24_13-51-24_linux.conf</code>
-this is for <code data-sourcepos="103:13-103:26">systemd-boot</code> not <code data-sourcepos="103:32-103:37">GRUB</code>
-to find UUID you can use <code data-sourcepos="104:26-104:32">blkid</code> which will print the UUID of swap partition if provisioned or just the root partition that you used when provisioning the swap file in <code data-sourcepos="104:169-104:179">/swapfile</code></p>
-<p data-sourcepos="106:1-106:44" dir="auto">the <code data-sourcepos="106:5-106:19">resume_offset</code> is what we found earlier</p>
+<p data-sourcepos="102:1-105:179" dir="auto">the file name may differ but should be in <code data-sourcepos="102:43-102:77">/boot/loader/entries/*_linux.conf</code>
+mine is <code data-sourcepos="103:9-103:61">/boot/loader/entries/2025-03-24_13-51-24_linux.conf</code>
+this is for <code data-sourcepos="104:13-104:26">systemd-boot</code> not <code data-sourcepos="104:32-104:37">GRUB</code>
+to find UUID you can use <code data-sourcepos="105:26-105:32">blkid</code> which will print the UUID of swap partition if provisioned or just the root partition that you used when provisioning the swap file in <code data-sourcepos="105:169-105:179">/swapfile</code></p>
+<p data-sourcepos="107:1-107:44" dir="auto">the <code data-sourcepos="107:5-107:19">resume_offset</code> is what we found earlier</p>
 <div class="gl-relative markdown-code-block js-markdown-code">
-<pre data-sourcepos="108:1-120:3" data-canonical-lang="bash" class="code highlight js-syntax-highlight language-shell" v-pre="true"><code is:raw><span id="LC1" class="line" lang="shell"><span class="c"># /boot/loader/entries/2025-03-24_13-51-24_linux.conf</span></span>
+<pre data-sourcepos="109:1-121:3" data-canonical-lang="bash" class="code highlight js-syntax-highlight language-shell" v-pre="true"><code is:raw><span id="LC1" class="line" lang="shell"><span class="c"># /boot/loader/entries/2025-03-24_13-51-24_linux.conf</span></span>
 <span id="LC2" class="line" lang="shell"></span>
 <span id="LC3" class="line" lang="shell"><span class="c"># Created by: archinstall</span></span>
 <span id="LC4" class="line" lang="shell"><span class="c"># Created on: 2025-03-24_13-51-24</span></span>
@@ -107,11 +112,11 @@ to find UUID you can use <code data-sourcepos="104:26-104:32">blkid</code> which
 <span id="LC11" class="line" lang="shell"><span class="c"># adding resume=UUID=cc2161cd-8c82-411c-8435-670e3dc7a772 resume_offset=11874304</span></span></code></pre>
 <copy-code></copy-code><insert-code-snippet></insert-code-snippet>
 </div>
-<h5 data-sourcepos="122:1-122:27" dir="auto">
+<h5 data-sourcepos="123:1-123:27" dir="auto">
 <a href="#configure-logindconf" aria-hidden="true" class="anchor" id="user-content-configure-logindconf"></a>configure logind.conf</h5>
-<p data-sourcepos="124:1-124:145" dir="auto">we need to change some options in <code data-sourcepos="124:35-124:60">/etc/systemd/logind.conf</code>, this will handle which states to use for lid switch and how to handle power buttons</p>
+<p data-sourcepos="125:1-125:145" dir="auto">we need to change some options in <code data-sourcepos="125:35-125:60">/etc/systemd/logind.conf</code>, this will handle which states to use for lid switch and how to handle power buttons</p>
 <div class="gl-relative markdown-code-block js-markdown-code">
-<pre data-sourcepos="126:1-141:3" data-canonical-lang="bash" class="code highlight js-syntax-highlight language-shell" v-pre="true"><code is:raw><span id="LC1" class="line" lang="shell"><span class="c"># /etc/systemd/logind.conf</span></span>
+<pre data-sourcepos="127:1-142:3" data-canonical-lang="bash" class="code highlight js-syntax-highlight language-shell" v-pre="true"><code is:raw><span id="LC1" class="line" lang="shell"><span class="c"># /etc/systemd/logind.conf</span></span>
 <span id="LC2" class="line" lang="shell"></span>
 <span id="LC3" class="line" lang="shell"><span class="o">[</span>Login]</span>
 <span id="LC4" class="line" lang="shell"></span>

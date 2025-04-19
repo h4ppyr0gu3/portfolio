@@ -11,7 +11,7 @@ tags:
 - SwayWM
 - Framework Laptop
 published: true
-updated: 19/04/2025
+updated: 20/04/2025
 topics: ''
 ---
 
@@ -29,9 +29,10 @@ I am running SwayWM
 configurations have to be changed for a few things
 
 Requirements: 
-    - [TLP](https://wiki.archlinux.org/title/TLP) - pretty much used as plug and play
-    - [ectool](https://aur.archlinux.org/packages/fw-ectool-git) - used to get battery info
-    - [batenergy.sh](https://github.com/equaeghe/batenergy) - adds some debug logs
+
+- [TLP](https://wiki.archlinux.org/title/TLP) - pretty much used as plug and play
+- [ectool](https://aur.archlinux.org/packages/fw-ectool-git) - used to get battery info
+- [batenergy.sh](https://github.com/equaeghe/batenergy) - adds some debug logs
 
 #### Batenergy
 Install batenergy by copying the batenergy.sh script to `/lib/systemd/system-sleep/batenergy.sh`

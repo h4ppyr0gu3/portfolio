@@ -126,6 +126,7 @@ class Content
     response = Net::HTTP.start(uri.host, uri.port, use_ssl: true) do |http|
       http.request(request)
     end
+
     raise GitlabAPIError unless response.code == '201'
 
     JSON.parse(response.body)

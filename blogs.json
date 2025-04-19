@@ -391,6 +391,22 @@
       "published": true,
       "updated": "18/04/2024",
       "topics": "Linux"
+    },
+    {
+      "href": "/blog/framework_arch_setup_for_battery",
+      "title": "FrameWork Arch Setup for Battery",
+      "excerpt": "Setup FrameWork laptop the write way so that it has great battery life on arch",
+      "date": "19/04/2025",
+      "tags": [
+        "Linux",
+        "Arch",
+        "Battery Life",
+        "SwayWM",
+        "Framework Laptop"
+      ],
+      "published": true,
+      "updated": "19/04/2025",
+      "topics": ""
     }
   ]
 }

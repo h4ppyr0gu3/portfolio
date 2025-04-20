@@ -1,0 +1,16 @@
+---
+import Blog from '../../layouts/Blog.astro';
+---
+<Blog title='debugging android with firefox' date='20/04/2025' updated='20/04/2025'>
+<h1 data-sourcepos="2:1-2:32" dir="auto">
+<a href="#debugging-android-with-firefox" aria-hidden="true" class="anchor" id="user-content-debugging-android-with-firefox"></a>debugging android with firefox</h1>
+<p data-sourcepos="4:1-4:59" dir="auto">you can debug android firefox using firefox developer tools</p>
+<p data-sourcepos="6:1-6:73" dir="auto"><code data-sourcepos="6:1-6:17">about:debugging</code> allows you to connect to the android device to debug it</p>
+<p data-sourcepos="8:1-9:32" dir="auto">set up <code data-sourcepos="8:8-8:12">adb</code> android debug bridge using <code data-sourcepos="8:41-8:58">adb start-server</code>
+list devices using <code data-sourcepos="9:20-9:32">adb devices</code></p>
+<p data-sourcepos="11:1-12:89" dir="auto">open <code data-sourcepos="11:6-11:22">about:debugging</code> in firefox
+enable debugging in Firfox for Android <code data-sourcepos="12:40-12:89">Settings -&gt; Advanced -&gt; Remote debugging via USB</code></p>
+<p data-sourcepos="14:1-14:53" dir="auto">connect to the device using <code data-sourcepos="14:29-14:53">adb connect &lt;device-id&gt;</code></p>
+<p data-sourcepos="16:1-17:29" dir="auto">your device should show up in the <code data-sourcepos="16:35-16:51">about:debugging</code> page
+connect to it and get to work</p>
+</Blog>

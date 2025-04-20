@@ -261,6 +261,22 @@
       "published": true,
       "updated": "27/09/2024",
       "topics": "Ruby"
+    },
+    {
+      "href": "/til/debugging_android_with_firefox",
+      "title": "debugging android with firefox",
+      "excerpt": "Debug Android Firefox with Firefox Developer Tools using ADB and about:debugging",
+      "date": "20/04/2025",
+      "tags": [
+        "debugging",
+        "Android",
+        "Firefox",
+        "developer tools",
+        "ADB"
+      ],
+      "published": true,
+      "updated": "20/04/2025",
+      "topics": "firefox"
     }
   ],
   "blog": [

@@ -1,0 +1,29 @@
+---
+import Blog from '../../layouts/Blog.astro';
+---
+<Blog title='virtual environments in python' date='18/06/2025' updated='18/06/2025'>
+<h1 data-sourcepos="2:1-2:32" dir="auto">
+<a href="#virtual-environments-in-python" aria-hidden="true" class="anchor" id="user-content-virtual-environments-in-python"></a>virtual environments in python</h1>
+<p data-sourcepos="4:1-4:224" dir="auto">In python there is the concept of virtual environments which encapsulates all the dependencies locally to that project so that you don't get dependency mismatch or using the wrong versions from another projects dependencies.</p>
+<p data-sourcepos="6:1-7:49" dir="auto">To setup virtual environments you first need to have the venv python package
+Install it with the following: <code data-sourcepos="7:32-7:49">pip install venv</code></p>
+<p data-sourcepos="9:1-9:220" dir="auto">you can then create a virtual environment with the following: <code data-sourcepos="9:63-9:85">python3 -m venv myenv</code>, however, this looks tacky when you run <code data-sourcepos="9:127-9:130">ls</code> or are looking from the file browser, to fix this add a <code data-sourcepos="9:188-9:190">.</code> so that it is a hidden folder</p>
+<p data-sourcepos="11:1-11:67" dir="auto">to activate the virtual environment run <code data-sourcepos="11:41-11:67">source myenv/bin/activate</code></p>
+<p data-sourcepos="13:1-13:110" dir="auto">once it is activated you will then have to install all the requirements with <code data-sourcepos="13:78-13:110">pip install -r requirements.txt</code></p>
+<p data-sourcepos="15:1-15:54" dir="auto">to deactivate the virtual environment run <code data-sourcepos="15:43-15:54">deactivate</code></p>
+<h3 data-sourcepos="18:1-18:23" dir="auto">
+<a href="#complete-venv-setup" aria-hidden="true" class="anchor" id="user-content-complete-venv-setup"></a>Complete venv setup</h3>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="19:1-23:3" data-canonical-lang="bash" class="code highlight js-syntax-highlight language-shell" v-pre="true"><code is:raw><span id="LC1" class="line" lang="shell">python3 <span class="nt">-m</span> venv .venv</span>
+<span id="LC2" class="line" lang="shell"><span class="nb">source</span> .venv/bin/activate</span>
+<span id="LC3" class="line" lang="shell">pip <span class="nb">install</span> <span class="nt">-r</span> requirements.txt</span></code></pre>
+<copy-code></copy-code><insert-code-snippet></insert-code-snippet>
+</div>
+<p data-sourcepos="25:1-25:70" dir="auto">Remember to add <code data-sourcepos="25:17-25:23">.venv</code> to your <code data-sourcepos="25:33-25:44">.gitignore</code> as well ass <code data-sourcepos="25:58-25:70">__pycache__</code></p>
+<h3 data-sourcepos="27:1-27:23" dir="auto">
+<a href="#deactivate-the-venv" aria-hidden="true" class="anchor" id="user-content-deactivate-the-venv"></a>Deactivate the venv</h3>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="28:1-30:3" data-canonical-lang="bash" class="code highlight js-syntax-highlight language-shell" v-pre="true"><code is:raw><span id="LC1" class="line" lang="shell">deactivate</span></code></pre>
+<copy-code></copy-code><insert-code-snippet></insert-code-snippet>
+</div>
+</Blog>

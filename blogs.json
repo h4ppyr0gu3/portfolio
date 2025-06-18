@@ -293,6 +293,22 @@
       "published": true,
       "updated": "23/05/2025",
       "topics": "embedded"
+    },
+    {
+      "href": "/til/virtual_environments_in_python",
+      "title": "virtual environments in python",
+      "excerpt": "Virtual environments in Python encapsulate project dependencies locally to avoid conflicts. Setup with venv package, activate with source myenv/bin/activate, install requirements, deactivate with deactivate.",
+      "date": "18/06/2025",
+      "tags": [
+        "Python",
+        "virtual environments",
+        "dependencies",
+        "venv",
+        "setup"
+      ],
+      "published": true,
+      "updated": "18/06/2025",
+      "topics": "python"
     }
   ],
   "blog": [

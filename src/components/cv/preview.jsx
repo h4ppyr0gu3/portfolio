@@ -1,14 +1,14 @@
 import { useCvElems } from './cv_signals';
-import { Show, onMount } from 'solid-js';
+import React, { useEffect } from 'react';
 import ExperienceItem from './experience_item.jsx';
 import Title from './title.jsx';
 
 export default function Preview() {
   const [cvElems, setCvElems] = useCvElems();
 
-  onMount(() => {
+  useEffect(() => {
     readElements();
-  })
+  }, []);
 
   function readElements() {
     let elements = localStorage.getItem("cvElements");
@@ -19,28 +19,28 @@ export default function Preview() {
       elements = JSON.parse(elements);
       setCvElems(elements);
     }
-    console.log(Object.keys(cvElems()));
+    console.log(cvElems && Object.keys(cvElems));
   }
 
   return (
     <div>
-      <div class="my-3 mx-8">
-        <Show when={cvElems() != null} >
-          <For each={Object.keys(cvElems())}>{(key) =>
-            <div>
+      <div className="my-3 mx-8">
+        {cvElems != null && (
+          Object.keys(cvElems).map((key) => (
+            <div key={key}>
               <Title title={key} />
-              <Show when={cvElems()[key] != []} >
-                <For each={cvElems()[key]}>{(obj, i) =>
-                  <Show when={obj.selected}>
-                  <div>
-                    <ExperienceItem parent={key} experience={obj} />
-                  </div>
-                  </Show>
-                }</For>
-              </Show>
+              {cvElems[key] != [] && (
+                cvElems[key] && cvElems[key].map((obj, i) => (
+                  obj.selected && (
+                    <div key={i}>
+                      <ExperienceItem parent={key} experience={obj} />
+                    </div>
+                  )
+                ))
+              )}
             </div>
-          }</For>
-        </Show>
+          ))
+        )}
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 ---
 import Blog from '../../layouts/Blog.astro';
 ---
-<Blog title='virtual environments in python' date='18/06/2025' updated='18/06/2025'>
+<Blog title='virtual environments in python' date='18/06/2025' updated='21/06/2025'>
 <h1 data-sourcepos="2:1-2:32" dir="auto">
 <a href="#virtual-environments-in-python" aria-hidden="true" class="anchor" id="user-content-virtual-environments-in-python"></a>virtual environments in python</h1>
 <p data-sourcepos="4:1-4:224" dir="auto">In python there is the concept of virtual environments which encapsulates all the dependencies locally to that project so that you don't get dependency mismatch or using the wrong versions from another projects dependencies.</p>
@@ -14,16 +14,34 @@ Install it with the following: <code data-sourcepos="7:32-7:49">pip install venv
 <h3 data-sourcepos="18:1-18:23" dir="auto">
 <a href="#complete-venv-setup" aria-hidden="true" class="anchor" id="user-content-complete-venv-setup"></a>Complete venv setup</h3>
 <div class="gl-relative markdown-code-block js-markdown-code">
-<pre data-sourcepos="19:1-23:3" data-canonical-lang="bash" class="code highlight js-syntax-highlight language-shell" v-pre="true"><code is:raw><span id="LC1" class="line" lang="shell">python3 <span class="nt">-m</span> venv .venv</span>
+<pre data-sourcepos="19:1-23:3" data-canonical-lang="bash" class="code highlight js-syntax-highlight language-shell" v-pre="true"><code is:raw><span id="LC1" class="line" lang="shell">python3 <span class="nt">-m</span> venv .venv <span class="nt">--prompt</span> <span class="s1">'custom name of venv'</span></span>
 <span id="LC2" class="line" lang="shell"><span class="nb">source</span> .venv/bin/activate</span>
 <span id="LC3" class="line" lang="shell">pip <span class="nb">install</span> <span class="nt">-r</span> requirements.txt</span></code></pre>
 <copy-code></copy-code><insert-code-snippet></insert-code-snippet>
 </div>
-<p data-sourcepos="25:1-25:70" dir="auto">Remember to add <code data-sourcepos="25:17-25:23">.venv</code> to your <code data-sourcepos="25:33-25:44">.gitignore</code> as well ass <code data-sourcepos="25:58-25:70">__pycache__</code></p>
-<h3 data-sourcepos="27:1-27:23" dir="auto">
+<p data-sourcepos="25:1-25:48" dir="auto">possible aliases and functions for managing this</p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="27:1-42:3" data-canonical-lang="bash" class="code highlight js-syntax-highlight language-shell" v-pre="true"><code is:raw><span id="LC1" class="line" lang="shell"><span class="nb">alias </span><span class="nv">pysrc</span><span class="o">=</span><span class="s1">'source .venv/bin/activate'</span></span>
+<span id="LC2" class="line" lang="shell"></span>
+<span id="LC3" class="line" lang="shell"><span class="k">function </span>pysrc_create<span class="o">()</span> <span class="o">{</span></span>
+<span id="LC4" class="line" lang="shell">    <span class="k">if</span> <span class="o">[[</span> <span class="nt">-n</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then</span></span>
+<span id="LC5" class="line" lang="shell"><span class="k">        </span>python3 <span class="nt">-m</span> venv .venv <span class="nt">--prompt</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span></span>
+<span id="LC6" class="line" lang="shell">    <span class="k">else</span></span>
+<span id="LC7" class="line" lang="shell"><span class="k">        </span>python3 <span class="nt">-m</span> venv .venv</span>
+<span id="LC8" class="line" lang="shell">    <span class="k">fi</span></span>
+<span id="LC9" class="line" lang="shell"></span>
+<span id="LC10" class="line" lang="shell"><span class="k">    </span><span class="nb">source</span> .venv/bin/activate</span>
+<span id="LC11" class="line" lang="shell"><span class="o">}</span></span>
+<span id="LC12" class="line" lang="shell"></span>
+<span id="LC13" class="line" lang="shell"><span class="c"># I like the colon delimiter in most of my other commands to namespace them</span></span>
+<span id="LC14" class="line" lang="shell"><span class="nb">alias </span>pysrc:create<span class="o">=</span><span class="s1">'pysrc_create'</span></span></code></pre>
+<copy-code></copy-code><insert-code-snippet></insert-code-snippet>
+</div>
+<p data-sourcepos="44:1-44:69" dir="auto">Remember to add <code data-sourcepos="44:17-44:23">.venv</code> to your <code data-sourcepos="44:33-44:44">.gitignore</code> as well as <code data-sourcepos="44:57-44:69">__pycache__</code></p>
+<h3 data-sourcepos="46:1-46:23" dir="auto">
 <a href="#deactivate-the-venv" aria-hidden="true" class="anchor" id="user-content-deactivate-the-venv"></a>Deactivate the venv</h3>
 <div class="gl-relative markdown-code-block js-markdown-code">
-<pre data-sourcepos="28:1-30:3" data-canonical-lang="bash" class="code highlight js-syntax-highlight language-shell" v-pre="true"><code is:raw><span id="LC1" class="line" lang="shell">deactivate</span></code></pre>
+<pre data-sourcepos="47:1-49:3" data-canonical-lang="bash" class="code highlight js-syntax-highlight language-shell" v-pre="true"><code is:raw><span id="LC1" class="line" lang="shell">deactivate</span></code></pre>
 <copy-code></copy-code><insert-code-snippet></insert-code-snippet>
 </div>
 </Blog>

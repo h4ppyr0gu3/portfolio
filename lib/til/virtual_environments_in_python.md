@@ -12,7 +12,7 @@ tags:
 - venv
 - setup
 published: true
-updated: 18/06/2025
+updated: 21/06/2025
 topics: python
 ---
 
@@ -34,12 +34,31 @@ to deactivate the virtual environment run `deactivate`
 
 ### Complete venv setup
 ```bash
-python3 -m venv .venv
+python3 -m venv .venv --prompt 'custom name of venv'
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-Remember to add `.venv` to your `.gitignore` as well ass `__pycache__`
+possible aliases and functions for managing this
+
+```bash
+alias pysrc='source .venv/bin/activate'
+
+function pysrc_create() {
+    if [[ -n "$1" ]]; then
+        python3 -m venv .venv --prompt "$1"
+    else
+        python3 -m venv .venv
+    fi
+
+    source .venv/bin/activate
+}
+
+# I like the colon delimiter in most of my other commands to namespace them
+alias pysrc:create='pysrc_create'
+```
+
+Remember to add `.venv` to your `.gitignore` as well as `__pycache__`
 
 ### Deactivate the venv
 ```bash

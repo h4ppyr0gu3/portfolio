@@ -24,7 +24,7 @@ export default function Preview() {
 
   return (
     <div>
-      <div className="my-3 mx-8">
+      <div id="cv-preview" className="my-3 mx-8 bg-white dark:bg-neutral-800 text-black dark:text-white p-6 rounded shadow-lg transition-colors duration-200">
         {cvElems != null && (
           Object.keys(cvElems).map((key) => (
             <div key={key}>

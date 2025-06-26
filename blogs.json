@@ -455,6 +455,22 @@
       "published": true,
       "updated": "20/04/2025",
       "topics": ""
+    },
+    {
+      "href": "/blog/one_hot_encoding_and_feature_based_ml",
+      "title": "One hot encoding and feature based ML",
+      "excerpt": "In machine learning there are models, with multiple x values for a y value, one hot encoding adds features to models for better predictions.",
+      "date": "26/06/2025",
+      "tags": [
+        "machine learning",
+        "models",
+        "one hot encoding",
+        "features",
+        "predictions"
+      ],
+      "published": true,
+      "updated": "26/06/2025",
+      "topics": "python"
     }
   ]
 }

@@ -5,11 +5,20 @@
   ],
   "experience": [
     {
+      "company": "Secutor Solutions",
+      "title": "Head of Technology",
+      "location": "Marondera, Zimbabwe",
+      "start": "August 2025",
+      "end": "Present",
+      "description": "Working with automating the tasks in a security company to optimize team resources and reduce human cost, implement as many automated systems to aid with monitoring and data collection for running analysis on to spot anomalies, working with both hardware and software to improve efficiency",
+      "skills": ["Ruby", "Rails", "Machine Learning", "Python", "ELRS", "WebSockets", "Postgres", "Redis"]
+    },
+    {
       "company": "IG Group/tastytrade",
       "title": "Ruby Developer",
       "location": "Krakow, Poland/Remote",
       "start": "November 2023",
-      "end": "Present",
+      "end": "July 2025",
       "description": "Managing teams and organizational tasks",
       "skills": ["Ruby", "Rails", "REST", "Postgres", "Redis"]
     },
@@ -19,7 +28,7 @@
       "location": "Warsaw, Poland/Remote",
       "start": "April 2023",
       "end": "Present",
-      "description": "Managing teams and organizational tasks",
+      "description": "Managing teams and organizational tasks, assigning projects and tasks, mentoring and coaching team members, managing budgets and resources, and ensuring that the company is aligned with the company's strategic objectives and goals.",
       "skills": ["Ruby", "Rails", "REST", "Postgres", "Redis"]
     },
     {
@@ -37,7 +46,7 @@
       "location": "Banket, Zimbabwe",
       "start": "December 2019",
       "end": "September 2020",
-      "description": "Supervising the loading of chrome onto trucks, handling both lumpy and fines",
+      "description": "Supervising the loading of chrome onto trucks, handling both lumpy and fines.",
       "skills": ["communication", "teamwork"]
     }
   ],

@@ -1,0 +1,171 @@
+---
+import Blog from '../../layouts/Blog.astro';
+---
+<Blog title='One hot encoding and feature based ML' date='26/06/2025' updated='26/06/2025'>
+<h1 data-sourcepos="2:1-2:39" dir="auto">
+<a href="#one-hot-encoding-and-feature-based-ml" aria-hidden="true" class="anchor" id="user-content-one-hot-encoding-and-feature-based-ml"></a>One hot encoding and feature based ML</h1>
+<p data-sourcepos="4:1-5:231" dir="auto">In mcahine learning there are many models that can be used, i think an important part of being able to find the information you are looking for is to have the knowledge of how things work.
+In these models that we create there are multiple <code data-sourcepos="5:51-5:53">x</code> values that we provide for a specific <code data-sourcepos="5:93-5:95">y</code> value, our job is to get as many <code data-sourcepos="5:130-5:132">x</code>'s together that we will be able to keep track of in future that we can get a single <code data-sourcepos="5:218-5:220">y</code> value for.</p>
+<h3 data-sourcepos="7:1-7:12" dir="auto">
+<a href="#examples" aria-hidden="true" class="anchor" id="user-content-examples"></a>examples</h3>
+<p data-sourcepos="9:1-9:449" dir="auto">I am trying to predict what would happen in the future, i have several <code data-sourcepos="9:72-9:74">x</code> values such as the day of the week, whether it is weekend and the day of the year, this is easy to get future data for, but if we want a bit more complexity we can have it so that we have sales lag data, in order to make these predictions, we have to do one at a time to get the previous days sales, because we have to have all the <code data-sourcepos="9:408-9:410">x</code> values to predict a singular <code data-sourcepos="9:441-9:443">y</code> value</p>
+<table data-sourcepos="11:1-17:26" dir="auto">
+<thead>
+<tr data-sourcepos="11:1-11:63">
+<th data-sourcepos="11:2-11:18">Day of the week</th>
+<th data-sourcepos="11:20-11:36">Day of the year</th>
+<th data-sourcepos="11:38-11:50">Sales lag 1</th>
+<th data-sourcepos="11:52-11:62">Y / Sales</th>
+</tr>
+</thead>
+<tbody>
+<tr data-sourcepos="13:1-13:26">
+<td data-sourcepos="13:2-13:9">Monday</td>
+<td data-sourcepos="13:11-13:13">1</td>
+<td data-sourcepos="13:15-13:19">100</td>
+<td data-sourcepos="13:21-13:25">200</td>
+</tr>
+<tr data-sourcepos="14:1-14:27">
+<td data-sourcepos="14:2-14:10">Tuesday</td>
+<td data-sourcepos="14:12-14:14">2</td>
+<td data-sourcepos="14:16-14:20">200</td>
+<td data-sourcepos="14:22-14:26">300</td>
+</tr>
+<tr data-sourcepos="15:1-15:29">
+<td data-sourcepos="15:2-15:12">Wednesday</td>
+<td data-sourcepos="15:14-15:16">3</td>
+<td data-sourcepos="15:18-15:22">300</td>
+<td data-sourcepos="15:24-15:28">300</td>
+</tr>
+<tr data-sourcepos="16:1-16:28">
+<td data-sourcepos="16:2-16:11">Thursday</td>
+<td data-sourcepos="16:13-16:15">4</td>
+<td data-sourcepos="16:17-16:21">300</td>
+<td data-sourcepos="16:23-16:27">250</td>
+</tr>
+<tr data-sourcepos="17:1-17:26">
+<td data-sourcepos="17:2-17:9">Friday</td>
+<td data-sourcepos="17:11-17:13">5</td>
+<td data-sourcepos="17:15-17:19">250</td>
+<td data-sourcepos="17:21-17:25">300</td>
+</tr>
+</tbody>
+</table>
+<p data-sourcepos="19:1-19:317" dir="auto">Sales lag in this case is the previous day's sales, and if we are working in predictions we don't have values of the previous day's sales, so this is a difficult value to add to a model, it is possible because we can do a day at a time but then the results that we spit out also hava an increasing likelihood of error</p>
+<h3 data-sourcepos="21:1-21:20" dir="auto">
+<a href="#one-hot-encoding" aria-hidden="true" class="anchor" id="user-content-one-hot-encoding"></a>One hot encoding</h3>
+<p data-sourcepos="23:1-23:315" dir="auto">in the table above, we have Day of the week that is a string, One hot encoding allows us to add this as a <code data-sourcepos="23:107-23:115">feature</code> to our model, <code data-sourcepos="23:131-23:140">features</code> are basically <code data-sourcepos="23:156-23:158">x</code> values that are used, that have meaning to the final output, if we want weather to be a factor we would one hot encode weather, so given the following data:</p>
+<table data-sourcepos="25:1-31:34" dir="auto">
+<thead>
+<tr data-sourcepos="25:1-25:73">
+<th data-sourcepos="25:2-25:10">Weather</th>
+<th data-sourcepos="25:12-25:28">Day of the week</th>
+<th data-sourcepos="25:30-25:46">Day of the year</th>
+<th data-sourcepos="25:48-25:60">Sales lag 1</th>
+<th data-sourcepos="25:62-25:72">Y / Sales</th>
+</tr>
+</thead>
+<tbody>
+<tr data-sourcepos="27:1-27:34">
+<td data-sourcepos="27:2-27:8">Sunny</td>
+<td data-sourcepos="27:10-27:17">Monday</td>
+<td data-sourcepos="27:19-27:21">1</td>
+<td data-sourcepos="27:23-27:27">100</td>
+<td data-sourcepos="27:29-27:33">200</td>
+</tr>
+<tr data-sourcepos="28:1-28:35">
+<td data-sourcepos="28:2-28:8">Sunny</td>
+<td data-sourcepos="28:10-28:18">Tuesday</td>
+<td data-sourcepos="28:20-28:22">2</td>
+<td data-sourcepos="28:24-28:28">200</td>
+<td data-sourcepos="28:30-28:34">300</td>
+</tr>
+<tr data-sourcepos="29:1-29:38">
+<td data-sourcepos="29:2-29:9">Cloudy</td>
+<td data-sourcepos="29:11-29:21">Wednesday</td>
+<td data-sourcepos="29:23-29:25">3</td>
+<td data-sourcepos="29:27-29:31">300</td>
+<td data-sourcepos="29:33-29:37">300</td>
+</tr>
+<tr data-sourcepos="30:1-30:37">
+<td data-sourcepos="30:2-30:9">Cloudy</td>
+<td data-sourcepos="30:11-30:20">Thursday</td>
+<td data-sourcepos="30:22-30:24">4</td>
+<td data-sourcepos="30:26-30:30">300</td>
+<td data-sourcepos="30:32-30:36">250</td>
+</tr>
+<tr data-sourcepos="31:1-31:34">
+<td data-sourcepos="31:2-31:8">Rainy</td>
+<td data-sourcepos="31:10-31:17">Friday</td>
+<td data-sourcepos="31:19-31:21">5</td>
+<td data-sourcepos="31:23-31:27">250</td>
+<td data-sourcepos="31:29-31:33">300</td>
+</tr>
+</tbody>
+</table>
+<p data-sourcepos="33:1-33:279" dir="auto">the day of the week is not a good candidate for one hot encoding as it has a numerical value that can be associated with it, however we should one hot encode weather so that if we know what the weather will be for the next upcoming days we can feed that in and get valueable data</p>
+<p data-sourcepos="35:1-35:37" dir="auto">it will result in the following table</p>
+<table data-sourcepos="37:1-43:33" dir="auto">
+<thead>
+<tr data-sourcepos="37:1-37:112">
+<th data-sourcepos="37:2-37:16">Weather_Sunny</th>
+<th data-sourcepos="37:18-37:33">Weather_Cloudy</th>
+<th data-sourcepos="37:35-37:49">Weather_Rainy</th>
+<th data-sourcepos="37:51-37:67">Day of the week</th>
+<th data-sourcepos="37:69-37:85">Day of the year</th>
+<th data-sourcepos="37:87-37:99">Sales lag 1</th>
+<th data-sourcepos="37:101-37:111">Y / Sales</th>
+</tr>
+</thead>
+<tbody>
+<tr data-sourcepos="39:1-39:33">
+<td data-sourcepos="39:2-39:4">1</td>
+<td data-sourcepos="39:6-39:8">0</td>
+<td data-sourcepos="39:10-39:12">0</td>
+<td data-sourcepos="39:14-39:16">1</td>
+<td data-sourcepos="39:18-39:20">1</td>
+<td data-sourcepos="39:22-39:26">100</td>
+<td data-sourcepos="39:28-39:32">200</td>
+</tr>
+<tr data-sourcepos="40:1-40:33">
+<td data-sourcepos="40:2-40:4">1</td>
+<td data-sourcepos="40:6-40:8">0</td>
+<td data-sourcepos="40:10-40:12">0</td>
+<td data-sourcepos="40:14-40:16">2</td>
+<td data-sourcepos="40:18-40:20">2</td>
+<td data-sourcepos="40:22-40:26">200</td>
+<td data-sourcepos="40:28-40:32">300</td>
+</tr>
+<tr data-sourcepos="41:1-41:33">
+<td data-sourcepos="41:2-41:4">0</td>
+<td data-sourcepos="41:6-41:8">1</td>
+<td data-sourcepos="41:10-41:12">0</td>
+<td data-sourcepos="41:14-41:16">3</td>
+<td data-sourcepos="41:18-41:20">3</td>
+<td data-sourcepos="41:22-41:26">300</td>
+<td data-sourcepos="41:28-41:32">300</td>
+</tr>
+<tr data-sourcepos="42:1-42:33">
+<td data-sourcepos="42:2-42:4">0</td>
+<td data-sourcepos="42:6-42:8">1</td>
+<td data-sourcepos="42:10-42:12">0</td>
+<td data-sourcepos="42:14-42:16">4</td>
+<td data-sourcepos="42:18-42:20">4</td>
+<td data-sourcepos="42:22-42:26">300</td>
+<td data-sourcepos="42:28-42:32">250</td>
+</tr>
+<tr data-sourcepos="43:1-43:33">
+<td data-sourcepos="43:2-43:4">0</td>
+<td data-sourcepos="43:6-43:8">0</td>
+<td data-sourcepos="43:10-43:12">1</td>
+<td data-sourcepos="43:14-43:16">5</td>
+<td data-sourcepos="43:18-43:20">5</td>
+<td data-sourcepos="43:22-43:26">250</td>
+<td data-sourcepos="43:28-43:32">300</td>
+</tr>
+</tbody>
+</table>
+<p data-sourcepos="45:1-46:53" dir="auto">Now we have the <code data-sourcepos="45:17-45:26">features</code> that we can use to predict the <code data-sourcepos="45:59-45:61">y</code> value
+and they have values that the computer can understand</p>
+<p data-sourcepos="48:1-48:373" dir="auto">if we want to get something out, we should have all the <code data-sourcepos="48:57-48:59">x</code> values we put in, defined so that we can get a single <code data-sourcepos="48:115-48:117">y</code> out, so if i want to add predictions with weather in the future, the accuracy of my model is also dependent on the accuracy of my weather forecast, obviously for up to 1 week that can be accurate enough but ideally it would have some sort of default value</p>
+</Blog>

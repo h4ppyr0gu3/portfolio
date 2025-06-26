@@ -21,6 +21,7 @@
     "astro": "^5.10.0",
     "fuse.js": "^6.6.2",
     "highlightjs": "^9.16.2",
+    "html2pdf.js": "^0.10.3",
     "mermaid": "^11.7.0",
     "react": "^19.0.0-beta",
     "react-dom": "^19.0.0-beta",

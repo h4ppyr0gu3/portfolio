@@ -1,0 +1,10 @@
+---
+import Blog from '../../layouts/Blog.astro';
+---
+<Blog title='System wide environment variables in shells' date='03/07/2025' updated='03/07/2025'>
+<h1 data-sourcepos="2:1-2:45" dir="auto">
+<a href="#system-wide-environment-variables-in-shells" aria-hidden="true" class="anchor" id="user-content-system-wide-environment-variables-in-shells"></a>System wide environment variables in shells</h1>
+<p data-sourcepos="4:1-5:125" dir="auto">Not all shells are created equal, there are interactive and non-interactive, login and non-login, the issue is when you want to create system wide variables, where do you put them so that all shells have them so i can access them using a deployment tool like <a data-sourcepos="4:260-4:292" href="https://kamal-deploy.org" rel="nofollow noreferrer noopener" target="_blank">kamal</a>, well the solution is that they should go into <code data-sourcepos="4:341-4:358">/etc/environment</code>
+there are limitations to this file though, it doesn't support any shell scripting, just simply key values, nothing with a <code data-sourcepos="5:123-5:125">$</code></p>
+<p data-sourcepos="7:1-7:15" dir="auto">Hope this helps</p>
+</Blog>

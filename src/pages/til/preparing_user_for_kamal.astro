@@ -1,0 +1,41 @@
+---
+import Blog from '../../layouts/Blog.astro';
+---
+<Blog title='Preparing user for kamal' date='03/07/2025' updated='03/07/2025'>
+<h1 data-sourcepos="2:1-2:26" dir="auto">
+<a href="#preparing-user-for-kamal" aria-hidden="true" class="anchor" id="user-content-preparing-user-for-kamal"></a>Preparing user for kamal</h1>
+<p data-sourcepos="4:1-4:59" dir="auto">when using kamal it is a good idea not to use the root user</p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="6:1-36:3" data-canonical-lang="bash" class="code highlight js-syntax-highlight language-shell" v-pre="true"><code is:raw><span id="LC1" class="line" lang="shell"><span class="c"># copy the root ssh keys you want to use</span></span>
+<span id="LC2" class="line" lang="shell">ssh-copy-id <span class="nt">-i</span> ~/.ssh/deployer_key.pub root@xx.xx.xx.xx</span>
+<span id="LC3" class="line" lang="shell"></span>
+<span id="LC4" class="line" lang="shell"><span class="c"># create deployer user</span></span>
+<span id="LC5" class="line" lang="shell">useradd <span class="nt">--create-home</span> deployer</span>
+<span id="LC6" class="line" lang="shell">usermod <span class="nt">-s</span> /bin/bash deployer</span>
+<span id="LC7" class="line" lang="shell"></span>
+<span id="LC8" class="line" lang="shell"><span class="c"># copy root ssh keys</span></span>
+<span id="LC9" class="line" lang="shell">su - deployer <span class="nt">-c</span> <span class="s1">'mkdir -p ~/.ssh'</span></span>
+<span id="LC10" class="line" lang="shell">su - deployer <span class="nt">-c</span> <span class="s1">'touch ~/.ssh/authorized_keys'</span></span>
+<span id="LC11" class="line" lang="shell"><span class="nb">cat</span> /root/.ssh/authorized_keys <span class="o">&gt;&gt;</span> /home/deployer/.ssh/authorized_keys</span>
+<span id="LC12" class="line" lang="shell"><span class="nb">chmod </span>700 /home/deployer/.ssh</span>
+<span id="LC13" class="line" lang="shell"><span class="nb">chmod </span>600 /home/deployer/.ssh/authorized_keys</span>
+<span id="LC14" class="line" lang="shell"></span>
+<span id="LC15" class="line" lang="shell"><span class="c"># add user to sudoers file</span></span>
+<span id="LC16" class="line" lang="shell"><span class="nb">echo</span> <span class="s1">'deployer ALL=(ALL:ALL) NOPASSWD: ALL'</span> | <span class="nb">tee</span> /etc/sudoers.d/deployer</span>
+<span id="LC17" class="line" lang="shell"><span class="nb">chmod </span>0440 /etc/sudoers.d/deployer</span>
+<span id="LC18" class="line" lang="shell">visudo <span class="nt">-c</span> <span class="nt">-f</span> /etc/sudoers.d/deployer</span>
+<span id="LC19" class="line" lang="shell"></span>
+<span id="LC20" class="line" lang="shell"><span class="c"># install docker</span></span>
+<span id="LC21" class="line" lang="shell"><span class="nb">sudo </span>apt update</span>
+<span id="LC22" class="line" lang="shell"><span class="nb">sudo </span>apt <span class="nb">install </span>apt-transport-https curl</span>
+<span id="LC23" class="line" lang="shell">curl <span class="nt">-fsSL</span> https://download.docker.com/linux/ubuntu/gpg | <span class="nb">sudo </span>gpg <span class="nt">--dearmor</span> <span class="nt">-o</span> /etc/apt/keyrings/docker.gpg</span>
+<span id="LC24" class="line" lang="shell"><span class="nb">echo</span> <span class="s2">"deb [arch=</span><span class="si">$(</span>dpkg <span class="nt">--print-architecture</span><span class="si">)</span><span class="s2"> signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu </span><span class="si">$(</span><span class="nb">.</span> /etc/os-release <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">"</span><span class="nv">$VERSION_CODENAME</span><span class="s2">"</span><span class="si">)</span><span class="s2"> stable"</span> | <span class="nb">sudo tee</span> /etc/apt/sources.list.d/docker.list <span class="o">&gt;</span> /dev/null</span>
+<span id="LC25" class="line" lang="shell"><span class="nb">sudo </span>apt update</span>
+<span id="LC26" class="line" lang="shell"><span class="nb">sudo </span>apt <span class="nb">install </span>docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</span>
+<span id="LC27" class="line" lang="shell"></span>
+<span id="LC28" class="line" lang="shell"><span class="c"># add user to docker group</span></span>
+<span id="LC29" class="line" lang="shell">usermod <span class="nt">-aG</span> docker deployer</span></code></pre>
+<copy-code></copy-code><insert-code-snippet></insert-code-snippet>
+</div>
+<p data-sourcepos="37:1-37:52" dir="auto">this prepares the <code data-sourcepos="37:19-37:28">deployer</code> user for use with kamal</p>
+</Blog>

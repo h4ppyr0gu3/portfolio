@@ -309,6 +309,39 @@
       "published": true,
       "updated": "21/06/2025",
       "topics": "python"
+    },
+    {
+      "href": "/til/system_wide_environment_variables_in_shells",
+      "title": "System wide environment variables in shells",
+      "excerpt": "System wide environment variables in shells - /etc/environment is the solution for system wide variables",
+      "date": "03/07/2025",
+      "tags": [
+        "system wide",
+        "environment variables",
+        "shells",
+        "interactive",
+        "non-interactive"
+      ],
+      "published": true,
+      "updated": "03/07/2025",
+      "topics": "shell"
+    },
+    {
+      "href": "/til/preparing_user_for_kamal",
+      "title": "Preparing user for kamal",
+      "excerpt": "Preparing deployer user for kamal with docker installation",
+      "date": "03/07/2025",
+      "tags": [
+        "Kamal",
+        "Deployment",
+        "User Management",
+        "SSH Keys",
+        "Sudoers",
+        "Docker"
+      ],
+      "published": true,
+      "updated": "03/07/2025",
+      "topics": "kamal"
     }
   ],
   "blog": [

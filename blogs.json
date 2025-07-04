@@ -342,6 +342,22 @@
       "published": true,
       "updated": "03/07/2025",
       "topics": "kamal"
+    },
+    {
+      "href": "/til/environment_variables_are_scoped",
+      "title": "Environment variables are scoped",
+      "excerpt": "Environment variables are scoped. Variables from .env file are only accessible locally.",
+      "date": "04/07/2025",
+      "tags": [
+        "Environment",
+        "Variables",
+        "Scope",
+        "Local shell",
+        "Export"
+      ],
+      "published": true,
+      "updated": "04/07/2025",
+      "topics": "kamal"
     }
   ],
   "blog": [

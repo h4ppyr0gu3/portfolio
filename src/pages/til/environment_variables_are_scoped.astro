@@ -1,0 +1,11 @@
+---
+import Blog from '../../layouts/Blog.astro';
+---
+<Blog title='Environment variables are scoped' date='04/07/2025' updated='04/07/2025'>
+<h1 data-sourcepos="2:1-2:34" dir="auto">
+<a href="#environment-variables-are-scoped" aria-hidden="true" class="anchor" id="user-content-environment-variables-are-scoped"></a>Environment variables are scoped</h1>
+<p data-sourcepos="4:1-6:123" dir="auto">Environment variables are not added to the global environment, after sourcing a <code data-sourcepos="4:81-4:86">.env</code> (<code data-sourcepos="4:89-4:101">source .env</code>) file you would expect those variables to show up when running <code data-sourcepos="4:166-4:175">printenv</code>
+or at least I did, however these do add them to the local shell but when running a command like <code data-sourcepos="5:97-5:117">kamal secrets print</code> this is a seperate process that doesn't have access to the current shell variables.
+the solution is to add export in front of each <code data-sourcepos="6:48-6:56">KEY=VAL</code> pair, this will make the variables available to the child process.</p>
+<p data-sourcepos="8:1-8:162" dir="auto">This will also mean they will show up when running <code data-sourcepos="8:52-8:61">printenv</code> and therefore in kamal if your <code data-sourcepos="8:94-8:109">.kamal/secrets</code> are <code data-sourcepos="8:115-8:130">SECRET=$SECRET</code> then it will evaluate correctly</p>
+</Blog>

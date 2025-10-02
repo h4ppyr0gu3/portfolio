@@ -42,7 +42,8 @@ class AiData
             to 200 charachters and 5 - 10 short tags that describe this paragraph, \
             paraphrasing is recommended. return a response in JSON format with only \
             the following keys: excerpt, and tags, where tags is an array and excerpt \
-            is a string.\n Here is the Paragraph: #{@markdown}\n"
+            is a string. Don't put any funny characters besides normal JSON, \
+            don't put backticks.\n Here is the Paragraph: #{@markdown}\n"
           }
         ]
       }

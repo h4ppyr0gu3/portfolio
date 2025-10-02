@@ -358,6 +358,54 @@
       "published": true,
       "updated": "04/07/2025",
       "topics": "kamal"
+    },
+    {
+      "href": "/til/finding_a_mac_address_of_a_device_on_the_network",
+      "title": "Finding a MAC address of a device on the network",
+      "excerpt": "Discover MAC address using ARP scan",
+      "date": "17/09/2025",
+      "tags": [
+        "MAC address",
+        "networking",
+        "ARP scan",
+        "nmap",
+        "DNS server"
+      ],
+      "published": true,
+      "updated": "17/09/2025",
+      "topics": "networking"
+    },
+    {
+      "href": "/til/long_running_important_jobs",
+      "title": "Long Running Important Jobs",
+      "excerpt": "Using ActiveJob and SolidQueue in Rails for long running jobs, enqueuing a recurring task every minute to ensure job instance, with 100 years duration and on_conflict:discard",
+      "date": "02/10/2025",
+      "tags": [
+        "ActiveJob",
+        "SolidQueue",
+        "concurrency control",
+        "long running job",
+        "recurring task"
+      ],
+      "published": true,
+      "updated": "02/10/2025",
+      "topics": "rails"
+    },
+    {
+      "href": "/til/setting_a_static_ip_on_linux",
+      "title": "Setting a static IP on linux",
+      "excerpt": "Setting a static IP on linux by adding an address on the subnet. Flush IP address to revert to DHCP.",
+      "date": "17/09/2025",
+      "tags": [
+        "Linux",
+        "Static IP",
+        "Ethernet",
+        "Subnet",
+        "DHCP"
+      ],
+      "published": true,
+      "updated": "17/09/2025",
+      "topics": "networking"
     }
   ],
   "blog": [

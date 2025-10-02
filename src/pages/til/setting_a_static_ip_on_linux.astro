@@ -1,0 +1,23 @@
+---
+import Blog from '../../layouts/Blog.astro';
+---
+<Blog title='Setting a static IP on linux' date='17/09/2025' updated='17/09/2025'>
+<h1 data-sourcepos="2:1-2:30" dir="auto">
+<a href="#setting-a-static-ip-on-linux" aria-hidden="true" class="anchor" id="user-content-setting-a-static-ip-on-linux"></a>Setting a static IP on linux</h1>
+<p data-sourcepos="4:1-4:28" dir="auto">Find your ethernet interface</p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="6:1-8:3" data-canonical-lang="bash" class="code highlight js-syntax-highlight language-shell" v-pre="true"><code is:raw><span id="LC1" class="line" lang="shell">ip addr show</span></code></pre>
+<copy-code></copy-code><insert-code-snippet></insert-code-snippet>
+</div>
+<p data-sourcepos="10:1-10:89" dir="auto">Add the address on the subnet you would like, same as the device you are interacting with</p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="12:1-14:3" data-canonical-lang="bash" class="code highlight js-syntax-highlight language-shell" v-pre="true"><code is:raw><span id="LC1" class="line" lang="shell"><span class="nb">sudo </span>ip addr add 192.168.1.10/24 dev enp3s0</span></code></pre>
+<copy-code></copy-code><insert-code-snippet></insert-code-snippet>
+</div>
+<p data-sourcepos="16:1-16:92" dir="auto">You can now access things such as IP cameras with fixed IP addresses that don't require DHCP</p>
+<p data-sourcepos="18:1-18:66" dir="auto">Afterwards, you may have to flush the IP address to revert to DHCP</p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="20:1-22:3" data-canonical-lang="bash" class="code highlight js-syntax-highlight language-shell" v-pre="true"><code is:raw><span id="LC1" class="line" lang="shell"><span class="nb">sudo </span>ip addr flush dev enp3s0</span></code></pre>
+<copy-code></copy-code><insert-code-snippet></insert-code-snippet>
+</div>
+</Blog>

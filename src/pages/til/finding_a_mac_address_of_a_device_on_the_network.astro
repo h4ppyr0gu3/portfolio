@@ -1,0 +1,20 @@
+---
+import Blog from '../../layouts/Blog.astro';
+---
+<Blog title='Finding a MAC address of a device on the network' date='17/09/2025' updated='17/09/2025'>
+<h1 data-sourcepos="2:1-2:50" dir="auto">
+<a href="#finding-a-mac-address-of-a-device-on-the-network" aria-hidden="true" class="anchor" id="user-content-finding-a-mac-address-of-a-device-on-the-network"></a>Finding a MAC address of a device on the network</h1>
+<p data-sourcepos="4:1-4:120" dir="auto">You need to do an ARP scan which means Address Resolution Protocol, which is a layer below IP addresses on the OSI model</p>
+<p data-sourcepos="6:1-6:51" dir="auto">you can do this by using nmap or pinging the device</p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="8:1-10:3" data-canonical-lang="bash" class="code highlight js-syntax-highlight language-shell" v-pre="true"><code is:raw><span id="LC1" class="line" lang="shell"><span class="nb">sudo </span>nmap <span class="nt">-PR</span> <span class="nt">-sn</span> 192.168.1.0/24</span></code></pre>
+<copy-code></copy-code><insert-code-snippet></insert-code-snippet>
+</div>
+<p data-sourcepos="12:1-12:55" dir="auto">or for when there is no DHCP or DNS server in the loop:</p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="14:1-18:3" data-canonical-lang="bash" class="code highlight js-syntax-highlight language-shell" v-pre="true"><code is:raw><span id="LC1" class="line" lang="shell">ping <span class="nt">-c</span> 1 192.168.1.64</span>
+<span id="LC2" class="line" lang="shell"></span>
+<span id="LC3" class="line" lang="shell">ip neighbor show</span></code></pre>
+<copy-code></copy-code><insert-code-snippet></insert-code-snippet>
+</div>
+</Blog>

@@ -1,0 +1,31 @@
+---
+import Blog from '../../layouts/Blog.astro';
+---
+<Blog title='Long Running Important Jobs' date='02/10/2025' updated='02/10/2025'>
+<h1 data-sourcepos="2:1-2:29" dir="auto">
+<a href="#long-running-important-jobs" aria-hidden="true" class="anchor" id="user-content-long-running-important-jobs"></a>Long Running Important Jobs</h1>
+<p data-sourcepos="4:1-4:107" dir="auto">I had a job that needs to be running 24/7 in rails, I am using <code data-sourcepos="4:64-4:74">ActiveJob</code> and <code data-sourcepos="4:80-4:91">SolidQueue</code> to achieve this</p>
+<p data-sourcepos="6:1-6:125" dir="auto">SolidQueue includes concurrency controls which allow us to limit how many jobs of specific scope are running at the same time</p>
+<p data-sourcepos="8:1-8:147" dir="auto">to make sure there is always 1 instance of the job I have enqueued a recurring task every minute (' * * * * * ') that will try and enqueue this job</p>
+<p data-sourcepos="10:1-11:158" dir="auto">in the job definition i have 100 years which should give me plenty of time, <code data-sourcepos="10:77-10:99">on_conflict: :discard</code> removes the job completely, and doesn't keep it waiting
+this is ideal in our case because we don't want to wait for the job to finish as it never will, unless there is an error in which case a new one will start up</p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="13:1-22:3" data-canonical-lang="ruby" class="code highlight js-syntax-highlight language-ruby" v-pre="true"><code is:raw><span id="LC1" class="line" lang="ruby"><span class="k">class</span> <span class="nc">MqttListenerJob</span> <span class="o">&lt;</span> <span class="no">ApplicationJob</span></span>
+<span id="LC2" class="line" lang="ruby">  <span class="n">limits_concurrency</span> <span class="ss">to: </span><span class="mi">1</span><span class="p">,</span> <span class="ss">duration: </span><span class="mi">100</span><span class="p">.</span><span class="nf">years</span><span class="p">,</span> <span class="ss">key: </span><span class="s2">"MqttListenerJob"</span><span class="p">,</span> <span class="ss">on_conflict: :discard</span></span>
+<span id="LC3" class="line" lang="ruby">  <span class="n">queue_as</span> <span class="ss">:long_running</span></span>
+<span id="LC4" class="line" lang="ruby"></span>
+<span id="LC5" class="line" lang="ruby">  <span class="k">def</span> <span class="nf">perform</span></span>
+<span id="LC6" class="line" lang="ruby">    <span class="c1"># ...</span></span>
+<span id="LC7" class="line" lang="ruby">  <span class="k">end</span></span>
+<span id="LC8" class="line" lang="ruby"><span class="k">end</span></span></code></pre>
+<copy-code></copy-code><insert-code-snippet></insert-code-snippet>
+</div>
+<p data-sourcepos="24:1-24:172" dir="auto">Because i know how often i am trying to reschedule this job i can also change the polling interval and number of threads because i know how many processes should be running</p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="26:1-31:3" data-canonical-lang="yaml" class="code highlight js-syntax-highlight language-yaml" v-pre="true"><code is:raw><span id="LC1" class="line" lang="yaml"><span class="na">environment</span><span class="pi">:</span></span>
+<span id="LC2" class="line" lang="yaml">  <span class="na">ensure_mqtt_listening</span><span class="pi">:</span></span>
+<span id="LC3" class="line" lang="yaml">    <span class="na">class</span><span class="pi">:</span> <span class="s">MqttListenerJob</span></span>
+<span id="LC4" class="line" lang="yaml">    <span class="na">schedule</span><span class="pi">:</span> <span class="s1">'</span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*'</span></span></code></pre>
+<copy-code></copy-code><insert-code-snippet></insert-code-snippet>
+</div>
+</Blog>

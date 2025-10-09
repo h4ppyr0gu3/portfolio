@@ -406,6 +406,22 @@
       "published": true,
       "updated": "17/09/2025",
       "topics": "networking"
+    },
+    {
+      "href": "/til/mtls_in_ruby",
+      "title": "mTLS in ruby",
+      "excerpt": "mTLS in ruby ensures valid cert to access app. Config with key, cert, ca. Authenticate clients using certs for differentiation",
+      "date": "09/10/2025",
+      "tags": [
+        "mTLS",
+        "Ruby",
+        "Rails",
+        "Authentication",
+        "Certificate"
+      ],
+      "published": true,
+      "updated": "09/10/2025",
+      "topics": "ruby"
     }
   ],
   "blog": [

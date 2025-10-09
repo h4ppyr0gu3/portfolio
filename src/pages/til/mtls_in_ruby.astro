@@ -1,0 +1,52 @@
+---
+import Blog from '../../layouts/Blog.astro';
+---
+<Blog title='mTLS in ruby' date='09/10/2025' updated='09/10/2025'>
+<h1 data-sourcepos="2:1-2:14" dir="auto">
+<a href="#mtls-in-ruby" aria-hidden="true" class="anchor" id="user-content-mtls-in-ruby"></a>mTLS in ruby</h1>
+<p data-sourcepos="4:1-4:111" dir="auto">mTLS is mutual TLS and basically ensures that you have a valid certificate to be able to access the application</p>
+<p data-sourcepos="6:1-6:66" dir="auto">to implement this in ruby/rails you need to add to the puma config</p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="8:1-20:3" data-canonical-lang="ruby" class="code highlight js-syntax-highlight language-ruby" v-pre="true"><code is:raw><span id="LC1" class="line" lang="ruby"></span>
+<span id="LC2" class="line" lang="ruby"><span class="n">key_path</span> <span class="o">=</span> <span class="s2">"./mtls/mtls.key"</span></span>
+<span id="LC3" class="line" lang="ruby"><span class="n">cert_path</span> <span class="o">=</span> <span class="s2">"./mtls/mtls.crt"</span></span>
+<span id="LC4" class="line" lang="ruby"><span class="n">ca_path</span> <span class="o">=</span> <span class="s2">"./mtls/ca.crt"</span></span>
+<span id="LC5" class="line" lang="ruby"></span>
+<span id="LC6" class="line" lang="ruby"><span class="n">ssl_bind</span> <span class="s2">"0.0.0.0"</span><span class="p">,</span> <span class="s2">"3001"</span><span class="p">,</span> <span class="p">{</span></span>
+<span id="LC7" class="line" lang="ruby">  <span class="ss">key: </span><span class="n">key_path</span><span class="p">,</span></span>
+<span id="LC8" class="line" lang="ruby">  <span class="ss">cert: </span><span class="n">cert_path</span><span class="p">,</span></span>
+<span id="LC9" class="line" lang="ruby">  <span class="ss">ca: </span><span class="n">ca_path</span><span class="p">,</span></span>
+<span id="LC10" class="line" lang="ruby">  <span class="ss">verify_mode: </span><span class="s2">"force_peer"</span></span>
+<span id="LC11" class="line" lang="ruby"><span class="p">}</span></span></code></pre>
+<copy-code></copy-code><insert-code-snippet></insert-code-snippet>
+</div>
+<p data-sourcepos="22:1-22:106" dir="auto">this will validate the client certificates against these and make sure they were all signed by the same CA</p>
+<p data-sourcepos="24:1-24:111" dir="auto">if each client has it's own certificate you can use them to differentiate between clients and do authentication</p>
+<div class="gl-relative markdown-code-block js-markdown-code">
+<pre data-sourcepos="26:1-51:3" data-canonical-lang="ruby" class="code highlight js-syntax-highlight language-ruby" v-pre="true"><code is:raw><span id="LC1" class="line" lang="ruby"><span class="k">def</span> <span class="nf">authenticate_with_mtls</span></span>
+<span id="LC2" class="line" lang="ruby">    <span class="n">client_cert_pem</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="nf">env</span><span class="p">[</span><span class="s2">"puma.peercert"</span><span class="p">]</span></span>
+<span id="LC3" class="line" lang="ruby"></span>
+<span id="LC4" class="line" lang="ruby">    <span class="k">unless</span> <span class="n">client_cert_pem</span></span>
+<span id="LC5" class="line" lang="ruby">        <span class="n">render</span> <span class="ss">json: </span><span class="p">{</span> <span class="ss">error: </span><span class="s2">"Client certificate required."</span> <span class="p">},</span> <span class="ss">status: :unauthorized</span></span>
+<span id="LC6" class="line" lang="ruby">        <span class="k">return</span></span>
+<span id="LC7" class="line" lang="ruby">    <span class="k">end</span></span>
+<span id="LC8" class="line" lang="ruby"></span>
+<span id="LC9" class="line" lang="ruby">    <span class="k">begin</span></span>
+<span id="LC10" class="line" lang="ruby">        <span class="n">client_cert</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">X509</span><span class="o">::</span><span class="no">Certificate</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">client_cert_pem</span><span class="p">)</span></span>
+<span id="LC11" class="line" lang="ruby"></span>
+<span id="LC12" class="line" lang="ruby">        <span class="n">subject_cn</span> <span class="o">=</span> <span class="n">client_cert</span><span class="p">.</span><span class="nf">subject</span><span class="p">.</span><span class="nf">to_a</span><span class="p">.</span><span class="nf">find</span> <span class="p">{</span> <span class="o">|</span><span class="nb">name</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="o">|</span> <span class="nb">name</span> <span class="o">==</span> <span class="s2">"CN"</span> <span class="p">}</span><span class="o">&amp;</span><span class="p">.</span><span class="nf">at</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span></span>
+<span id="LC13" class="line" lang="ruby"></span>
+<span id="LC14" class="line" lang="ruby">        <span class="vi">@current_user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">find_by</span><span class="p">(</span><span class="ss">certificate_common_name: </span><span class="n">subject_cn</span><span class="p">)</span></span>
+<span id="LC15" class="line" lang="ruby"></span>
+<span id="LC16" class="line" lang="ruby">        <span class="k">if</span> <span class="vi">@current_user</span><span class="p">.</span><span class="nf">nil?</span></span>
+<span id="LC17" class="line" lang="ruby">            <span class="n">render</span> <span class="ss">json: </span><span class="p">{</span> <span class="ss">error: </span><span class="s2">"Invalid client certificate."</span> <span class="p">},</span> <span class="ss">status: :unauthorized</span></span>
+<span id="LC18" class="line" lang="ruby">            <span class="kp">nil</span></span>
+<span id="LC19" class="line" lang="ruby">        <span class="k">end</span></span>
+<span id="LC20" class="line" lang="ruby"></span>
+<span id="LC21" class="line" lang="ruby">    <span class="k">rescue</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">X509</span><span class="o">::</span><span class="no">CertificateError</span> <span class="o">=&gt;</span> <span class="n">e</span></span>
+<span id="LC22" class="line" lang="ruby">        <span class="n">render</span> <span class="ss">json: </span><span class="p">{</span> <span class="ss">error: </span><span class="s2">"Certificate parsing error: </span><span class="si">#{</span><span class="n">e</span><span class="p">.</span><span class="nf">message</span><span class="si">}</span><span class="s2">"</span> <span class="p">},</span> <span class="ss">status: :bad_request</span></span>
+<span id="LC23" class="line" lang="ruby">    <span class="k">end</span></span>
+<span id="LC24" class="line" lang="ruby"><span class="k">end</span></span></code></pre>
+<copy-code></copy-code><insert-code-snippet></insert-code-snippet>
+</div>
+</Blog>

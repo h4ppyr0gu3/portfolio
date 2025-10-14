@@ -1,0 +1,17 @@
+---
+import Blog from '../../layouts/Blog.astro';
+---
+<Blog title='Case sensitive Find and Replace' date='14/10/2025' updated='14/10/2025'>
+<h1 data-sourcepos="2:1-2:33" dir="auto">
+<a href="#case-sensitive-find-and-replace" aria-hidden="true" class="anchor" id="user-content-case-sensitive-find-and-replace"></a>Case sensitive Find and Replace</h1>
+<p data-sourcepos="4:1-4:38" dir="auto">vim find and replace is doen with <code data-sourcepos="4:35-4:38">%s</code></p>
+<p data-sourcepos="6:1-6:93" dir="auto">the trailing <code data-sourcepos="6:14-6:17">/g</code> is global so if there are 2 instances on a single line it will replace both</p>
+<p data-sourcepos="8:1-8:37" dir="auto">the trailing <code data-sourcepos="8:14-8:17">/I</code> is case insensitive</p>
+<p data-sourcepos="10:1-10:29" dir="auto">the trailing <code data-sourcepos="10:14-10:17">/c</code> is to coose</p>
+<p data-sourcepos="12:1-13:15" dir="auto">this will match all occurences of <code data-sourcepos="12:35-12:39">Old</code> with <code data-sourcepos="12:46-12:50">New</code>
+<code data-sourcepos="13:1-13:15">%s/Old/New/gI</code></p>
+<p data-sourcepos="15:1-16:14" dir="auto">this will match all occurrences of <code data-sourcepos="15:36-15:40">old</code>, <code data-sourcepos="15:43-15:47">Old</code>, <code data-sourcepos="15:50-15:54">OLD</code> with <code data-sourcepos="15:61-15:65">new</code>
+<code data-sourcepos="16:1-16:14">%s/old/new/g</code></p>
+<p data-sourcepos="18:1-19:15" dir="auto">this will match all occurrences of <code data-sourcepos="18:36-18:40">old</code>, <code data-sourcepos="18:43-18:47">Old</code>, <code data-sourcepos="18:50-18:54">OLD</code> with <code data-sourcepos="18:61-18:65">new</code> and then let you choose which ones to replace
+<code data-sourcepos="19:1-19:15">%s/old/new/gc</code></p>
+</Blog>

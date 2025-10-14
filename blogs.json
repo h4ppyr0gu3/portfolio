@@ -422,6 +422,22 @@
       "published": true,
       "updated": "09/10/2025",
       "topics": "ruby"
+    },
+    {
+      "href": "/til/case_sensitive_find_and_replace",
+      "title": "Case sensitive Find and Replace",
+      "excerpt": "Vim find and replace is done with %s. The trailing /g is global so if there are 2 instances on a single line it will replace both. The trailing /I is case insensitive. The trailing /c is to choose. This will match all occurrences of Old with New. %s/Old/New/gI",
+      "date": "14/10/2025",
+      "tags": [
+        "Vim",
+        "find and replace",
+        "case sensitive",
+        "global",
+        "case insensitive"
+      ],
+      "published": true,
+      "updated": "14/10/2025",
+      "topics": "vim"
     }
   ],
   "blog": [

@@ -1,16 +1,21 @@
 import React from 'react';
-import Skills from './skills';
 import Title from './title';
 import ExperienceItem from './experience_item';
 
 export default function Experience(props) {
   const { experience, title } = props;
 
+  if (!experience?.length) {
+    return null;
+  }
+
   return (
     <Title title={title}>
-      {experience.map((xp, i) => (
-        <ExperienceItem key={i} experience={xp} parent={title} />
-      ))}
+      <div className="cv-experience-list">
+        {experience.map((xp, i) => (
+          <ExperienceItem key={i} experience={xp} parent={title} />
+        ))}
+      </div>
     </Title>
   );
 }

@@ -5,21 +5,25 @@ import Layout from './Layout.astro';
 const { title, description, date, updated } = Astro.props;
 ---
 
-<Layout title={title, description}>
+<Layout title={title} description={description}>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css" integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous">
 
-  <!-- The loading of KaTeX is deferred to speed up page rendering -->
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
 
-  <!-- To automatically render math in text elements, include the auto-render extension: -->
-  <!--<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body); is:inline"></script> -->
-  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/languages/go.min.js" is:inline></script>
-  <script type="module" is:inline >
+  <script type="module" is:inline>
 import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
 import hljs from 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/es/highlight.min.js';
 
 mermaid.initialize({ startOnLoad: true });
-hljs.highlightAll();
+
+document.querySelectorAll('pre code').forEach((el) => {
+  if (el.querySelector('span[class]')) return;
+  try {
+    hljs.highlightElement(el);
+  } catch (e) {
+    console.warn('highlight.js skipped a block', e);
+  }
+});
 
 function gotoHash() {
   var string = window.location.hash.replace('#', '');
@@ -29,71 +33,22 @@ function gotoHash() {
   }
 }
 gotoHash();
-window.addEventListener('hashchange', function(event) {
+window.addEventListener('hashchange', function () {
   gotoHash();
 });
-</script>
-  <div class="lg:px-10 xl:px-20 sm:px-2 md:px-4 relative" id="reading-mode-container", style="margin: 0 auto;">
-    <div class="top-0 right-20 absolute hover:cursor-pointer border-4 border-gray-800 dark:border-gray-200 p-1 rounded-md" title="Reading Mode" id="reading-mode">
-      <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 1h8M1 5h12M3 9h8M1 13h12"/>
-      </svg>
-    </div>
-    <slot />
-    <div class="text-gray-400 mt-6">
-      <p>Last Updated: {updated}</p>
-      <p>Published: {date}</p>
-    </div>
-  </div>
-  <script is:inline>
-  const readingMode = document.getElementById('reading-mode');
-  const container = document.getElementById('reading-mode-container')
-  if (localStorage.getItem("readingMode") === "true") {
-    container.style.maxWidth = "1000px";
-    container.style.width = "1000px";
-  }
-  if (window.screen.width > 1100) {
-    readingMode.addEventListener('click', () => {
-      if (container.style.maxWidth === "1000px") {
-        container.style.width = "";
-        container.style.maxWidth = "";
-        localStorage.setItem("readingMode", "false");
-      } else {
-        container.style.width = "1000px";
-        container.style.maxWidth = "1000px";
-        localStorage.setItem("readingMode", "true");
-      }
-    })
-  } else {
-    readingMode.style.display = "none";
-  }
-
-  // Copy Code Button taken from https://www.roboleary.net/2022/01/13/copy-code-to-clipboard-blog.html
-  const copyButtonLabel = "Copy Code";
-  var blocks = document.querySelectorAll('pre:not(.mermaid)');
-  blocks.forEach((block) => {
-    if (navigator.clipboard) {
-      let button = document.createElement("button");
-      button.innerText = copyButtonLabel;
-      button.classList.add("copy-code-button");
-      block.appendChild(button);
-      button.addEventListener("click", async () => {
-        await copyCode(block, button);
-      });
-    }
-  });
-
-  async function copyCode(block, button) {
-    let code = block.querySelector("code");
-    let text = code.innerText;
-    await navigator.clipboard.writeText(text);
-    button.innerText = "Code Copied";
-
-    setTimeout(() => {
-      button.innerText = copyButtonLabel;
-    }, 700);
-  }
   </script>
+
+  <script>
+    import '../scripts/copy-code.js';
+  </script>
+
+  <div class="post-shell">
+    <article class="post-content">
+      <slot />
+      <div class="post-meta">
+        <p>Last Updated: {updated}</p>
+        <p>Published: {date}</p>
+      </div>
+    </article>
+  </div>
 </Layout>
-
-

@@ -1,8 +1,55 @@
 ---
 import Default from '../layouts/Default.astro';
-import Search from '../components/til/search.jsx';
+import data from '../../blogs.json';
+
+const til = [...data.til].sort((a, b) => a.topics.localeCompare(b.topics));
 ---
 
-<Default title="TIL | h4ppyr0gu3">
-  <Search client:load/>
+<Default title="TIL | h4ppyr0gu3" description="Things I learned">
+  <div class="listing">
+    <form class="listing-search" data-listing-search>
+      <label for="tilSearch" class="sr-only">Search</label>
+      <div class="listing-search-field">
+        <svg class="listing-search-icon" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+        </svg>
+        <input
+          type="search"
+          id="tilSearch"
+          name="search"
+          data-listing-input
+          class="listing-search-input"
+          placeholder="Search for a Lesson..."
+          autocomplete="off"
+        />
+        <button type="submit" class="listing-search-btn">Search</button>
+      </div>
+    </form>
+
+    <ul class="listing-list" data-listing-list>
+      {til.map((item, index) => {
+        const topic = item.topics;
+        const prevTopic = index > 0 ? til[index - 1].topics : null;
+        return (
+          <>
+            {topic !== prevTopic && (
+              <li class="listing-group" data-listing-group={topic}>{topic}</li>
+            )}
+            <li
+              class="listing-item"
+              data-listing-item
+              data-search={`${item.title} ${item.excerpt ?? ''} ${item.topics ?? ''} ${(item.tags || []).join(' ')}`}
+            >
+              <a href={item.href} title={item.excerpt}>{item.title}</a>
+            </li>
+          </>
+        );
+      })}
+      <li class="listing-empty" data-listing-empty hidden>Nothing learnt here</li>
+    </ul>
+  </div>
+
+  <script>
+    import '../scripts/listing-search.js';
+  </script>
 </Default>

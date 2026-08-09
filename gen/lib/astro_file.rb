@@ -1,3 +1,5 @@
+require 'json'
+
 class AstroFile
   attr_reader :html, :metadata
 
@@ -19,14 +21,25 @@ class AstroFile
     beginning_of_file(metadata) + html + end_of_file
   end
 
-  def beginning_of_file(metadata) # rubocop:disable
-"---
-import Blog from '../../layouts/Blog.astro';
----
-<Blog title='#{metadata[:title]}' date='#{metadata[:date]}' updated='#{metadata[:updated]}'>\n"
-  end # rubocop:enable
+  def beginning_of_file(metadata) # rubocop:disable Metrics/MethodLength
+    title = JSON.generate(metadata[:title].to_s)
+    date = JSON.generate(metadata[:date].to_s)
+    updated = JSON.generate(metadata[:updated].to_s)
+    description = JSON.generate(metadata[:excerpt].to_s)
+    <<~ASTRO
+      ---
+      import Blog from '../../layouts/Blog.astro';
+
+      const title = #{title};
+      const description = #{description};
+      const date = #{date};
+      const updated = #{updated};
+      ---
+      <Blog title={title} description={description} date={date} updated={updated}>
+    ASTRO
+  end
 
   def end_of_file
-    "\n</Blog>"
+    "\n</Blog>\n"
   end
 end

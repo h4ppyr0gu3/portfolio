@@ -1,10 +1,18 @@
+function slugify(title) {
+  return String(title || 'section')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+}
+
 export default function Title(props) {
+  const id = `heading-${slugify(props.title)}`;
   return (
-    <div className="flex sm:flex-row flex-col">
-       <h1 className="font-bold text-3xl px-3 mx-3 w-full sm:w-1/3 block">{props.title}</h1>
-       <div className="w-full mb-5">
-        { props.children }
-       </div>
-    </div>
-  )
+    <section className="cv-section" aria-labelledby={id}>
+      <h2 id={id}>{props.title}</h2>
+      <div className="cv-section-body">
+        {props.children}
+      </div>
+    </section>
+  );
 }

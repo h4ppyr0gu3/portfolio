@@ -8,49 +8,49 @@ import CV from '../../cv.json';
 const experience = CV.experience;
 const education = CV.education;
 const skills = CV.skills;
-const failedEducation = CV.failedEducation;
-const projects = {};
+const aboutMe = CV.aboutMe;
 ---
 
-<Default 
-  title="h4ppyr0gu3 | David Rogers" 
-  description="Welcome to my website, where I, a passionate web developer, discuss various topics related to web development and free and open source software. Continuously learning and staying up-to-date with the latest trends is a priority for me. Additionally, I share valuable insights, learnings, challenges, and tips through tech-related blogs, aimed at assisting fellow developers on their journeys. Explore and learn with me!">
-  <div class="container mx-auto p-6">
-    <header class="text-center mb-6 grid grid-cols-2">
-      <div class="flex">
-        <img class="ml-auto rounded w-36 h-36 object-right" src="/portfolio.jpeg" alt="Extra large avatar">
-      </div>
-      <div class="flex">
-        <div class="mr-auto ml-2 my-auto">
-          <h1 class="text-4xl font-bold">David Rogers</h1>
-          <p class="text-lg text-gray-600">Ruby on Rails | Web Developer</p>
-        </div>
+<Default
+  title="h4ppyr0gu3 | David Rogers"
+  description="Welcome to my website, where I, a passionate web developer, discuss various topics related to web development and free and open source software. Continuously learning and staying up-to-date with the latest trends is a priority for me. Additionally, I share valuable insights, learnings, challenges, and tips through tech-related blogs, aimed at assisting fellow developers on their journeys. Explore and learn with me!"
+>
+  <article class="cv-page">
+    <header class="cv-hero">
+      <img
+        class="cv-portrait"
+        src="/portfolio.jpeg"
+        width="144"
+        height="144"
+        alt="David Rogers"
+      />
+      <div class="cv-identity">
+        <h1>David Rogers</h1>
+        <p class="cv-role">Ruby on Rails | Web Developer</p>
       </div>
     </header>
+
     <Title title="About Me">
-      <div  class="text-lg">
-        <p>
-          Welcome to my website where I discuss topics I am interested in and keep all my thoughts, Tech related or not, with an emphasis on web development and free and open source software.
-        </p>
-        <p>
-          I have hands-on experience with back-end technologies like Ruby on Rails and Elixir. I believe in continuously learning and improving my skills to stay updated with the latest trends in web development.
-        </p>
-        <p>
-          When I'm not coding, I enjoy writing about my learnings, challenges, and tips that can help fellow developers on their journey.
-        </p>
+      <div class="cv-prose">
+        {aboutMe.map((paragraph) => <p>{paragraph}</p>)}
       </div>
     </Title>
+
     <Title title="Skills Summary">
-      <Skills skills={skills}/>
+      <Skills skills={skills} />
     </Title>
-    <Experience experience={experience} title="Experience"/>
-    <Experience experience={education} title="Education"/>
-    <!-- <Experience experience={failedEducation} title="Failed Education"/> -->
+
+    <Experience experience={experience} title="Experience" />
+    <Experience experience={education} title="Education" />
+
     <Title title="Get in Touch">
-      <p>Phone: <a href="tel:+48516809024">+48516809024</a></p>
-      <p>Email: <a href="mailto:rogersdpdr@gmail.com">rogersdpdr@gmail.com</a></p>
-      <p>GitHub: <a href="https://github.com/h4ppyr0gu3">h4ppyr0gu3</a></p>
-      <p>Twitter: <a href="https://twitter.com/h4ppyr0gu3">h4ppyr0gu3</a></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/david-pj-rogers">David Rogers</a></p>
+      <div class="cv-prose cv-contact">
+        <p>Phone: <a href="tel:+48516809024">+48516809024</a></p>
+        <p>Email: <a href="mailto:rogersdpdr@gmail.com">rogersdpdr@gmail.com</a></p>
+        <p>GitHub: <a href="https://github.com/h4ppyr0gu3">h4ppyr0gu3</a></p>
+        <p>Twitter: <a href="https://twitter.com/h4ppyr0gu3">h4ppyr0gu3</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/david-pj-rogers">David Rogers</a></p>
+      </div>
     </Title>
+  </article>
 </Default>

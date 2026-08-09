@@ -1,0 +1,21 @@
+---
+href: "/philosophy/not-working-hard"
+title: "Not working hard"
+excerpt: "It is very easy to go to work everyday and try to perform as little as possible, this is because corporate has become heartless and in some senses it is just a job farm, these places are easy to get trapped in, in a"
+date: "07/02/2025"
+tags:
+  - philosophy
+published: true
+updated: "07/02/2025"
+topics: Philosophy
+---
+
+# Not working hard
+
+It is very easy to go to work everyday and try to perform as little as possible, this is because corporate has become heartless and in some senses it is just a job farm, these places are easy to get trapped in, in a state where you don't want to overwork your salary, but there is little sense in this approach because often there are a lot of resources available to you being at such a company, where you could learn more about the day to day running of the company around your niche and slowly gather more and more knowledge around a specific area.
+
+It is also much easier said than done and can easily end up becoming clock watching just because of the need to leave the environment, it is so far removed from reality in the sense that everyone talks almost normally but never admitting fault and always pretending to be blue eyed angels. Trying to make true friends and connections in such a place is ironic in itself, interacting with the surface level, corporate mask and deciding that that is someone you want to hang out with after work, if nothing else it is almost as good as an actors award for such a moving performance.
+
+Corporate should be taken advantage of as often as possible, but how to take advantage of it in such an environment of strangers forced to interact and at some point, expected to give up all personal aspirations for those of the company, no matter whether it is corporate or not, it is a big ask and one that needs to be assessed.
+
+It ends up creating this form of laziness where you don't want to work because you don't feel like dealing with corporate bullshit, but also this sense of 'I have to be here so here I am', this sort of pointless showing up every day, not achieving anything and this satisfaction that you are sticking it to the man. What is the way forward? This also ends up becoming habitual and repetitive, so how do you get out of such a toxic habit?

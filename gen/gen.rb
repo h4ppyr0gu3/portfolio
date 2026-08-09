@@ -11,7 +11,7 @@ Dotenv.load
 SOURCE_PATH = './lib'
 OUTPUT_PATH = './src/pages'
 JSON_FILE = './blogs.json'
-SUPPORTED_PATHS = %w[til blog].freeze
+SUPPORTED_PATHS = %w[til blog philosophy].freeze
 ROOT = '/home/david/portfolio'
 
 def read_json

@@ -1,0 +1,25 @@
+---
+href: "/philosophy/the-world-is-your-oyster"
+title: "The world is your Oyster"
+excerpt: "A lot of times we have all heard that the world is our oyster, and you can do anything, I think a lot of people don't fully grasp, firstly the truth in that statement and secondly just how powerful it means we all are"
+date: "28/11/2025"
+tags:
+  - philosophy
+published: true
+updated: "28/11/2025"
+topics: Philosophy
+---
+
+# The world is your Oyster
+
+A lot of times we have all heard that the world is our oyster, and you can do anything,
+
+I think a lot of people don't fully grasp, firstly the truth in that statement and secondly just how powerful it means we all are
+
+You can be anything, you can do anything (most things) even within the bounds of society and the law; this must be stated in case you think i am implying that you must be a criminal or autistic to be able to justify this to yourself;&#x20;
+
+You can do anything, anything that has been done before can be done again, this then brings us onto the fact that there are so many gurus out there telling you that you can be like them, Fuck them, be you, do cool shit, go and do it
+
+You can also accomplish a lot of what has been accomplished already, a lot quicker, where we are technologically allows us to stand on the backs of giants who have allowed the world to be open and for us to access there marvels, thinking of computers etc, so much has been done, don't reinvent the wheel, go further, borrow from here, add to that, keep moving
+
+Create your own pearl

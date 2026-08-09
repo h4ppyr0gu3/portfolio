@@ -19,7 +19,7 @@
       "location": "Krakow, Poland/Remote",
       "start": "November 2023",
       "end": "July 2025",
-      "description": "Managing teams and organizational tasks",
+      "description": "Part of a development team working on bugs and new requirements for the application, as well as new integration with 3rd parties and migrating to newer versions of ruby, rails and sidekiq",
       "skills": ["Ruby", "Rails", "REST", "Postgres", "Redis"]
     },
     {

@@ -27,19 +27,24 @@ function formatSiteDate(iso) {
 
 /** GitBook sitemap lastmod per slug (edit dates). Root URL maps to first essay. */
 async function fetchLastmodBySlug() {
-  const xml = await fetchText(`${BASE}/sitemap-pages.xml`);
-  const map = new Map();
-  const re = /<loc>([^<]+)<\/loc>\s*<priority>[^<]*<\/priority>\s*<lastmod>([^<]+)<\/lastmod>/g;
-  let m;
-  while ((m = re.exec(xml))) {
-    const loc = m[1].replace(/\/$/, '');
-    const lastmod = m[2];
-    const pathPart = loc.replace(/^https?:\/\/[^/]+\/philosophy\/?/, '');
-    const slug = pathPart || null;
-    if (slug) map.set(slug, lastmod);
-    else map.set('__root__', lastmod);
+  try {
+    const xml = await fetchText(`${BASE}/sitemap-pages.xml`);
+    const map = new Map();
+    const re = /<loc>([^<]+)<\/loc>\s*<priority>[^<]*<\/priority>\s*<lastmod>([^<]+)<\/lastmod>/g;
+    let m;
+    while ((m = re.exec(xml))) {
+      const loc = m[1].replace(/\/$/, '');
+      const lastmod = m[2];
+      const pathPart = loc.replace(/^https?:\/\/[^/]+\/philosophy\/?/, '');
+      const slug = pathPart || null;
+      if (slug) map.set(slug, lastmod);
+      else map.set('__root__', lastmod);
+    }
+    return map;
+  } catch (err) {
+    console.warn(`sitemap unavailable (${err.message}); using today's date for new pages`);
+    return new Map();
   }
-  return map;
 }
 
 function slugify(s) {

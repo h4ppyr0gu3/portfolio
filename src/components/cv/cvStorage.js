@@ -82,9 +82,9 @@ export function readFromLocation(siteCv) {
 }
 
 export function buildShareUrl(doc) {
-  if (typeof window === 'undefined') return { url: '', tooLong: false };
+  if (typeof window === 'undefined') return { url: '', tooLong: false, length: 0 };
   const hash = encodeShareHash(doc);
-  const url = `${window.location.origin}${window.location.pathname}${hash}`;
+  const url = `${window.location.origin}/cv/view${hash}`;
   return { url, tooLong: url.length > SHARE_WARN_LENGTH, length: url.length };
 }
 

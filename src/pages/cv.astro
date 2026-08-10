@@ -4,11 +4,12 @@ import CvApp from '../components/cv/CvApp.jsx';
 import CV from '../../cv.json';
 ---
 
-<Default title="CV Generator | h4ppyr0gu3" description="Create and share a CV in the same layout as this site — frontend only, saved in your browser.">
-  <div class="cv-builder">
-    <h1>CV Generator</h1>
-    <p class="cv-builder-lede">
-      Build a CV in this site’s layout. Start from the example, edit freely, save locally, then share a link or export PDF/JSON.
+<Default title="CV Generator | h4ppyr0gu3" description="Build and share a portfolio web page — frontend only, saved in your browser.">
+  <div class="mx-auto max-w-6xl p-6">
+    <h1 class="mb-2 font-serif text-3xl font-bold tracking-tight">CV Generator</h1>
+    <p class="mb-5 max-w-xl text-ink-muted dark:text-ink-faint">
+      Build a portfolio page in this site’s layout. Edit freely, save locally, then share a link —
+      anyone with the URL gets a full web portfolio (no PDF).
     </p>
     <CvApp client:only="react" siteCv={CV} />
   </div>

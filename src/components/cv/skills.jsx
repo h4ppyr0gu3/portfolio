@@ -8,9 +8,11 @@ export default function Skills(props) {
   }
 
   return (
-    <ul className="cv-skills-grid">
+    <ul className="cv-skills-grid m-0 grid list-none grid-cols-2 gap-x-3 gap-y-1 p-0 sm:grid-cols-3 md:grid-cols-4">
       {skills.map((skill, i) => (
-        <li key={i}>{skill}</li>
+        <li key={i} className="list-none">
+          {skill}
+        </li>
       ))}
     </ul>
   );

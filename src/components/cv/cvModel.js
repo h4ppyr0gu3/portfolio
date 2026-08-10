@@ -39,6 +39,8 @@ export function emptyDocument() {
       name: '',
       role: '',
       photoUrl: '',
+      bgColor: '#f5f1e8',
+      textColor: '#1c1917',
       contact: [],
       isExample: false,
     },
@@ -80,6 +82,8 @@ export function seedFromSiteCv(cv) {
     name: 'David Rogers',
     role: 'Ruby on Rails | Web Developer',
     photoUrl: '/portfolio.jpeg',
+    bgColor: '#f5f1e8',
+    textColor: '#1c1917',
     contact: DEFAULT_CONTACT.map((c) => ({ ...emptyContact(), ...c })),
     isExample: true,
   };
@@ -171,6 +175,8 @@ export function normalizeDocument(doc) {
       name: meta.name || '',
       role: meta.role || '',
       photoUrl: meta.photoUrl || '',
+      bgColor: meta.bgColor || '#f5f1e8',
+      textColor: meta.textColor || '#1c1917',
       contact: Array.isArray(meta.contact)
         ? meta.contact.map((c) => ({
             id: c.id || uid('contact'),

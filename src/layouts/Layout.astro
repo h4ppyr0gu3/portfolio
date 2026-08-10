@@ -31,10 +31,10 @@ const {
       rel="stylesheet"
     />
   </head>
-  <body class="site-body h-full">
-    <div class="site-shell">
+  <body class="min-h-full bg-paper font-sans text-ink antialiased dark:bg-paper-dark dark:text-ink-invert">
+    <div class="flex min-h-screen flex-col">
       <Header />
-      <main class="site-main">
+      <main class="w-full flex-1">
         <slot />
       </main>
       <Footer />

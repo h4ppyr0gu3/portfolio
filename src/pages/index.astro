@@ -15,24 +15,24 @@ const aboutMe = CV.aboutMe;
   title="h4ppyr0gu3 | David Rogers"
   description="Welcome to my website, where I, a passionate web developer, discuss various topics related to web development and free and open source software. Continuously learning and staying up-to-date with the latest trends is a priority for me. Additionally, I share valuable insights, learnings, challenges, and tips through tech-related blogs, aimed at assisting fellow developers on their journeys. Explore and learn with me!"
 >
-  <article class="cv-page">
-    <header class="cv-hero">
+  <article class="container mx-auto max-w-5xl p-6">
+    <header class="mb-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
       <img
-        class="cv-portrait"
+        class="h-36 w-36 rounded object-cover"
         src="/portfolio.jpeg"
         width="144"
         height="144"
         alt="David Rogers"
       />
-      <div class="cv-identity">
-        <h1>David Rogers</h1>
-        <p class="cv-role">Ruby on Rails | Web Developer</p>
+      <div class="text-center sm:text-left">
+        <h1 class="m-0 text-4xl font-bold">David Rogers</h1>
+        <p class="mt-1 text-lg text-ink-muted dark:text-ink-faint">Ruby on Rails | Web Developer</p>
       </div>
     </header>
 
     <Title title="About Me">
-      <div class="cv-prose">
-        {aboutMe.map((paragraph) => <p>{paragraph}</p>)}
+      <div class="space-y-3 text-lg leading-relaxed">
+        {aboutMe.map((paragraph) => <p class="m-0">{paragraph}</p>)}
       </div>
     </Title>
 
@@ -44,12 +44,12 @@ const aboutMe = CV.aboutMe;
     <Experience experience={education} title="Education" />
 
     <Title title="Get in Touch">
-      <div class="cv-prose cv-contact">
-        <p>Phone: <a href="tel:+48516809024">+48516809024</a></p>
-        <p>Email: <a href="mailto:rogersdpdr@gmail.com">rogersdpdr@gmail.com</a></p>
-        <p>GitHub: <a href="https://github.com/h4ppyr0gu3">h4ppyr0gu3</a></p>
-        <p>Twitter: <a href="https://twitter.com/h4ppyr0gu3">h4ppyr0gu3</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/david-pj-rogers">David Rogers</a></p>
+      <div class="space-y-1 text-lg [&_a]:underline [&_a]:decoration-1 hover:[&_a]:text-tender-blue">
+        <p class="m-0">Phone: <a href="tel:+48516809024">+48516809024</a></p>
+        <p class="m-0">Email: <a href="mailto:rogersdpdr@gmail.com">rogersdpdr@gmail.com</a></p>
+        <p class="m-0">GitHub: <a href="https://github.com/h4ppyr0gu3">h4ppyr0gu3</a></p>
+        <p class="m-0">Twitter: <a href="https://twitter.com/h4ppyr0gu3">h4ppyr0gu3</a></p>
+        <p class="m-0">LinkedIn: <a href="https://www.linkedin.com/in/david-pj-rogers">David Rogers</a></p>
       </div>
     </Title>
   </article>

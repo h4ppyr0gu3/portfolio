@@ -1,0 +1,63 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+import '../default.css';
+
+const {
+  title,
+  description = 'Shared portfolio page.',
+} = Astro.props;
+
+const year = new Date().getFullYear();
+---
+
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="min-h-full font-sans antialiased">
+    <div class="flex min-h-screen flex-col">
+      <main class="w-full flex-1">
+        <slot />
+      </main>
+
+      <footer class="mt-auto border-t border-black/10 bg-white/80 backdrop-blur-sm">
+        <div class="mx-auto flex max-w-5xl flex-col items-center gap-4 px-6 py-6 sm:flex-row sm:justify-between">
+          <div class="text-center sm:text-left">
+            <a
+              href="/"
+              class="text-xl font-medium tracking-wide text-ink no-underline hover:text-tender-green"
+            >
+              h4ppyr0gu3
+            </a>
+            <p class="mt-1 text-sm text-ink-muted">
+              Portfolio hosted on this site · &copy; {year}
+            </p>
+          </div>
+          <nav aria-label="Site" class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-sm font-semibold text-ink-muted">
+            <a href="/" class="no-underline hover:text-tender-green">Home</a>
+            <a href="/blog" class="no-underline hover:text-tender-green">Blog</a>
+            <a href="/til" class="no-underline hover:text-tender-green">TIL</a>
+            <a href="/philosophy" class="no-underline hover:text-tender-green">Philosophy</a>
+            <a href="/cv" class="no-underline hover:text-tender-green">Build yours</a>
+          </nav>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

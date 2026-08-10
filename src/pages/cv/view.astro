@@ -1,0 +1,11 @@
+---
+import Share from '../../layouts/Share.astro';
+import CvShareView from '../../components/cv/CvShareView.jsx';
+---
+
+<Share
+  title="Portfolio"
+  description="Shared portfolio — web page from a CV share link."
+>
+  <CvShareView client:only="react" />
+</Share>

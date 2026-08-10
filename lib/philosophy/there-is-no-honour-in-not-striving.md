@@ -1,0 +1,15 @@
+---
+href: "/philosophy/there-is-no-honour-in-not-striving"
+title: "There is no honour in not Striving"
+excerpt: "For the longest time I thought it was alright not to strive to get better, you are allowing all the people who aren't that good to have a good game, or making them feel better, however you are also settling for"
+date: "10/08/2026"
+tags:
+  - philosophy
+published: true
+updated: "10/08/2026"
+topics: Philosophy
+---
+
+# There is no honour in not Striving
+
+For the longest time I thought it was alright not to strive to get better, you are allowing all the people who aren't that good to have a good game, or making them feel better, however you are also settling for mediocrity, there is no honour in losing or in failure, if you can get better don't be a stubborn fool, take advice, do better, you are allowed to, it also has the added effect of improving those around you and encouraging excellence in everything, you don't have to lose to make others feel better, you can win and still have a fantastic game, push them to their limits, and allow others to push you to yours, there is also no honour in putting up a face of exhaustion, or trying to show that you tried, don't try, just get in there, improve and keep improving, strive for more and encourage those around you to do the same

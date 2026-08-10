@@ -1,4 +1,12 @@
-import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import {
   emptyContact,
   emptyDocument,
@@ -12,6 +20,7 @@ import {
 import { clearLocal, readFromLocation, writeLocal } from './cvStorage.js';
 
 const CvContext = createContext(null);
+const PERSIST_MS = 400;
 
 export function CvProvider({ children, siteCv }) {
   const [doc, setDocState] = useState(() =>
@@ -20,6 +29,17 @@ export function CvProvider({ children, siteCv }) {
   const [ready] = useState(() => typeof window !== 'undefined');
   const [status, setStatus] = useState('');
   const [hydrated, setHydrated] = useState(false);
+  const docRef = useRef(doc);
+  const persistTimerRef = useRef(null);
+  docRef.current = doc;
+
+  const persistNow = useCallback(() => {
+    if (persistTimerRef.current != null) {
+      window.clearTimeout(persistTimerRef.current);
+      persistTimerRef.current = null;
+    }
+    writeLocal(docRef.current);
+  }, []);
 
   useEffect(() => {
     // Avoid persisting the SSR placeholder before client state is real.
@@ -27,9 +47,31 @@ export function CvProvider({ children, siteCv }) {
   }, []);
 
   useEffect(() => {
-    if (!hydrated) return;
-    writeLocal(doc);
+    if (!hydrated) return undefined;
+    persistTimerRef.current = window.setTimeout(() => {
+      writeLocal(doc);
+      persistTimerRef.current = null;
+    }, PERSIST_MS);
+    return () => {
+      if (persistTimerRef.current != null) {
+        window.clearTimeout(persistTimerRef.current);
+        persistTimerRef.current = null;
+      }
+    };
   }, [doc, hydrated]);
+
+  useEffect(() => {
+    function flush() {
+      writeLocal(docRef.current);
+    }
+    window.addEventListener('pagehide', flush);
+    window.addEventListener('beforeunload', flush);
+    return () => {
+      window.removeEventListener('pagehide', flush);
+      window.removeEventListener('beforeunload', flush);
+      flush();
+    };
+  }, []);
 
   const setDoc = useCallback((next) => {
     setDocState((prev) => {
@@ -226,6 +268,7 @@ export function CvProvider({ children, siteCv }) {
       status,
       flash,
       setDoc,
+      persistNow,
       siteCv,
       loadExample,
       startBlank,
@@ -249,6 +292,7 @@ export function CvProvider({ children, siteCv }) {
       status,
       flash,
       setDoc,
+      persistNow,
       siteCv,
       loadExample,
       startBlank,

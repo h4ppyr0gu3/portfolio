@@ -11,7 +11,7 @@ export default function Experience(props) {
 
   return (
     <Title title={title}>
-      <div className="cv-experience-list">
+      <div className="cv-experience-list flex flex-col gap-4">
         {experience.map((xp, i) => (
           <ExperienceItem key={i} experience={xp} parent={title} />
         ))}

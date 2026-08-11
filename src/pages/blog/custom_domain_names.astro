@@ -56,6 +56,7 @@ This is achived in the following configuration which will be somewhere in the /e
 <span id="LC20" class="line" lang="plaintext">    .</span>
 <span id="LC21" class="line" lang="plaintext">}</span></code></pre>
 <copy-code></copy-code>
+</div>
 <p data-sourcepos="46:1-46:123" dir="auto"><strong>N.B</strong> there will be other configurations in the both the server and http blocks which don't need to be removed or changed</p>
 <p data-sourcepos="48:1-48:76" dir="auto">The important code being <code is:raw>listen 80;</code> and <code is:raw>proxy_pass http://localhost:3000</code></p>
 <p data-sourcepos="50:1-50:157" dir="auto">now if everything has gone according to plan we should see our website at <code is:raw>http://localhost/</code> if we exclude the line with <code is:raw>server_name</code> in our configuration.</p>

@@ -33,5 +33,5 @@ module.exports = {
       },
     },
   },
-  plugins: [{ 'postcss-import': {} }],
+  plugins: [],
 };
